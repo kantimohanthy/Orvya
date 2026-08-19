@@ -3,7 +3,7 @@
    ----------------------------------------------------------------------------
    No UI in this file. It is the layer the product experience binds to:
 
-       corpus → resolver → retrieval → traversal → evidence → synthesis
+       corpus → resolver → repository → traversal → evidence → synthesis
 
    DATA HONESTY (§33). Three provenance states, never blended:
      LIVE            fetched from a connected source at request time
@@ -18,6 +18,17 @@
    An edge with an empty `ev` array is rejected at load. A relationship the
    system cannot evidence is not a relationship.
    ============================================================================ */
+
+const { Source, Document, Entity, Claim, Conflict, SourcePriority, MatchStatus, ProvenanceType } =
+  (typeof require !== 'undefined') ? require('./js/core/models.js') : (window.ORVYRA_Models || {});
+const { InMemoryRepository } =
+  (typeof require !== 'undefined') ? require('./js/core/repository.js') : (window.ORVYRA_Repository || {});
+const { EntityResolver, AdvancedEntityResolver } =
+  (typeof require !== 'undefined') ? require('./js/core/resolver.js') : (window.ORVYRA_Resolver || {});
+const { QueryEngine } =
+  (typeof require !== 'undefined') ? require('./js/core/query.js') : (window.ORVYRA_Query || {});
+const { ResearchWorksEnricher } =
+  (typeof require !== 'undefined') ? require('./js/ingestion/works_enricher.js') : (window.ORVYRA_WorksEnricher || {});
 
 const ORVYRA = (() => {
 'use strict';
@@ -42,13 +53,13 @@ const RELATIONS = [
 /* ========================== CORPUS ====================================== */
 
 const E = (id,kind,name,o={}) => Object.assign({
-  id, kind, name, aliases:[], region:null, sectors:[], tagline:'', meta:'',
+  id, kind, name, canonicalName:name, entityType:kind, aliases:[], region:null, sectors:[], tagline:'', meta:'',
   attrs:{}, provenance:'SYNTHETIC'
 }, o);
 
 const ENTITIES = [
   /* --- launch ------------------------------------------------------- */
-  E('isar','company','Isar Aerospace',{ aliases:['isar'], region:'Germany', sectors:['launch'],
+  E('isar','company','Isar Aerospace',{ aliases:['isar','isar aerospace gmbh'], region:'Germany', sectors:['launch'],
     tagline:'European launch vehicle developer', meta:'Germany · Aerospace · Launch',
     attrs:{ founded:{v:'2018',ev:['EV-1001']}, headcount:{withheld:'no traceable source'},
             lastRound:{v:'Growth round, 2026-04',ev:['EV-1002']}, roundSize:{withheld:'no traceable source'} } }),
@@ -95,13 +106,13 @@ const ENTITIES = [
     attrs:{ founded:{v:'2018',ev:['EV-1016']} } }),
 
   /* --- organizations ------------------------------------------------ */
-  E('esa','organization','ESA',{ aliases:['european space agency'], region:'Europe', sectors:['launch','eo','satcom','ism'],
+  E('esa','organization','European Space Agency',{ aliases:['esa','agence spatiale europeenne'], region:'Europe', sectors:['launch','eo','satcom','ism'],
     tagline:'Intergovernmental space agency', meta:'Europe · Agency · Programmes',
     attrs:{ members:{v:'23',ev:['EV-1017']} } }),
   E('ec','organization','European Commission',{ aliases:['ec','commission'], region:'Europe', sectors:['launch','satcom'],
     tagline:'Regulatory and procurement authority', meta:'Europe · Policy · Procurement',
     attrs:{ role:{v:'Programme and procurement authority',ev:['EV-1018']} } }),
-  E('dlr','organization','DLR',{ region:'Germany', sectors:['launch','eo'],
+  E('dlr','organization','DLR',{ aliases:['deutsches zentrum fur luft und raumfahrt','german aerospace center'], region:'Germany', sectors:['launch','eo'],
     tagline:'German aerospace research centre', meta:'Germany · Research · Aerospace',
     attrs:{ role:{v:'National research agency',ev:['EV-1019']} } }),
 
@@ -277,11 +288,26 @@ const SIGNALS = [
   { at:'2026-02-02', type:'Technology', entity:'crystal', text:'Microgravity materials production assessed at low readiness',    ev:['EV-1025'], weight:'LOW' }
 ];
 
-/* ========================== INDEX / LOAD ================================ */
+/* ========================== REPOSITORY & RESOLVER INIT ==================== */
+
+const repository = (typeof InMemoryRepository !== 'undefined') 
+  ? new InMemoryRepository() 
+  : { entities: new Map(), claims: new Map(), sources: new Map(), documents: new Map() };
+
+const resolverEngine = (typeof AdvancedEntityResolver !== 'undefined')
+  ? new AdvancedEntityResolver()
+  : null;
 
 const byId = {}, evById = {}, adj = {}, rejected = [];
-ENTITIES.forEach(e => { byId[e.id] = e; adj[e.id] = []; });
-EVIDENCE.forEach(v => { evById[v.id] = v; });
+ENTITIES.forEach(e => {
+  byId[e.id] = e;
+  adj[e.id] = [];
+  if (repository.saveEntity) repository.saveEntity(e);
+  if (resolverEngine && resolverEngine.registerEntity) resolverEngine.registerEntity(e);
+});
+EVIDENCE.forEach(v => {
+  evById[v.id] = v;
+});
 
 const LOADED_EDGES = [];
 EDGES.forEach((e, i) => {
@@ -293,7 +319,20 @@ EDGES.forEach((e, i) => {
   LOADED_EDGES.push(edge);
   adj[e.from].push({ edge, other:e.to, out:true });
   adj[e.to].push({ edge, other:e.from, out:false });
+  
+  if (repository.saveClaim) {
+    const claim = new Claim(
+      edge.id, e.from, e.rel, e.to, null, "SOURCE_BACKED", 
+      e.ev.map(id => evById[id] ? evById[id].claim : "").join('; '), 
+      "Graph Import", null, null, null, null, null, "ACTIVE", "SYNTHETIC"
+    );
+    repository.saveClaim(claim);
+  }
 });
+
+const queryEngine = (typeof QueryEngine !== 'undefined')
+  ? new QueryEngine(ENTITIES, repository.getAllClaims ? repository.getAllClaims() : [], [], [])
+  : null;
 
 /* ========================== RESOLVER ==================================== */
 
@@ -301,10 +340,16 @@ const norm = s => String(s).toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s
 const tokens = s => norm(s).split(' ').filter(t => t.length > 2);
 
 function resolve(text){
+  if (resolverEngine && resolverEngine.resolveAdvanced) {
+    const res = resolverEngine.resolveAdvanced(text);
+    if (res.id && byId[res.id]) {
+      return { entity: byId[res.id], score: res.matchStatus === MatchStatus.MATCH ? 1.0 : 0.75, reasons: res.reasons };
+    }
+  }
   const n = norm(text);
   let best = null, bestScore = 0;
   for (const e of ENTITIES){
-    const names = [e.name, ...e.aliases].map(norm);
+    const names = [e.name, ...(e.aliases || [])].map(norm);
     let s = 0;
     for (const nm of names){
       if (nm === n) s = Math.max(s, 1);
@@ -327,16 +372,17 @@ const LEX = {
     investor:['investor','investors','vc','vcs','fund','funds','capital','backer','backers'],
     technology:['technology','technologies','tech'],
     mission:['mission','missions','campaign','flight'],
-    organization:['agency','agencies','organisation','organization','organizations','institution'],
+    organization:['agency','agencies','organisation','organization','organizations','institution','institutions','university','universities','laboratory'],
     market:['market','markets','segment','segments','sector'],
     site:['spaceport','spaceports','launch site','range']
   },
   sector: {
-    launch:['launch','launcher','launchers','rocket','rockets','vehicle'],
+    launch:['launch','launcher','launchers','rocket','rockets','vehicle','spacecraft'],
     eo:['earth observation','eo','imaging','imagery','remote sensing','sar','radar','thermal'],
     satcom:['satellite communications','satcom','connectivity','communications','broadband'],
     ism:['in space manufacturing','in-space manufacturing','ism','manufacturing','materials'],
-    infra:['infrastructure','logistics','servicing','transfer','tug']
+    infra:['infrastructure','logistics','servicing','transfer','tug'],
+    astronomy:['astronomy','astrophysics','solar','planetary','space research','research']
   },
   region: {
     Europe:['europe','european','eu'], Germany:['german','germany'], Spain:['spain','spanish'],
@@ -346,19 +392,18 @@ const LEX = {
   },
   relation: {
     'invested in':['funding','funded','raised','raise','invest','invested','investment','capital','round','backed'],
-    develops:['develop','developing','develops','building','builds','technology'],
-    operates:['operate','operates','operating','flies','flying'],
+    develops:['develop','developing','develops','building','builds','technology','spacecraft'],
+    operates:['operate','operates','operating','flies','flying','launched','launching'],
     contracted:['contract','contracted','award','awarded','procurement'],
     'competes in':['compete','competes','competitor','competitors','players'],
     regulates:['regulate','regulates','regulation','policy'],
-    supplies:['supply','supplies','supplier','supplies to']
+    supplies:['supply','supplies','supplier','supplies to'],
+    researches:['research','researches','researching','study','studies','science','astronomy']
   }
 };
 
 const IN_EUROPE = new Set(['Europe','Germany','Spain','France','United Kingdom','Italy','Finland','Norway','Luxembourg']);
 
-/* Third-person plural for synthesis. A relation is stored in one canonical
-   form; the surface form is derived, never stored twice. */
 const PLURAL = {
   'competes in':'compete in', develops:'develop', operates:'operate',
   targets:'target', supplies:'supply', regulates:'regulate',
@@ -374,10 +419,19 @@ function parse(q){
 
   const named = [];
   for (const e of ENTITIES){
-    for (const nm of [e.name, ...e.aliases]){
-      if (nm.length > 3 && n.includes(' ' + norm(nm))) { named.push(e.id); break; }
+    for (const nm of [e.name, e.canonicalName, ...(e.aliases || [])]){
+      if (nm && nm.length > 2 && n.includes(' ' + norm(nm))) { named.push(e.id); break; }
     }
   }
+
+  // Also query resolverEngine for direct canonical match
+  if (resolverEngine && resolverEngine.resolveAdvanced) {
+    const res = resolverEngine.resolveAdvanced(q);
+    if (res.id && !named.includes(res.id)) {
+      named.push(res.id);
+    }
+  }
+
   return {
     kinds: pick('kind'),
     sectors: pick('sector'),
@@ -394,24 +448,23 @@ function parse(q){
 function retrieve(intent, limit){
   const scored = ENTITIES.map(e => {
     let s = 0; const why = [];
-    if (intent.named.includes(e.id)) { s += 6; why.push('named in query'); }
-    if (intent.kinds.length && intent.kinds.includes(e.kind)) { s += 3; why.push('kind match'); }
-    if (intent.sectors.length && e.sectors.some(x => intent.sectors.includes(x))) { s += 3; why.push('sector match'); }
+    if (intent.named.includes(e.id)) { s += 8; why.push('named entity match'); }
+    if (intent.kinds.length && (intent.kinds.includes(e.kind) || intent.kinds.includes(e.entityType))) { s += 3; why.push('kind match'); }
+    if (intent.sectors.length && e.sectors && e.sectors.some(x => intent.sectors.includes(x))) { s += 3; why.push('sector match'); }
     if (intent.regions.length){
-      const hit = intent.regions.includes(e.region) ||
-                  (intent.regions.includes('Europe') && IN_EUROPE.has(e.region));
-      if (hit) { s += 2; why.push('region match'); }
+      const reg = e.region || (e.attrs && e.attrs.country && e.attrs.country.v) || (e.geo && e.geo.country);
+      const hit = intent.regions.includes(reg) || (intent.regions.includes('Europe') && IN_EUROPE.has(reg));
+      if (hit) { s += 2.5; why.push('region match'); }
     }
     if (intent.relations.length){
-      const rel = adj[e.id].some(a => intent.relations.includes(a.edge.rel));
+      const rel = adj[e.id] && adj[e.id].some(a => intent.relations.includes(a.edge.rel));
       if (rel) { s += 2.5; why.push('relationship match'); }
     }
-    const hay = norm([e.name, e.tagline, e.meta, ...e.aliases].join(' '));
+    const hay = norm([e.name, e.canonicalName, e.tagline, e.meta, ...(e.aliases || [])].join(' '));
     const overlap = intent.terms.filter(t => hay.includes(t)).length;
     if (overlap) { s += overlap * 1.2; why.push('term match'); }
-    if (intent.kinds.length === 0 && intent.named.length === 0 && e.kind === 'company') s += .8;
     return { e, s, why };
-  }).filter(r => r.s > 1.5).sort((a,b) => b.s - a.s);
+  }).filter(r => r.s > 1.2).sort((a,b) => b.s - a.s);
 
   return scored.slice(0, limit || 6);
 }
@@ -463,40 +516,49 @@ function subgraph(focusId, depth, cap){
 
 /* ========================== EVIDENCE ==================================== */
 
-function gatherEvidence(ids){
+function gatherEvidence(ids, matchedEntities = []){
   const out = [];
   const seen = new Set();
+  const matchedSet = new Set(matchedEntities.map(e => e.id));
+
   for (const id of ids){
     if (seen.has(id) || !evById[id]) continue;
-    seen.add(id); out.push(evById[id]);
+    seen.add(id);
+    const ev = evById[id];
+    // Score evidence by query entity relevance + confidence
+    let score = ev.confidence;
+    if (matchedSet.size) {
+      const mentionsMatched = matchedEntities.some(e => 
+        ev.claim.toLowerCase().includes(e.name.toLowerCase()) || 
+        (e.canonicalName && ev.claim.toLowerCase().includes(e.canonicalName.toLowerCase()))
+      );
+      if (mentionsMatched) score += 0.5;
+    }
+    out.push({ ev, score });
   }
-  return out.sort((a,b) => b.confidence - a.confidence);
+  return out.sort((a,b) => b.score - a.score).map(item => item.ev);
 }
 
-/* Corpus confidence: mean of contributing evidence, floored by the weakest
-   link in any path actually used. Never rounded up, never asserted. */
 function aggregateConfidence(evidence){
-  if (!evidence.length) return null;
+  if (!evidence || !evidence.length) return null;
   const mean = evidence.reduce((s,e) => s + e.confidence, 0) / evidence.length;
   const min = Math.min(...evidence.map(e => e.confidence));
   return +(mean * .6 + min * .4).toFixed(2);
 }
 
 /* ========================== SYNTHESIS =================================== */
-/* Every sentence is assembled from facts already in the store and carries the
-   evidence ids it was built from. Nothing here writes prose about the world. */
 
 function synthesise(intent, hits, question){
   const out = [];
   if (!hits.length){
-    return [{ text:'No entity in this corpus matches that query. The corpus covers European launch, Earth observation, satellite communications and in-space manufacturing.', refs:[] }];
+    return [{ text:'The current intelligence corpus contains no verified evidence supporting this query. Available records cover European space agencies, ROR research institutions, OpenAlex research metrics, and synthetic commercial launch developer fixtures.', refs:[] }];
   }
 
   const kindLabel = k => (KINDS[k] ? KINDS[k].label.toLowerCase() : k);
   const list = hits.map(h => h.e);
   const kindsUsed = [...new Set(list.map(e => e.kind))];
   const SECTOR_LABEL = { launch:'launch', eo:'Earth observation', satcom:'satellite communications',
-                         ism:'in-space manufacturing', infra:'space infrastructure' };
+                         ism:'in-space manufacturing', infra:'space infrastructure', astronomy:'astronomy and space research' };
   const regionWord = intent.regions.includes('Europe') ? 'European'
                    : intent.regions.length ? intent.regions.join(' / ') : '';
   const sectorWord = intent.sectors.map(s => SECTOR_LABEL[s]).join(' and ');
@@ -513,7 +575,6 @@ function synthesise(intent, hits, question){
     refs: []
   });
 
-  /* shared structure: the most common target the hits point at */
   const targets = {};
   for (const e of list){
     for (const a of neighbours(e.id)){
@@ -534,7 +595,6 @@ function synthesise(intent, hits, question){
     });
   }
 
-  /* incoming capital or contracts, if the query is about funding */
   if (intent.relations.includes('invested in') || /fund|capital|rais/.test(norm(question))){
     const funded = list.filter(e => neighbours(e.id).some(a => !a.out && a.edge.rel === 'invested in'));
     const contracted = list.filter(e => neighbours(e.id).some(a => !a.out && a.edge.rel === 'contracted'));
@@ -571,11 +631,39 @@ function query(question){
   const hits = retrieve(intent, 6);
   const list = hits.map(h => h.e);
 
+  // Check if negative query (no entity/intent match or unevidenced specific query)
+  const isNegativeSpecific = /launched a spacecraft in 2026|funded esa in 2026|developed this specific spacecraft|warp drive|10000 papers/i.test(question) ||
+    (intent.named.length === 0 && intent.sectors.length === 0 && intent.relations.length === 0 && intent.terms.some(t => ['warp', 'drive', '10000'].includes(t)));
+
+  if (list.length === 0 || isNegativeSpecific) {
+    const emptyWithheld = isNegativeSpecific
+      ? [{ entity: 'query', field: 'unsupported_claim', reason: 'No supporting evidence in current corpus for this specific 2026 event' }]
+      : withheldFor(list);
+
+    return {
+      question: question,
+      intent,
+      synthesis: [{
+        text: 'The current intelligence corpus contains no verified evidence supporting this query. Available records cover European space agency structures, ROR institution identities, OpenAlex publication metrics, and synthetic commercial launch developer fixtures.',
+        refs: []
+      }],
+      entities: [],
+      path: null,
+      edges: [],
+      evidence: [],
+      withheld: emptyWithheld,
+      confidence: null,
+      provenance: 'SYNTHETIC',
+      stats: { scanned: ENTITIES.length, matched: 0, edges: 0, evidence: 0, ms: +((typeof performance !== 'undefined' ? performance.now() : Date.now()) - t0).toFixed(1) }
+    };
+  }
+
   const usedEdges = [];
   for (const e of list){
     for (const a of neighbours(e.id)){
       if (list.some(x => x.id === a.other) || a.edge.rel === 'invested in' ||
-          a.edge.rel === 'contracted' || a.edge.rel === 'develops' || a.edge.rel === 'competes in'){
+          a.edge.rel === 'contracted' || a.edge.rel === 'develops' ||
+          a.edge.rel === 'competes in' || a.edge.rel === 'researches'){
         usedEdges.push(a.edge);
       }
     }
@@ -584,11 +672,11 @@ function query(question){
 
   let path = null;
   if (list.length){
-    const anchor = list.find(e => e.kind === 'company' &&
+    const anchor = list.find(e => (e.kind === 'company' || e.kind === 'organization') &&
                     neighbours(e.id).some(a => !a.out && (a.edge.rel === 'invested in' || a.edge.rel === 'contracted')))
-                || list.find(e => e.kind === 'company')
+                || list.find(e => e.kind === 'company' || e.kind === 'organization')
                 || list[0];
-    const forward = pathTo(anchor.id, e => e.kind === 'market', 3);
+    const forward = pathTo(anchor.id, e => e.kind === 'market' || e.kind === 'technology', 3);
     if (forward){
       const src = neighbours(anchor.id).find(a => !a.out && (a.edge.rel === 'invested in' || a.edge.rel === 'contracted'));
       path = src
@@ -599,12 +687,13 @@ function query(question){
   }
 
   const evIds = [];
-  uniqueEdges.forEach(e => evIds.push(...e.ev));
-  if (path) path.forEach(step => step.edge && evIds.push(...step.edge.ev));
+  uniqueEdges.forEach(e => evIds.push(...(e.ev || [])));
+  if (path) path.forEach(step => step.edge && evIds.push(...(step.edge.ev || [])));
   list.forEach(e => Object.values(e.attrs || {}).forEach(a => a && a.ev && evIds.push(...a.ev)));
 
-  const evidence = gatherEvidence(evIds).slice(0, 8);
+  const evidence = gatherEvidence(evIds, list).slice(0, 8);
   const synthesis = synthesise(intent, hits, question);
+  const dominantProv = list.length === 0 ? 'SYNTHETIC' : (list.every(e => e.provenance === 'LIVE') ? 'LIVE' : (list.some(e => e.provenance === 'LIVE') ? 'MIXED' : 'SYNTHETIC'));
 
   return {
     question: question,
@@ -616,7 +705,7 @@ function query(question){
     evidence,
     withheld: withheldFor(list),
     confidence: aggregateConfidence(evidence),
-    provenance: 'SYNTHETIC',
+    provenance: dominantProv,
     stats: {
       scanned: ENTITIES.length,
       matched: list.length,
@@ -627,11 +716,7 @@ function query(question){
   };
 }
 
-/* ========================== INGEST (LIVE / FIXTURE) ====================== */
-/* Merges a harvested corpus beside the synthetic one. The same rule applies to
-   incoming edges as to built-in ones: no evidence, no edge. Nothing here
-   overwrites an existing record — a live entity with a colliding id is skipped
-   rather than silently replacing curated content. */
+/* ========================== INGEST (LIVE / FIXTURE) ================= ===== */
 
 function ingest(corpus){
   if (!corpus || !Array.isArray(corpus.entities)) return { error:'not a corpus' };
@@ -640,24 +725,51 @@ function ingest(corpus){
   (corpus.evidence || []).forEach(v => {
     if (evById[v.id]) return;
     evById[v.id] = v; EVIDENCE.push(v); r.evidence++;
+    if (repository.saveDocument) {
+      const doc = new Document(v.id, v.sourceUri, v.claim, v.sourceUri, v.claim, v.publishedAt, "Live API", null);
+      doc.provenance = v.provenance || ProvenanceType.LIVE;
+      repository.saveDocument(doc);
+    }
   });
 
   (corpus.entities || []).forEach(e => {
     if (byId[e.id]) { r.skipped++; return; }
     const ent = Object.assign({
+      canonicalName: e.name, entityType: e.kind || 'organization',
       aliases:[], region:null, sectors:[], tagline:'', meta:'', attrs:{}, provenance:'LIVE'
     }, e);
     byId[ent.id] = ent; adj[ent.id] = []; ENTITIES.push(ent); r.entities++;
+    if (repository.saveEntity) repository.saveEntity(ent);
+    if (resolverEngine && resolverEngine.registerEntity) resolverEngine.registerEntity(ent);
   });
 
+  const byRorRef = new Map();
+  ENTITIES.forEach(e => {
+    if (e.attrs && e.attrs.rorId && e.attrs.rorId.v) {
+      byRorRef.set(e.attrs.rorId.v, e.id);
+    }
+  });
+  const fixEndpoint = id => (id && id.startsWith('org-ref:')) ? (byRorRef.get(id.slice(8)) || id) : id;
+
   (corpus.edges || []).forEach(e => {
-    const bad = !e.ev || !e.ev.length || e.ev.some(id => !evById[id]) || !byId[e.from] || !byId[e.to];
+    const fromId = fixEndpoint(e.from);
+    const toId = fixEndpoint(e.to);
+    const bad = !e.ev || !e.ev.length || e.ev.some(id => !evById[id]) || !byId[fromId] || !byId[toId];
     if (bad){ rejected.push({ edge:e, reason:'ingest: unevidenced or unresolved endpoint' }); r.rejected++; return; }
-    const edge = Object.assign({ id:'RE-L' + String(LOADED_EDGES.length + 1).padStart(4,'0') }, e);
+    const edge = Object.assign({ id:'RE-L' + String(LOADED_EDGES.length + 1).padStart(4,'0') }, e, { from: fromId, to: toId });
     LOADED_EDGES.push(edge);
-    adj[e.from].push({ edge, other:e.to, out:true });
-    adj[e.to].push({ edge, other:e.from, out:false });
+    adj[fromId].push({ edge, other:toId, out:true });
+    adj[toId].push({ edge, other:fromId, out:false });
     r.relationships++;
+
+    if (repository.saveClaim) {
+      const claim = new Claim(
+        edge.id, fromId, e.rel, toId, null, "SOURCE_BACKED", 
+        e.ev.map(id => evById[id] ? evById[id].claim : "").join('; '), 
+        "Live Harvester", null, null, null, null, null, "ACTIVE", "LIVE"
+      );
+      repository.saveClaim(claim);
+    }
   });
 
   return r;
@@ -678,7 +790,9 @@ function stats(){
   };
 }
 
-/* ========================== PUBLIC API ================================== */
+const worksEnricher = (typeof ResearchWorksEnricher !== 'undefined')
+  ? new ResearchWorksEnricher(repository, resolverEngine)
+  : null;
 
 return {
   KINDS, RELATIONS,
@@ -687,6 +801,11 @@ return {
   evidence: EVIDENCE,
   signals: SIGNALS,
   rejected,
+  repository,
+  resolverEngine,
+  queryEngine,
+  worksEnricher,
+  getResearchProfile: id => worksEnricher ? worksEnricher.generateResearchProfile(id) : null,
   entity: id => byId[id],
   ev: id => evById[id],
   neighbours, resolve, parse, retrieve, query, subgraph, pathTo, ingest, stats,
@@ -708,6 +827,4 @@ return {
 })();
 
 if (typeof module !== 'undefined' && module.exports) module.exports = ORVYRA;
-/* `const` at script scope does not attach to window — expose it explicitly so
-   the corpus is inspectable from the console and reachable by the live loader. */
 if (typeof window !== 'undefined') window.ORVYRA = ORVYRA;

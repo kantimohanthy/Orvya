@@ -2,7 +2,7 @@
   "meta": {
     "id": "orvyra-live-2026-08-19",
     "provenance": "LIVE",
-    "harvestedAt": "2026-08-19T10:52:57.231Z",
+    "harvestedAt": "2026-08-19T14:14:02.043Z",
     "sources": [
       "https://api.ror.org/v2/organizations",
       "https://api.openalex.org/institutions"
@@ -2401,7 +2401,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/03wd9za21",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:47.772Z",
+      "observedAt": "2026-08-19T14:13:52.502Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2411,7 +2411,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/03wd9za21",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:47.772Z",
+      "observedAt": "2026-08-19T14:13:52.502Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2421,7 +2421,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/03wd9za21",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:47.772Z",
+      "observedAt": "2026-08-19T14:13:52.502Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2431,7 +2431,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/03wd9za21",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:47.772Z",
+      "observedAt": "2026-08-19T14:13:52.502Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2441,7 +2441,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/03wd9za21",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:47.772Z",
+      "observedAt": "2026-08-19T14:13:52.502Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2451,7 +2451,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03wd9za21?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.069Z",
+      "observedAt": "2026-08-19T14:13:52.957Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -2461,7 +2461,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03wd9za21?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.069Z",
+      "observedAt": "2026-08-19T14:13:52.957Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -2471,7 +2471,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03wd9za21?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.069Z",
+      "observedAt": "2026-08-19T14:13:52.957Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -2481,7 +2481,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03wd9za21?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.069Z",
+      "observedAt": "2026-08-19T14:13:52.957Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -2491,7 +2491,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03wd9za21?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.069Z",
+      "observedAt": "2026-08-19T14:13:52.957Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2501,7 +2501,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03wd9za21?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.069Z",
+      "observedAt": "2026-08-19T14:13:52.957Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2511,7 +2511,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03wd9za21?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.069Z",
+      "observedAt": "2026-08-19T14:13:52.957Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2521,7 +2521,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03wd9za21?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.069Z",
+      "observedAt": "2026-08-19T14:13:52.957Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2531,7 +2531,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03wd9za21?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.069Z",
+      "observedAt": "2026-08-19T14:13:52.957Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2541,7 +2541,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03wd9za21?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.069Z",
+      "observedAt": "2026-08-19T14:13:52.957Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2551,7 +2551,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03wd9za21?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.069Z",
+      "observedAt": "2026-08-19T14:13:52.957Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2561,7 +2561,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03wd9za21?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.069Z",
+      "observedAt": "2026-08-19T14:13:52.957Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2571,7 +2571,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/04bwf3e34",
       "publishedAt": "2026-06-23",
-      "observedAt": "2026-08-19T10:52:48.337Z",
+      "observedAt": "2026-08-19T14:13:53.219Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2581,7 +2581,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/04bwf3e34",
       "publishedAt": "2026-06-23",
-      "observedAt": "2026-08-19T10:52:48.337Z",
+      "observedAt": "2026-08-19T14:13:53.219Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2591,7 +2591,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/04bwf3e34",
       "publishedAt": "2026-06-23",
-      "observedAt": "2026-08-19T10:52:48.337Z",
+      "observedAt": "2026-08-19T14:13:53.219Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2601,7 +2601,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/04bwf3e34",
       "publishedAt": "2026-06-23",
-      "observedAt": "2026-08-19T10:52:48.337Z",
+      "observedAt": "2026-08-19T14:13:53.219Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2611,7 +2611,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/04bwf3e34",
       "publishedAt": "2026-06-23",
-      "observedAt": "2026-08-19T10:52:48.337Z",
+      "observedAt": "2026-08-19T14:13:53.219Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2621,7 +2621,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04bwf3e34?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.563Z",
+      "observedAt": "2026-08-19T14:13:53.430Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -2631,7 +2631,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04bwf3e34?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.563Z",
+      "observedAt": "2026-08-19T14:13:53.430Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -2641,7 +2641,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04bwf3e34?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.563Z",
+      "observedAt": "2026-08-19T14:13:53.430Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -2651,7 +2651,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04bwf3e34?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.563Z",
+      "observedAt": "2026-08-19T14:13:53.430Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -2661,7 +2661,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04bwf3e34?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.563Z",
+      "observedAt": "2026-08-19T14:13:53.430Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2671,7 +2671,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04bwf3e34?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.563Z",
+      "observedAt": "2026-08-19T14:13:53.430Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2681,7 +2681,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04bwf3e34?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.563Z",
+      "observedAt": "2026-08-19T14:13:53.430Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2691,7 +2691,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04bwf3e34?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.563Z",
+      "observedAt": "2026-08-19T14:13:53.430Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2701,7 +2701,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04bwf3e34?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.563Z",
+      "observedAt": "2026-08-19T14:13:53.430Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2711,7 +2711,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04bwf3e34?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.563Z",
+      "observedAt": "2026-08-19T14:13:53.430Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2721,7 +2721,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04bwf3e34?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.563Z",
+      "observedAt": "2026-08-19T14:13:53.430Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2731,7 +2731,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04bwf3e34?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:48.563Z",
+      "observedAt": "2026-08-19T14:13:53.430Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2741,7 +2741,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/04h1h0y33",
       "publishedAt": "2026-07-20",
-      "observedAt": "2026-08-19T10:52:48.836Z",
+      "observedAt": "2026-08-19T14:13:53.689Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2751,7 +2751,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/04h1h0y33",
       "publishedAt": "2026-07-20",
-      "observedAt": "2026-08-19T10:52:48.836Z",
+      "observedAt": "2026-08-19T14:13:53.689Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2761,7 +2761,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/04h1h0y33",
       "publishedAt": "2026-07-20",
-      "observedAt": "2026-08-19T10:52:48.836Z",
+      "observedAt": "2026-08-19T14:13:53.689Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2771,7 +2771,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/04h1h0y33",
       "publishedAt": "2026-07-20",
-      "observedAt": "2026-08-19T10:52:48.836Z",
+      "observedAt": "2026-08-19T14:13:53.689Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2781,7 +2781,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/04h1h0y33",
       "publishedAt": "2026-07-20",
-      "observedAt": "2026-08-19T10:52:48.836Z",
+      "observedAt": "2026-08-19T14:13:53.689Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2791,7 +2791,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04h1h0y33?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.068Z",
+      "observedAt": "2026-08-19T14:13:53.918Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -2801,7 +2801,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04h1h0y33?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.068Z",
+      "observedAt": "2026-08-19T14:13:53.918Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -2811,7 +2811,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04h1h0y33?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.068Z",
+      "observedAt": "2026-08-19T14:13:53.918Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -2821,7 +2821,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04h1h0y33?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.068Z",
+      "observedAt": "2026-08-19T14:13:53.918Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -2831,7 +2831,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04h1h0y33?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.068Z",
+      "observedAt": "2026-08-19T14:13:53.918Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2841,7 +2841,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04h1h0y33?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.068Z",
+      "observedAt": "2026-08-19T14:13:53.918Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2851,7 +2851,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04h1h0y33?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.068Z",
+      "observedAt": "2026-08-19T14:13:53.918Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2861,7 +2861,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04h1h0y33?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.068Z",
+      "observedAt": "2026-08-19T14:13:53.918Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2871,7 +2871,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04h1h0y33?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.068Z",
+      "observedAt": "2026-08-19T14:13:53.918Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2881,7 +2881,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04h1h0y33?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.068Z",
+      "observedAt": "2026-08-19T14:13:53.918Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2891,7 +2891,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04h1h0y33?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.068Z",
+      "observedAt": "2026-08-19T14:13:53.918Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2901,7 +2901,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04h1h0y33?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.068Z",
+      "observedAt": "2026-08-19T14:13:53.918Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -2911,7 +2911,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/034zgem50",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:49.326Z",
+      "observedAt": "2026-08-19T14:13:54.181Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2921,7 +2921,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/034zgem50",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:49.326Z",
+      "observedAt": "2026-08-19T14:13:54.181Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2931,7 +2931,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/034zgem50",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:49.326Z",
+      "observedAt": "2026-08-19T14:13:54.181Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2941,7 +2941,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/034zgem50",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:49.326Z",
+      "observedAt": "2026-08-19T14:13:54.181Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2951,7 +2951,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/034zgem50",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:49.326Z",
+      "observedAt": "2026-08-19T14:13:54.181Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -2961,7 +2961,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.543Z",
+      "observedAt": "2026-08-19T14:13:54.395Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -2971,7 +2971,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.543Z",
+      "observedAt": "2026-08-19T14:13:54.395Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -2981,7 +2981,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.543Z",
+      "observedAt": "2026-08-19T14:13:54.395Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -2991,7 +2991,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.543Z",
+      "observedAt": "2026-08-19T14:13:54.395Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3001,7 +3001,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.543Z",
+      "observedAt": "2026-08-19T14:13:54.395Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3011,7 +3011,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.543Z",
+      "observedAt": "2026-08-19T14:13:54.395Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3021,7 +3021,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.543Z",
+      "observedAt": "2026-08-19T14:13:54.395Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3031,7 +3031,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.543Z",
+      "observedAt": "2026-08-19T14:13:54.395Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3041,7 +3041,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.543Z",
+      "observedAt": "2026-08-19T14:13:54.395Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3051,7 +3051,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.543Z",
+      "observedAt": "2026-08-19T14:13:54.395Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3061,7 +3061,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.543Z",
+      "observedAt": "2026-08-19T14:13:54.395Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3071,7 +3071,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:49.543Z",
+      "observedAt": "2026-08-19T14:13:54.395Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3081,7 +3081,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/051sgbe98",
       "publishedAt": "2026-06-02",
-      "observedAt": "2026-08-19T10:52:49.813Z",
+      "observedAt": "2026-08-19T14:13:54.656Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3091,7 +3091,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/051sgbe98",
       "publishedAt": "2026-06-02",
-      "observedAt": "2026-08-19T10:52:49.813Z",
+      "observedAt": "2026-08-19T14:13:54.656Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3101,7 +3101,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/051sgbe98",
       "publishedAt": "2026-06-02",
-      "observedAt": "2026-08-19T10:52:49.813Z",
+      "observedAt": "2026-08-19T14:13:54.656Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3111,7 +3111,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/051sgbe98",
       "publishedAt": "2026-06-02",
-      "observedAt": "2026-08-19T10:52:49.813Z",
+      "observedAt": "2026-08-19T14:13:54.656Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3121,7 +3121,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/051sgbe98",
       "publishedAt": "2026-06-02",
-      "observedAt": "2026-08-19T10:52:49.813Z",
+      "observedAt": "2026-08-19T14:13:54.656Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3131,7 +3131,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F051sgbe98?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.031Z",
+      "observedAt": "2026-08-19T14:13:54.872Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3141,7 +3141,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F051sgbe98?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.031Z",
+      "observedAt": "2026-08-19T14:13:54.872Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3151,7 +3151,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F051sgbe98?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.031Z",
+      "observedAt": "2026-08-19T14:13:54.872Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3161,7 +3161,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F051sgbe98?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.031Z",
+      "observedAt": "2026-08-19T14:13:54.872Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3171,7 +3171,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F051sgbe98?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.031Z",
+      "observedAt": "2026-08-19T14:13:54.872Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3181,7 +3181,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F051sgbe98?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.031Z",
+      "observedAt": "2026-08-19T14:13:54.872Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3191,7 +3191,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F051sgbe98?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.031Z",
+      "observedAt": "2026-08-19T14:13:54.872Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3201,7 +3201,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F051sgbe98?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.031Z",
+      "observedAt": "2026-08-19T14:13:54.872Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3211,7 +3211,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F051sgbe98?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.031Z",
+      "observedAt": "2026-08-19T14:13:54.872Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3221,7 +3221,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F051sgbe98?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.031Z",
+      "observedAt": "2026-08-19T14:13:54.872Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3231,7 +3231,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F051sgbe98?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.031Z",
+      "observedAt": "2026-08-19T14:13:54.872Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3241,7 +3241,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F051sgbe98?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.031Z",
+      "observedAt": "2026-08-19T14:13:54.872Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3251,7 +3251,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02wc0kq10",
       "publishedAt": "2025-10-06",
-      "observedAt": "2026-08-19T10:52:50.308Z",
+      "observedAt": "2026-08-19T14:13:55.133Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3261,7 +3261,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02wc0kq10",
       "publishedAt": "2025-10-06",
-      "observedAt": "2026-08-19T10:52:50.308Z",
+      "observedAt": "2026-08-19T14:13:55.133Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3271,7 +3271,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02wc0kq10",
       "publishedAt": "2025-10-06",
-      "observedAt": "2026-08-19T10:52:50.308Z",
+      "observedAt": "2026-08-19T14:13:55.133Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3281,7 +3281,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02wc0kq10",
       "publishedAt": "2025-10-06",
-      "observedAt": "2026-08-19T10:52:50.308Z",
+      "observedAt": "2026-08-19T14:13:55.133Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3291,7 +3291,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02wc0kq10",
       "publishedAt": "2025-10-06",
-      "observedAt": "2026-08-19T10:52:50.308Z",
+      "observedAt": "2026-08-19T14:13:55.133Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3301,7 +3301,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02wc0kq10?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.528Z",
+      "observedAt": "2026-08-19T14:13:55.341Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3311,7 +3311,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02wc0kq10?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.528Z",
+      "observedAt": "2026-08-19T14:13:55.341Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3321,7 +3321,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02wc0kq10?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.528Z",
+      "observedAt": "2026-08-19T14:13:55.341Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3331,7 +3331,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02wc0kq10?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.528Z",
+      "observedAt": "2026-08-19T14:13:55.341Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3341,7 +3341,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02wc0kq10?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.528Z",
+      "observedAt": "2026-08-19T14:13:55.341Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3351,7 +3351,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02wc0kq10?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.528Z",
+      "observedAt": "2026-08-19T14:13:55.341Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3361,7 +3361,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02wc0kq10?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.528Z",
+      "observedAt": "2026-08-19T14:13:55.341Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3371,7 +3371,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02wc0kq10?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.528Z",
+      "observedAt": "2026-08-19T14:13:55.341Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3381,7 +3381,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02wc0kq10?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.528Z",
+      "observedAt": "2026-08-19T14:13:55.341Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3391,7 +3391,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02wc0kq10?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.528Z",
+      "observedAt": "2026-08-19T14:13:55.341Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3401,7 +3401,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02wc0kq10?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.528Z",
+      "observedAt": "2026-08-19T14:13:55.341Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3411,7 +3411,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02wc0kq10?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:50.528Z",
+      "observedAt": "2026-08-19T14:13:55.341Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3421,7 +3421,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02m44ak47",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:50.792Z",
+      "observedAt": "2026-08-19T14:13:55.630Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3431,7 +3431,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02m44ak47",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:50.792Z",
+      "observedAt": "2026-08-19T14:13:55.630Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3441,7 +3441,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02m44ak47",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:50.792Z",
+      "observedAt": "2026-08-19T14:13:55.630Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3451,7 +3451,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02m44ak47",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:50.792Z",
+      "observedAt": "2026-08-19T14:13:55.630Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3461,7 +3461,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02m44ak47",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:50.792Z",
+      "observedAt": "2026-08-19T14:13:55.630Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3471,7 +3471,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02m44ak47?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.002Z",
+      "observedAt": "2026-08-19T14:13:55.841Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3481,7 +3481,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02m44ak47?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.002Z",
+      "observedAt": "2026-08-19T14:13:55.841Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3491,7 +3491,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02m44ak47?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.002Z",
+      "observedAt": "2026-08-19T14:13:55.841Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3501,7 +3501,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02m44ak47?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.002Z",
+      "observedAt": "2026-08-19T14:13:55.841Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3511,7 +3511,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02m44ak47?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.002Z",
+      "observedAt": "2026-08-19T14:13:55.841Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3521,7 +3521,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02m44ak47?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.002Z",
+      "observedAt": "2026-08-19T14:13:55.841Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3531,7 +3531,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02m44ak47?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.002Z",
+      "observedAt": "2026-08-19T14:13:55.841Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3541,7 +3541,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02m44ak47?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.002Z",
+      "observedAt": "2026-08-19T14:13:55.841Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3551,7 +3551,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02m44ak47?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.002Z",
+      "observedAt": "2026-08-19T14:13:55.841Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3561,7 +3561,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02m44ak47?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.002Z",
+      "observedAt": "2026-08-19T14:13:55.841Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3571,7 +3571,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02m44ak47?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.002Z",
+      "observedAt": "2026-08-19T14:13:55.841Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3581,7 +3581,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02m44ak47?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.002Z",
+      "observedAt": "2026-08-19T14:13:55.841Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3591,7 +3591,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/026nedj88",
       "publishedAt": "2025-11-24",
-      "observedAt": "2026-08-19T10:52:51.278Z",
+      "observedAt": "2026-08-19T14:13:56.117Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3601,7 +3601,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/026nedj88",
       "publishedAt": "2025-11-24",
-      "observedAt": "2026-08-19T10:52:51.278Z",
+      "observedAt": "2026-08-19T14:13:56.117Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3611,7 +3611,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/026nedj88",
       "publishedAt": "2025-11-24",
-      "observedAt": "2026-08-19T10:52:51.278Z",
+      "observedAt": "2026-08-19T14:13:56.117Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3621,7 +3621,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/026nedj88",
       "publishedAt": "2025-11-24",
-      "observedAt": "2026-08-19T10:52:51.278Z",
+      "observedAt": "2026-08-19T14:13:56.117Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3631,7 +3631,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F026nedj88?api_key=REDACTED",
       "publishedAt": "2026-02-06T19:53:56",
-      "observedAt": "2026-08-19T10:52:51.409Z",
+      "observedAt": "2026-08-19T14:13:56.242Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3641,7 +3641,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F026nedj88?api_key=REDACTED",
       "publishedAt": "2026-02-06T19:53:56",
-      "observedAt": "2026-08-19T10:52:51.409Z",
+      "observedAt": "2026-08-19T14:13:56.242Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3651,7 +3651,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F026nedj88?api_key=REDACTED",
       "publishedAt": "2026-02-06T19:53:56",
-      "observedAt": "2026-08-19T10:52:51.409Z",
+      "observedAt": "2026-08-19T14:13:56.242Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3661,7 +3661,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F026nedj88?api_key=REDACTED",
       "publishedAt": "2026-02-06T19:53:56",
-      "observedAt": "2026-08-19T10:52:51.409Z",
+      "observedAt": "2026-08-19T14:13:56.242Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3671,7 +3671,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/04t512h04",
       "publishedAt": "2025-02-26",
-      "observedAt": "2026-08-19T10:52:51.667Z",
+      "observedAt": "2026-08-19T14:13:56.494Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3681,7 +3681,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/04t512h04",
       "publishedAt": "2025-02-26",
-      "observedAt": "2026-08-19T10:52:51.667Z",
+      "observedAt": "2026-08-19T14:13:56.494Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3691,7 +3691,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/04t512h04",
       "publishedAt": "2025-02-26",
-      "observedAt": "2026-08-19T10:52:51.667Z",
+      "observedAt": "2026-08-19T14:13:56.494Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3701,7 +3701,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/04t512h04",
       "publishedAt": "2025-02-26",
-      "observedAt": "2026-08-19T10:52:51.667Z",
+      "observedAt": "2026-08-19T14:13:56.494Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3711,7 +3711,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/04t512h04",
       "publishedAt": "2025-02-26",
-      "observedAt": "2026-08-19T10:52:51.667Z",
+      "observedAt": "2026-08-19T14:13:56.494Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3721,7 +3721,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04t512h04?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.888Z",
+      "observedAt": "2026-08-19T14:13:56.713Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3731,7 +3731,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04t512h04?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.888Z",
+      "observedAt": "2026-08-19T14:13:56.713Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3741,7 +3741,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04t512h04?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.888Z",
+      "observedAt": "2026-08-19T14:13:56.713Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3751,7 +3751,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04t512h04?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.888Z",
+      "observedAt": "2026-08-19T14:13:56.713Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3761,7 +3761,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04t512h04?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.888Z",
+      "observedAt": "2026-08-19T14:13:56.713Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3771,7 +3771,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04t512h04?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.888Z",
+      "observedAt": "2026-08-19T14:13:56.713Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3781,7 +3781,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04t512h04?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.888Z",
+      "observedAt": "2026-08-19T14:13:56.713Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3791,7 +3791,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04t512h04?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.888Z",
+      "observedAt": "2026-08-19T14:13:56.713Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3801,7 +3801,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04t512h04?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.888Z",
+      "observedAt": "2026-08-19T14:13:56.713Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3811,7 +3811,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04t512h04?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.888Z",
+      "observedAt": "2026-08-19T14:13:56.713Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3821,7 +3821,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04t512h04?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.888Z",
+      "observedAt": "2026-08-19T14:13:56.713Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3831,7 +3831,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F04t512h04?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:51.888Z",
+      "observedAt": "2026-08-19T14:13:56.713Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3841,7 +3841,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/05bkpyp72",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:52.143Z",
+      "observedAt": "2026-08-19T14:13:56.975Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3851,7 +3851,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/05bkpyp72",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:52.143Z",
+      "observedAt": "2026-08-19T14:13:56.975Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3861,7 +3861,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/05bkpyp72",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:52.143Z",
+      "observedAt": "2026-08-19T14:13:56.975Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3871,7 +3871,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/05bkpyp72",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:52.143Z",
+      "observedAt": "2026-08-19T14:13:56.975Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3881,7 +3881,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/05bkpyp72",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:52.143Z",
+      "observedAt": "2026-08-19T14:13:56.975Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -3891,7 +3891,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05bkpyp72?api_key=REDACTED",
       "publishedAt": "2026-08-18T05:59:24",
-      "observedAt": "2026-08-19T10:52:52.371Z",
+      "observedAt": "2026-08-19T14:13:57.188Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3901,7 +3901,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05bkpyp72?api_key=REDACTED",
       "publishedAt": "2026-08-18T05:59:24",
-      "observedAt": "2026-08-19T10:52:52.371Z",
+      "observedAt": "2026-08-19T14:13:57.188Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3911,7 +3911,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05bkpyp72?api_key=REDACTED",
       "publishedAt": "2026-08-18T05:59:24",
-      "observedAt": "2026-08-19T10:52:52.371Z",
+      "observedAt": "2026-08-19T14:13:57.188Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3921,7 +3921,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05bkpyp72?api_key=REDACTED",
       "publishedAt": "2026-08-18T05:59:24",
-      "observedAt": "2026-08-19T10:52:52.371Z",
+      "observedAt": "2026-08-19T14:13:57.188Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -3931,7 +3931,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05bkpyp72?api_key=REDACTED",
       "publishedAt": "2026-08-18T05:59:24",
-      "observedAt": "2026-08-19T10:52:52.371Z",
+      "observedAt": "2026-08-19T14:13:57.188Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3941,7 +3941,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05bkpyp72?api_key=REDACTED",
       "publishedAt": "2026-08-18T05:59:24",
-      "observedAt": "2026-08-19T10:52:52.371Z",
+      "observedAt": "2026-08-19T14:13:57.188Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3951,7 +3951,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05bkpyp72?api_key=REDACTED",
       "publishedAt": "2026-08-18T05:59:24",
-      "observedAt": "2026-08-19T10:52:52.371Z",
+      "observedAt": "2026-08-19T14:13:57.188Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3961,7 +3961,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05bkpyp72?api_key=REDACTED",
       "publishedAt": "2026-08-18T05:59:24",
-      "observedAt": "2026-08-19T10:52:52.371Z",
+      "observedAt": "2026-08-19T14:13:57.188Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3971,7 +3971,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05bkpyp72?api_key=REDACTED",
       "publishedAt": "2026-08-18T05:59:24",
-      "observedAt": "2026-08-19T10:52:52.371Z",
+      "observedAt": "2026-08-19T14:13:57.188Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3981,7 +3981,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05bkpyp72?api_key=REDACTED",
       "publishedAt": "2026-08-18T05:59:24",
-      "observedAt": "2026-08-19T10:52:52.371Z",
+      "observedAt": "2026-08-19T14:13:57.188Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -3991,7 +3991,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05bkpyp72?api_key=REDACTED",
       "publishedAt": "2026-08-18T05:59:24",
-      "observedAt": "2026-08-19T10:52:52.371Z",
+      "observedAt": "2026-08-19T14:13:57.188Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4001,7 +4001,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05bkpyp72?api_key=REDACTED",
       "publishedAt": "2026-08-18T05:59:24",
-      "observedAt": "2026-08-19T10:52:52.371Z",
+      "observedAt": "2026-08-19T14:13:57.188Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4011,7 +4011,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/034zgem50",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:52.629Z",
+      "observedAt": "2026-08-19T14:13:57.444Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4021,7 +4021,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/034zgem50",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:52.629Z",
+      "observedAt": "2026-08-19T14:13:57.444Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4031,7 +4031,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/034zgem50",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:52.629Z",
+      "observedAt": "2026-08-19T14:13:57.444Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4041,7 +4041,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/034zgem50",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:52.629Z",
+      "observedAt": "2026-08-19T14:13:57.444Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4051,7 +4051,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/034zgem50",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:52.629Z",
+      "observedAt": "2026-08-19T14:13:57.444Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4061,7 +4061,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:52.844Z",
+      "observedAt": "2026-08-19T14:13:57.656Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4071,7 +4071,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:52.844Z",
+      "observedAt": "2026-08-19T14:13:57.656Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4081,7 +4081,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:52.844Z",
+      "observedAt": "2026-08-19T14:13:57.656Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4091,7 +4091,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:52.844Z",
+      "observedAt": "2026-08-19T14:13:57.656Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4101,7 +4101,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:52.844Z",
+      "observedAt": "2026-08-19T14:13:57.656Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4111,7 +4111,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:52.844Z",
+      "observedAt": "2026-08-19T14:13:57.656Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4121,7 +4121,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:52.844Z",
+      "observedAt": "2026-08-19T14:13:57.656Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4131,7 +4131,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:52.844Z",
+      "observedAt": "2026-08-19T14:13:57.656Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4141,7 +4141,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:52.844Z",
+      "observedAt": "2026-08-19T14:13:57.656Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4151,7 +4151,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:52.844Z",
+      "observedAt": "2026-08-19T14:13:57.656Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4161,7 +4161,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:52.844Z",
+      "observedAt": "2026-08-19T14:13:57.656Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4171,7 +4171,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F034zgem50?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:52.844Z",
+      "observedAt": "2026-08-19T14:13:57.656Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4181,7 +4181,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/01fapfv42",
       "publishedAt": "2026-06-02",
-      "observedAt": "2026-08-19T10:52:53.109Z",
+      "observedAt": "2026-08-19T14:13:57.919Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4191,7 +4191,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/01fapfv42",
       "publishedAt": "2026-06-02",
-      "observedAt": "2026-08-19T10:52:53.109Z",
+      "observedAt": "2026-08-19T14:13:57.919Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4201,7 +4201,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/01fapfv42",
       "publishedAt": "2026-06-02",
-      "observedAt": "2026-08-19T10:52:53.109Z",
+      "observedAt": "2026-08-19T14:13:57.919Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4211,7 +4211,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/01fapfv42",
       "publishedAt": "2026-06-02",
-      "observedAt": "2026-08-19T10:52:53.109Z",
+      "observedAt": "2026-08-19T14:13:57.919Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4221,7 +4221,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/01fapfv42",
       "publishedAt": "2026-06-02",
-      "observedAt": "2026-08-19T10:52:53.109Z",
+      "observedAt": "2026-08-19T14:13:57.919Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4231,7 +4231,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F01fapfv42?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:53.339Z",
+      "observedAt": "2026-08-19T14:13:58.122Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4241,7 +4241,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F01fapfv42?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:53.339Z",
+      "observedAt": "2026-08-19T14:13:58.122Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4251,7 +4251,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F01fapfv42?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:53.339Z",
+      "observedAt": "2026-08-19T14:13:58.122Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4261,7 +4261,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F01fapfv42?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:53.339Z",
+      "observedAt": "2026-08-19T14:13:58.122Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4271,7 +4271,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F01fapfv42?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:53.339Z",
+      "observedAt": "2026-08-19T14:13:58.122Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4281,7 +4281,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F01fapfv42?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:53.339Z",
+      "observedAt": "2026-08-19T14:13:58.122Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4291,7 +4291,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F01fapfv42?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:53.339Z",
+      "observedAt": "2026-08-19T14:13:58.122Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4301,7 +4301,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F01fapfv42?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:53.339Z",
+      "observedAt": "2026-08-19T14:13:58.122Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4311,7 +4311,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F01fapfv42?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:53.339Z",
+      "observedAt": "2026-08-19T14:13:58.122Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4321,7 +4321,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F01fapfv42?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:53.339Z",
+      "observedAt": "2026-08-19T14:13:58.122Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4331,7 +4331,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F01fapfv42?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:53.339Z",
+      "observedAt": "2026-08-19T14:13:58.122Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4341,7 +4341,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F01fapfv42?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:53.339Z",
+      "observedAt": "2026-08-19T14:13:58.122Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4351,7 +4351,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/00spsqb74",
       "publishedAt": "2026-06-23",
-      "observedAt": "2026-08-19T10:52:53.606Z",
+      "observedAt": "2026-08-19T14:13:58.382Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4361,7 +4361,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/00spsqb74",
       "publishedAt": "2026-06-23",
-      "observedAt": "2026-08-19T10:52:53.606Z",
+      "observedAt": "2026-08-19T14:13:58.382Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4371,7 +4371,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/00spsqb74",
       "publishedAt": "2026-06-23",
-      "observedAt": "2026-08-19T10:52:53.606Z",
+      "observedAt": "2026-08-19T14:13:58.382Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4381,7 +4381,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/00spsqb74",
       "publishedAt": "2026-06-23",
-      "observedAt": "2026-08-19T10:52:53.606Z",
+      "observedAt": "2026-08-19T14:13:58.382Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4391,7 +4391,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/00spsqb74",
       "publishedAt": "2026-06-23",
-      "observedAt": "2026-08-19T10:52:53.606Z",
+      "observedAt": "2026-08-19T14:13:58.382Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4401,7 +4401,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F00spsqb74?api_key=REDACTED",
       "publishedAt": "2026-06-25T05:59:27",
-      "observedAt": "2026-08-19T10:52:53.735Z",
+      "observedAt": "2026-08-19T14:13:58.521Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4411,7 +4411,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F00spsqb74?api_key=REDACTED",
       "publishedAt": "2026-06-25T05:59:27",
-      "observedAt": "2026-08-19T10:52:53.735Z",
+      "observedAt": "2026-08-19T14:13:58.521Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4421,7 +4421,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F00spsqb74?api_key=REDACTED",
       "publishedAt": "2026-06-25T05:59:27",
-      "observedAt": "2026-08-19T10:52:53.735Z",
+      "observedAt": "2026-08-19T14:13:58.521Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4431,7 +4431,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F00spsqb74?api_key=REDACTED",
       "publishedAt": "2026-06-25T05:59:27",
-      "observedAt": "2026-08-19T10:52:53.735Z",
+      "observedAt": "2026-08-19T14:13:58.521Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4441,7 +4441,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/03px3wr77",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:53.997Z",
+      "observedAt": "2026-08-19T14:13:58.792Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4451,7 +4451,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/03px3wr77",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:53.997Z",
+      "observedAt": "2026-08-19T14:13:58.792Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4461,7 +4461,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/03px3wr77",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:53.997Z",
+      "observedAt": "2026-08-19T14:13:58.792Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4471,7 +4471,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/03px3wr77",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:53.997Z",
+      "observedAt": "2026-08-19T14:13:58.792Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4481,7 +4481,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/03px3wr77",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:53.997Z",
+      "observedAt": "2026-08-19T14:13:58.792Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4491,7 +4491,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03px3wr77?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.207Z",
+      "observedAt": "2026-08-19T14:13:58.998Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4501,7 +4501,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03px3wr77?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.207Z",
+      "observedAt": "2026-08-19T14:13:58.998Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4511,7 +4511,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03px3wr77?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.207Z",
+      "observedAt": "2026-08-19T14:13:58.998Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4521,7 +4521,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03px3wr77?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.207Z",
+      "observedAt": "2026-08-19T14:13:58.998Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4531,7 +4531,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03px3wr77?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.207Z",
+      "observedAt": "2026-08-19T14:13:58.998Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4541,7 +4541,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03px3wr77?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.207Z",
+      "observedAt": "2026-08-19T14:13:58.998Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4551,7 +4551,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03px3wr77?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.207Z",
+      "observedAt": "2026-08-19T14:13:58.998Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4561,7 +4561,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03px3wr77?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.207Z",
+      "observedAt": "2026-08-19T14:13:58.998Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4571,7 +4571,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03px3wr77?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.207Z",
+      "observedAt": "2026-08-19T14:13:58.998Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4581,7 +4581,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03px3wr77?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.207Z",
+      "observedAt": "2026-08-19T14:13:58.998Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4591,7 +4591,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03px3wr77?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.207Z",
+      "observedAt": "2026-08-19T14:13:58.998Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4601,7 +4601,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03px3wr77?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.207Z",
+      "observedAt": "2026-08-19T14:13:58.998Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4611,7 +4611,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/0377t1328",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:54.460Z",
+      "observedAt": "2026-08-19T14:13:59.255Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4621,7 +4621,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/0377t1328",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:54.460Z",
+      "observedAt": "2026-08-19T14:13:59.255Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4631,7 +4631,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/0377t1328",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:54.460Z",
+      "observedAt": "2026-08-19T14:13:59.255Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4641,7 +4641,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/0377t1328",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:54.460Z",
+      "observedAt": "2026-08-19T14:13:59.255Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4651,7 +4651,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/0377t1328",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:54.460Z",
+      "observedAt": "2026-08-19T14:13:59.255Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4661,7 +4661,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F0377t1328?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.681Z",
+      "observedAt": "2026-08-19T14:13:59.463Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4671,7 +4671,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F0377t1328?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.681Z",
+      "observedAt": "2026-08-19T14:13:59.463Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4681,7 +4681,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F0377t1328?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.681Z",
+      "observedAt": "2026-08-19T14:13:59.463Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4691,7 +4691,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F0377t1328?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.681Z",
+      "observedAt": "2026-08-19T14:13:59.463Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4701,7 +4701,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F0377t1328?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.681Z",
+      "observedAt": "2026-08-19T14:13:59.463Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4711,7 +4711,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F0377t1328?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.681Z",
+      "observedAt": "2026-08-19T14:13:59.463Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4721,7 +4721,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F0377t1328?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.681Z",
+      "observedAt": "2026-08-19T14:13:59.463Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4731,7 +4731,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F0377t1328?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.681Z",
+      "observedAt": "2026-08-19T14:13:59.463Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4741,7 +4741,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F0377t1328?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.681Z",
+      "observedAt": "2026-08-19T14:13:59.463Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4751,7 +4751,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F0377t1328?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.681Z",
+      "observedAt": "2026-08-19T14:13:59.463Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4761,7 +4761,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F0377t1328?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.681Z",
+      "observedAt": "2026-08-19T14:13:59.463Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4771,7 +4771,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F0377t1328?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:54.681Z",
+      "observedAt": "2026-08-19T14:13:59.463Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4781,7 +4781,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02j6gm739",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:54.944Z",
+      "observedAt": "2026-08-19T14:13:59.730Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4791,7 +4791,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02j6gm739",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:54.944Z",
+      "observedAt": "2026-08-19T14:13:59.730Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4801,7 +4801,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02j6gm739",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:54.944Z",
+      "observedAt": "2026-08-19T14:13:59.730Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4811,7 +4811,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02j6gm739",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:54.944Z",
+      "observedAt": "2026-08-19T14:13:59.730Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4821,7 +4821,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02j6gm739",
       "publishedAt": "2024-12-11",
-      "observedAt": "2026-08-19T10:52:54.944Z",
+      "observedAt": "2026-08-19T14:13:59.730Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4831,7 +4831,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02j6gm739?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.174Z",
+      "observedAt": "2026-08-19T14:13:59.934Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4841,7 +4841,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02j6gm739?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.174Z",
+      "observedAt": "2026-08-19T14:13:59.934Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4851,7 +4851,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02j6gm739?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.174Z",
+      "observedAt": "2026-08-19T14:13:59.934Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4861,7 +4861,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02j6gm739?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.174Z",
+      "observedAt": "2026-08-19T14:13:59.934Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -4871,7 +4871,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02j6gm739?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.174Z",
+      "observedAt": "2026-08-19T14:13:59.934Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4881,7 +4881,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02j6gm739?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.174Z",
+      "observedAt": "2026-08-19T14:13:59.934Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4891,7 +4891,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02j6gm739?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.174Z",
+      "observedAt": "2026-08-19T14:13:59.934Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4901,7 +4901,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02j6gm739?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.174Z",
+      "observedAt": "2026-08-19T14:13:59.934Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4911,7 +4911,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02j6gm739?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.174Z",
+      "observedAt": "2026-08-19T14:13:59.934Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4921,7 +4921,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02j6gm739?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.174Z",
+      "observedAt": "2026-08-19T14:13:59.934Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4931,7 +4931,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02j6gm739?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.174Z",
+      "observedAt": "2026-08-19T14:13:59.934Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4941,7 +4941,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02j6gm739?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.174Z",
+      "observedAt": "2026-08-19T14:13:59.934Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -4951,7 +4951,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/014p8mr66",
       "publishedAt": "2026-07-20",
-      "observedAt": "2026-08-19T10:52:55.434Z",
+      "observedAt": "2026-08-19T14:14:00.203Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4961,7 +4961,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/014p8mr66",
       "publishedAt": "2026-07-20",
-      "observedAt": "2026-08-19T10:52:55.434Z",
+      "observedAt": "2026-08-19T14:14:00.203Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4971,7 +4971,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/014p8mr66",
       "publishedAt": "2026-07-20",
-      "observedAt": "2026-08-19T10:52:55.434Z",
+      "observedAt": "2026-08-19T14:14:00.203Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4981,7 +4981,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/014p8mr66",
       "publishedAt": "2026-07-20",
-      "observedAt": "2026-08-19T10:52:55.434Z",
+      "observedAt": "2026-08-19T14:14:00.203Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -4991,7 +4991,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/014p8mr66",
       "publishedAt": "2026-07-20",
-      "observedAt": "2026-08-19T10:52:55.434Z",
+      "observedAt": "2026-08-19T14:14:00.203Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -5001,7 +5001,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F014p8mr66?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.649Z",
+      "observedAt": "2026-08-19T14:14:00.417Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -5011,7 +5011,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F014p8mr66?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.649Z",
+      "observedAt": "2026-08-19T14:14:00.417Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -5021,7 +5021,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F014p8mr66?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.649Z",
+      "observedAt": "2026-08-19T14:14:00.417Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -5031,7 +5031,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F014p8mr66?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.649Z",
+      "observedAt": "2026-08-19T14:14:00.417Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -5041,7 +5041,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F014p8mr66?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.649Z",
+      "observedAt": "2026-08-19T14:14:00.417Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5051,7 +5051,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F014p8mr66?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.649Z",
+      "observedAt": "2026-08-19T14:14:00.417Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5061,7 +5061,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F014p8mr66?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.649Z",
+      "observedAt": "2026-08-19T14:14:00.417Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5071,7 +5071,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F014p8mr66?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.649Z",
+      "observedAt": "2026-08-19T14:14:00.417Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5081,7 +5081,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F014p8mr66?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.649Z",
+      "observedAt": "2026-08-19T14:14:00.417Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5091,7 +5091,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F014p8mr66?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.649Z",
+      "observedAt": "2026-08-19T14:14:00.417Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5101,7 +5101,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F014p8mr66?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.649Z",
+      "observedAt": "2026-08-19T14:14:00.417Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5111,7 +5111,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F014p8mr66?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:55.649Z",
+      "observedAt": "2026-08-19T14:14:00.417Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5121,7 +5121,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/03gq8fr08",
       "publishedAt": "2026-01-15",
-      "observedAt": "2026-08-19T10:52:55.912Z",
+      "observedAt": "2026-08-19T14:14:00.675Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -5131,7 +5131,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/03gq8fr08",
       "publishedAt": "2026-01-15",
-      "observedAt": "2026-08-19T10:52:55.912Z",
+      "observedAt": "2026-08-19T14:14:00.675Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -5141,7 +5141,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/03gq8fr08",
       "publishedAt": "2026-01-15",
-      "observedAt": "2026-08-19T10:52:55.912Z",
+      "observedAt": "2026-08-19T14:14:00.675Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -5151,7 +5151,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/03gq8fr08",
       "publishedAt": "2026-01-15",
-      "observedAt": "2026-08-19T10:52:55.912Z",
+      "observedAt": "2026-08-19T14:14:00.675Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -5161,7 +5161,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/03gq8fr08",
       "publishedAt": "2026-01-15",
-      "observedAt": "2026-08-19T10:52:55.912Z",
+      "observedAt": "2026-08-19T14:14:00.675Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -5171,7 +5171,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03gq8fr08?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.132Z",
+      "observedAt": "2026-08-19T14:14:00.875Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -5181,7 +5181,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03gq8fr08?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.132Z",
+      "observedAt": "2026-08-19T14:14:00.875Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -5191,7 +5191,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03gq8fr08?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.132Z",
+      "observedAt": "2026-08-19T14:14:00.875Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -5201,7 +5201,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03gq8fr08?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.132Z",
+      "observedAt": "2026-08-19T14:14:00.875Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -5211,7 +5211,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03gq8fr08?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.132Z",
+      "observedAt": "2026-08-19T14:14:00.875Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5221,7 +5221,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03gq8fr08?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.132Z",
+      "observedAt": "2026-08-19T14:14:00.875Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5231,7 +5231,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03gq8fr08?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.132Z",
+      "observedAt": "2026-08-19T14:14:00.875Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5241,7 +5241,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03gq8fr08?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.132Z",
+      "observedAt": "2026-08-19T14:14:00.875Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5251,7 +5251,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03gq8fr08?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.132Z",
+      "observedAt": "2026-08-19T14:14:00.875Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5261,7 +5261,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03gq8fr08?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.132Z",
+      "observedAt": "2026-08-19T14:14:00.875Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5271,7 +5271,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03gq8fr08?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.132Z",
+      "observedAt": "2026-08-19T14:14:00.875Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5281,7 +5281,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F03gq8fr08?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.132Z",
+      "observedAt": "2026-08-19T14:14:00.875Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5291,7 +5291,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/05hkkdn48",
       "publishedAt": "2026-07-20",
-      "observedAt": "2026-08-19T10:52:56.394Z",
+      "observedAt": "2026-08-19T14:14:01.139Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -5301,7 +5301,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/05hkkdn48",
       "publishedAt": "2026-07-20",
-      "observedAt": "2026-08-19T10:52:56.394Z",
+      "observedAt": "2026-08-19T14:14:01.139Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -5311,7 +5311,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/05hkkdn48",
       "publishedAt": "2026-07-20",
-      "observedAt": "2026-08-19T10:52:56.394Z",
+      "observedAt": "2026-08-19T14:14:01.139Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -5321,7 +5321,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/05hkkdn48",
       "publishedAt": "2026-07-20",
-      "observedAt": "2026-08-19T10:52:56.394Z",
+      "observedAt": "2026-08-19T14:14:01.139Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -5331,7 +5331,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/05hkkdn48",
       "publishedAt": "2026-07-20",
-      "observedAt": "2026-08-19T10:52:56.394Z",
+      "observedAt": "2026-08-19T14:14:01.139Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -5341,7 +5341,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05hkkdn48?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.603Z",
+      "observedAt": "2026-08-19T14:14:01.347Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -5351,7 +5351,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05hkkdn48?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.603Z",
+      "observedAt": "2026-08-19T14:14:01.347Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -5361,7 +5361,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05hkkdn48?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.603Z",
+      "observedAt": "2026-08-19T14:14:01.347Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -5371,7 +5371,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05hkkdn48?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.603Z",
+      "observedAt": "2026-08-19T14:14:01.347Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -5381,7 +5381,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05hkkdn48?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.603Z",
+      "observedAt": "2026-08-19T14:14:01.347Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5391,7 +5391,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05hkkdn48?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.603Z",
+      "observedAt": "2026-08-19T14:14:01.347Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5401,7 +5401,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05hkkdn48?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.603Z",
+      "observedAt": "2026-08-19T14:14:01.347Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5411,7 +5411,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05hkkdn48?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.603Z",
+      "observedAt": "2026-08-19T14:14:01.347Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5421,7 +5421,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05hkkdn48?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.603Z",
+      "observedAt": "2026-08-19T14:14:01.347Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5431,7 +5431,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05hkkdn48?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.603Z",
+      "observedAt": "2026-08-19T14:14:01.347Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5441,7 +5441,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05hkkdn48?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.603Z",
+      "observedAt": "2026-08-19T14:14:01.347Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5451,7 +5451,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F05hkkdn48?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:56.603Z",
+      "observedAt": "2026-08-19T14:14:01.347Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5461,7 +5461,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02e2c7k09",
       "publishedAt": "2026-06-23",
-      "observedAt": "2026-08-19T10:52:56.867Z",
+      "observedAt": "2026-08-19T14:14:01.606Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -5471,7 +5471,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02e2c7k09",
       "publishedAt": "2026-06-23",
-      "observedAt": "2026-08-19T10:52:56.867Z",
+      "observedAt": "2026-08-19T14:14:01.606Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -5481,7 +5481,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02e2c7k09",
       "publishedAt": "2026-06-23",
-      "observedAt": "2026-08-19T10:52:56.867Z",
+      "observedAt": "2026-08-19T14:14:01.606Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -5491,7 +5491,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02e2c7k09",
       "publishedAt": "2026-06-23",
-      "observedAt": "2026-08-19T10:52:56.867Z",
+      "observedAt": "2026-08-19T14:14:01.606Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -5501,7 +5501,7 @@
       "confidence": 1,
       "sourceUri": "https://api.ror.org/v2/organizations/02e2c7k09",
       "publishedAt": "2026-06-23",
-      "observedAt": "2026-08-19T10:52:56.867Z",
+      "observedAt": "2026-08-19T14:14:01.606Z",
       "method": "ROR v2 record field read",
       "provenance": "LIVE"
     },
@@ -5511,7 +5511,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02e2c7k09?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:57.010Z",
+      "observedAt": "2026-08-19T14:14:01.816Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -5521,7 +5521,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02e2c7k09?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:57.010Z",
+      "observedAt": "2026-08-19T14:14:01.816Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -5531,7 +5531,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02e2c7k09?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:57.010Z",
+      "observedAt": "2026-08-19T14:14:01.816Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -5541,7 +5541,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02e2c7k09?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:57.010Z",
+      "observedAt": "2026-08-19T14:14:01.816Z",
       "method": "OpenAlex institution field read",
       "provenance": "LIVE"
     },
@@ -5551,7 +5551,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02e2c7k09?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:57.010Z",
+      "observedAt": "2026-08-19T14:14:01.816Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5561,7 +5561,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02e2c7k09?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:57.010Z",
+      "observedAt": "2026-08-19T14:14:01.816Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5571,7 +5571,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02e2c7k09?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:57.010Z",
+      "observedAt": "2026-08-19T14:14:01.816Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5581,7 +5581,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02e2c7k09?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:57.010Z",
+      "observedAt": "2026-08-19T14:14:01.816Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5591,7 +5591,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02e2c7k09?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:57.010Z",
+      "observedAt": "2026-08-19T14:14:01.816Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5601,7 +5601,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02e2c7k09?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:57.010Z",
+      "observedAt": "2026-08-19T14:14:01.816Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5611,7 +5611,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02e2c7k09?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:57.010Z",
+      "observedAt": "2026-08-19T14:14:01.816Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     },
@@ -5621,7 +5621,7 @@
       "confidence": 1,
       "sourceUri": "https://api.openalex.org/institutions/https%3A%2F%2Fror.org%2F02e2c7k09?api_key=REDACTED",
       "publishedAt": "2026-08-19T05:59:14",
-      "observedAt": "2026-08-19T10:52:57.010Z",
+      "observedAt": "2026-08-19T14:14:01.816Z",
       "method": "OpenAlex institution topics field read",
       "provenance": "LIVE"
     }
