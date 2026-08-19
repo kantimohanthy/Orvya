@@ -1,0 +1,10 @@
+# Legacy CosmoHub-Next prototype — not part of ORVYRA
+legacy/
+
+# Secrets — never commit
+.env
+.env.*
+*.key
+
+# Node
+node_modules/

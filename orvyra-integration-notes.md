@@ -2,7 +2,7 @@
 
 Files:
 
-- `orvyra-slice.html` — the built, self-contained page. Open it directly in a browser.
+- `index.html` — the built, self-contained page. Open it directly in a browser.
 - `orvyra-intelligence.js` — the intelligence core. The HTML inlines it at build time;
   edit the module, not the copy inside the HTML.
 - `orvyra-live.js` — the LIVE source adapter for ROR and OpenAlex. Server-side only.
