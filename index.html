@@ -160,8 +160,13 @@ main{ position:relative; z-index:2; }
 .hero{
   min-height:100svh; display:grid; align-items:center;
   padding:calc(var(--nav-h) + var(--s7)) var(--gutter) var(--s8);
+  /* The hero spans the full viewport, including the empty right side the globe
+     shows through. Without this, it swallows every pointer event before the
+     canvas at z-index 0 can see one, and the globe cannot be dragged.
+     Interactive children opt back in below. */
+  pointer-events:none;
 }
-.hero-inner{ max-width:600px; }
+.hero-inner{ max-width:600px; pointer-events:auto; }
 .hero-eyebrow{ display:flex; align-items:center; gap:var(--s3); margin-bottom:var(--s5); }
 .hero-eyebrow .tick{ width:22px; height:1px; background:var(--accent); opacity:.7; }
 .hero h1{
