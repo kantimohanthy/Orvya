@@ -1751,55 +1751,82 @@ function initStage(){
     color:0x9fb4cc, size:.035, sizeAttenuation:true, transparent:true, opacity:.62, depthWrite:false
   })));
 
-  /* marker interaction + pointer orientation */
-  const canvas = renderer.domElement;
-  canvas.style.pointerEvents = 'auto';
+  /* ------------------------------------------------------------------
+     Pointer orientation.
 
-  canvas.addEventListener('pointerdown', ev => {
+     Listeners are on `window`, not the canvas. The canvas sits at z-index 0
+     beneath `main` (z-index 2), whose box covers the whole document — so a
+     pointerdown over the globe lands on `main` and never reaches the canvas,
+     no matter what pointer-events is set to on `.hero`. Rather than depend on
+     the stacking order, we listen globally and decide from geometry, bailing
+     out whenever the event started on real UI.
+     ------------------------------------------------------------------ */
+  const canvas = renderer.domElement;
+  canvas.style.pointerEvents = 'none';   // never a hit target; window handles it
+
+  /* Anything here owns its own clicks and must never start a globe drag. */
+  const UI = '.nav, .workspace, .palette, .hero-inner, .section, .honesty, a, button, input, textarea, select';
+  const onUI = ev => !!(ev.target && ev.target.closest && ev.target.closest(UI));
+
+  addEventListener('pointerdown', ev => {
+    if (onUI(ev)) return;
     const g = overGlobe(ev.clientX, ev.clientY);
     if (!g) return;                       // outside the globe: leave the page alone
     orienting = true; dragId = ev.pointerId;
     lastPX = downPX = ev.clientX; lastPY = downPY = ev.clientY;
     movedPx = 0; velYaw = velPitch = 0;
-    try { canvas.setPointerCapture(ev.pointerId); } catch(e){}
-    canvas.style.cursor = 'grabbing';
+    document.body.style.cursor = 'grabbing';
     ev.preventDefault();
-  });
+  }, { passive:false });
 
-  canvas.addEventListener('pointermove', ev => {
+  addEventListener('pointermove', ev => {
     if (orienting && ev.pointerId === dragId){
       const g = globeScreen(); if (!g || !g.r) return;
       const dx = ev.clientX - lastPX, dy = ev.clientY - lastPY;
       lastPX = ev.clientX; lastPY = ev.clientY;
       movedPx += Math.abs(dx) + Math.abs(dy);
-      const kx = 0.9 / g.r, ky = 0.9 / g.r;
-      velYaw = dx * kx; velPitch = dy * ky;
+      const k = 0.9 / g.r;
+      velYaw = dx * k; velPitch = dy * k;
       dragYaw += velYaw;
       dragPitch = Math.max(-PITCH_LIMIT, Math.min(PITCH_LIMIT, dragPitch + velPitch));
       ev.preventDefault();
       return;
     }
+    if (onUI(ev)){ document.body.style.cursor = ''; return; }
     const hit = pickMarker(ev.clientX, ev.clientY);
     markers.forEach(m => m.scale.setScalar(m === hit ? m.userData.base * 1.75 : m.userData.base));
-    canvas.style.cursor = hit ? 'pointer' : (overGlobe(ev.clientX, ev.clientY) ? 'grab' : 'default');
-    canvas.title = hit ? hit.userData.name : '';
-  });
+    document.body.style.cursor = hit ? 'pointer' : (overGlobe(ev.clientX, ev.clientY) ? 'grab' : '');
+  }, { passive:false });
 
   /* A press that barely moved is a click, not a drag — that is what keeps pin
      selection working now that pointerdown also starts an orientation gesture. */
   const endDrag = ev => {
     if (!orienting || ev.pointerId !== dragId) return;
     orienting = false; dragId = null;
-    try { canvas.releasePointerCapture(ev.pointerId); } catch(e){}
-    canvas.style.cursor = overGlobe(ev.clientX, ev.clientY) ? 'grab' : 'default';
+    document.body.style.cursor = overGlobe(ev.clientX, ev.clientY) ? 'grab' : '';
     if (movedPx < 5){
       const hit = pickMarker(ev.clientX, ev.clientY);
       if (hit && onMarkerPick) onMarkerPick(hit.userData.id, hit.userData.name);
       velYaw = velPitch = 0;
     }
   };
-  canvas.addEventListener('pointerup', endDrag);
-  canvas.addEventListener('pointercancel', endDrag);
+  addEventListener('pointerup', endDrag);
+  addEventListener('pointercancel', endDrag);
+
+  /* Diagnostic hook. Open the console and call ORVYRA_GLOBE.report(). */
+  window.ORVYRA_GLOBE = {
+    disc: () => globeScreen(),
+    over: (x, y) => !!overGlobe(x, y),
+    state: () => ({ dragYaw, dragPitch, velYaw, velPitch, orienting, markers: markers.length }),
+    report(){
+      const g = globeScreen();
+      if (!g){ console.log('ORVYRA globe: stage not initialised'); return; }
+      console.log('ORVYRA globe diagnostic',
+        { centre:[Math.round(g.cx), Math.round(g.cy)], radiusPx:Math.round(g.r),
+          markers:markers.length, listeners:'window', canvasHitTarget:false,
+          tryDraggingAt:[Math.round(g.cx), Math.round(g.cy)] });
+    }
+  };
 
   layout(); addEventListener('resize', onResize);
   animate(0);
