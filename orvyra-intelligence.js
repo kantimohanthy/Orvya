@@ -627,6 +627,57 @@ function query(question){
   };
 }
 
+/* ========================== INGEST (LIVE / FIXTURE) ====================== */
+/* Merges a harvested corpus beside the synthetic one. The same rule applies to
+   incoming edges as to built-in ones: no evidence, no edge. Nothing here
+   overwrites an existing record — a live entity with a colliding id is skipped
+   rather than silently replacing curated content. */
+
+function ingest(corpus){
+  if (!corpus || !Array.isArray(corpus.entities)) return { error:'not a corpus' };
+  const r = { entities:0, evidence:0, relationships:0, rejected:0, skipped:0 };
+
+  (corpus.evidence || []).forEach(v => {
+    if (evById[v.id]) return;
+    evById[v.id] = v; EVIDENCE.push(v); r.evidence++;
+  });
+
+  (corpus.entities || []).forEach(e => {
+    if (byId[e.id]) { r.skipped++; return; }
+    const ent = Object.assign({
+      aliases:[], region:null, sectors:[], tagline:'', meta:'', attrs:{}, provenance:'LIVE'
+    }, e);
+    byId[ent.id] = ent; adj[ent.id] = []; ENTITIES.push(ent); r.entities++;
+  });
+
+  (corpus.edges || []).forEach(e => {
+    const bad = !e.ev || !e.ev.length || e.ev.some(id => !evById[id]) || !byId[e.from] || !byId[e.to];
+    if (bad){ rejected.push({ edge:e, reason:'ingest: unevidenced or unresolved endpoint' }); r.rejected++; return; }
+    const edge = Object.assign({ id:'RE-L' + String(LOADED_EDGES.length + 1).padStart(4,'0') }, e);
+    LOADED_EDGES.push(edge);
+    adj[e.from].push({ edge, other:e.to, out:true });
+    adj[e.to].push({ edge, other:e.from, out:false });
+    r.relationships++;
+  });
+
+  return r;
+}
+
+function stats(){
+  const prov = { LIVE:0, SOURCE_FIXTURE:0, SYNTHETIC:0 };
+  ENTITIES.forEach(e => { prov[e.provenance] = (prov[e.provenance] || 0) + 1; });
+  return {
+    id: prov.LIVE ? 'orvyra-mixed' : 'orvyra-fixture-2026-08',
+    entities: ENTITIES.length,
+    relationships: LOADED_EDGES.length,
+    evidence: EVIDENCE.length,
+    signals: SIGNALS.length,
+    rejectedEdges: rejected.length,
+    provenance: prov,
+    dominant: prov.LIVE > 0 ? (prov.SYNTHETIC > 0 ? 'MIXED' : 'LIVE') : 'SYNTHETIC'
+  };
+}
+
 /* ========================== PUBLIC API ================================== */
 
 return {
@@ -638,7 +689,7 @@ return {
   rejected,
   entity: id => byId[id],
   ev: id => evById[id],
-  neighbours, resolve, parse, retrieve, query, subgraph, pathTo,
+  neighbours, resolve, parse, retrieve, query, subgraph, pathTo, ingest, stats,
   counts: () => {
     const c = {};
     for (const k of Object.keys(KINDS)) c[k] = ENTITIES.filter(e => e.kind === k).length;
@@ -657,3 +708,6 @@ return {
 })();
 
 if (typeof module !== 'undefined' && module.exports) module.exports = ORVYRA;
+/* `const` at script scope does not attach to window — expose it explicitly so
+   the corpus is inspectable from the console and reachable by the live loader. */
+if (typeof window !== 'undefined') window.ORVYRA = ORVYRA;

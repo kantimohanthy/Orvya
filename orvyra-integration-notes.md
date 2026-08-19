@@ -1,10 +1,14 @@
 # ORVYRA — vertical slice: what it is, and how to land it in the repo
 
-Two files:
+Files:
 
 - `orvyra-slice.html` — the built, self-contained page. Open it directly in a browser.
-- `orvyra-intelligence.js` — the intelligence core on its own, the canonical source.
-  The HTML has it inlined at build time; edit the module, not the copy inside the HTML.
+- `orvyra-intelligence.js` — the intelligence core. The HTML inlines it at build time;
+  edit the module, not the copy inside the HTML.
+- `orvyra-live.js` — the LIVE source adapter for ROR and OpenAlex. Server-side only.
+- `orvyra-harvest.js` — CLI that runs the adapter and writes `orvyra-live-corpus.json`.
+- `test-live.js` — adapter tests against mocked API responses (28 assertions).
+- `smoke.js` — runs the built page under jsdom (32 assertions).
 
 It covers the loop from §37 of the brief:
 
@@ -156,19 +160,81 @@ which is what makes the transition read as moving deeper into one system rather 
 
 ---
 
-## 5. Testing
+## 5. The live path (ROR + OpenAlex)
+
+The corpus ships empty of live records **on purpose**. Run the harvest yourself:
+
+```bash
+export OPENALEX_API_KEY=...      # free, 30 seconds, openalex.org/settings/api
+node orvyra-harvest.js           # or: node orvyra-harvest.js --no-openalex
+```
+
+It writes `orvyra-live-corpus.json`. Serve that next to `index.html` and the page
+fetches it at load, merges the records beside the synthetic ones, and re-renders.
+Opening the page from disk skips this — `fetch` cannot read `file://`.
+
+**Why it is empty and not pre-filled.** The environment this was built in cannot reach
+`api.ror.org` or `api.openalex.org`. Rather than seed the corpus with plausible-looking
+ROR IDs and works counts, it ships with none. A fabricated identifier is indistinguishable
+from a real one three months later, and the entire architecture exists to prevent exactly
+that. The adapter is tested against mocked responses shaped to the documented schemas;
+the *data* comes from your harvest run or from nowhere.
+
+### What `confidence` means for a live record
+
+For synthetic evidence it is model-assigned extraction confidence. For a live registry
+read it means **fidelity of extraction, not truth of the claim**: 1.0 says "this value was
+read directly from the source record", never "this is true about the world". The evidence
+drawer relabels it accordingly. A field absent from the source is withheld, never defaulted.
+
+### What the adapter refuses to build
+
+Only two edge types are derivable from ROR and OpenAlex:
+
+| Edge | Source |
+|---|---|
+| `researches` → topic | OpenAlex institution topics |
+| `part of` / `related to` → organization | ROR relationships |
+
+`participated_in`, `developed`, `operated` and `contributed_to` have no source in either
+API. They stay unbuilt. The impact chain — research → technology → mission → societal
+outcome — is not implemented and should not be until a primary source per edge exists;
+it is the fastest way to turn an evidence system into a machine that invents causality.
+
+Note also that `sectors` comes back empty for live organizations. Tagging DLR as "launch"
+is a curation decision, not a source fact, so the adapter will not make it for you. Until
+you supply a sector taxonomy, live organizations match on name, region and topic only.
+
+### Operational notes
+
+- OpenAlex requires an API key for all requests as of 13 Feb 2026; a free key carries
+  $1/day, which covers roughly 10k filter calls. Singleton lookups by ID are free, and
+  the adapter uses singleton lookups. Keep the key server-side — it is stripped from
+  every `sourceUri` before evidence is written.
+- ROR allows 2,000 requests / 5 min per IP with no registration today, but from Q3 2026
+  a `Client-Id` header is required to keep that; unidentified traffic drops to 50 / 5 min.
+  Registration is paused while ROR updates the service — set `ROR_CLIENT_ID` when it reopens.
+- For anything beyond a few hundred organizations, stop using the APIs and take the
+  snapshots. Both are CC0 and both projects tell you to.
+- Ambiguous ROR matches are flagged `~` in the harvest output and are not silently
+  accepted as correct. Check them by hand.
+
+## 6. Testing
 
 `smoke.js` runs the built page under jsdom and asserts the intelligence reaches the interface:
 landing sections render from the corpus, a query produces linked entities and evidence refs,
 the withheld block appears and disappears correctly, traversal stays inside the queried sector,
-nonsense input degrades gracefully, and entity clicks re-focus the graph. Currently 21 assertions,
-0 console errors. Two real bugs were caught this way — an unguarded `matchMedia` that threw
-before any content rendered, and a missing `IntersectionObserver` guard.
+nonsense input degrades gracefully, and entity clicks re-focus the graph. Currently 32 assertions,
+0 console errors, including live-corpus ingest, provenance badges and edge rejection.
+`test-live.js` covers the adapter separately with 28 assertions against mocked responses.
+Three real bugs were caught this way — an unguarded `matchMedia` that threw
+before any content rendered, a missing `IntersectionObserver` guard, and a `const`-scoped
+core that never attached to `window`, which would have made the live loader a silent no-op.
 
 Keep this harness when you port. It is the cheapest way to notice that the intelligence layer
 has quietly stopped reaching the UI.
 
-## 6. Known gaps
+## 7. Known gaps
 
 - The graph layout is radial and deterministic, not force-directed. This is a feature at
   ≤20 nodes and a limitation above ~40. Swap in d3-force with a fixed node budget when the
@@ -186,7 +252,7 @@ has quietly stopped reaching the UI.
 
 ---
 
-## 7. Before you show this to anyone
+## 8. Before you show this to anyone
 
 Run the §40 test honestly. My own read:
 

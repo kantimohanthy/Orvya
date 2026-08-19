@@ -565,6 +565,7 @@ table.grid .dim{ color:var(--text-3); font-family:var(--mono); font-size:var(--t
       </div>
     </div>
     <div class="hero-foot mono" id="heroFoot"></div>
+    <div class="mono" id="globeHint" style="position:absolute;right:var(--gutter);bottom:var(--s6);color:var(--text-4);text-align:right;"></div>
   </section>
 
   <section class="section section-dark" id="system">
@@ -1326,6 +1327,57 @@ function query(question){
   };
 }
 
+/* ========================== INGEST (LIVE / FIXTURE) ====================== */
+/* Merges a harvested corpus beside the synthetic one. The same rule applies to
+   incoming edges as to built-in ones: no evidence, no edge. Nothing here
+   overwrites an existing record — a live entity with a colliding id is skipped
+   rather than silently replacing curated content. */
+
+function ingest(corpus){
+  if (!corpus || !Array.isArray(corpus.entities)) return { error:'not a corpus' };
+  const r = { entities:0, evidence:0, relationships:0, rejected:0, skipped:0 };
+
+  (corpus.evidence || []).forEach(v => {
+    if (evById[v.id]) return;
+    evById[v.id] = v; EVIDENCE.push(v); r.evidence++;
+  });
+
+  (corpus.entities || []).forEach(e => {
+    if (byId[e.id]) { r.skipped++; return; }
+    const ent = Object.assign({
+      aliases:[], region:null, sectors:[], tagline:'', meta:'', attrs:{}, provenance:'LIVE'
+    }, e);
+    byId[ent.id] = ent; adj[ent.id] = []; ENTITIES.push(ent); r.entities++;
+  });
+
+  (corpus.edges || []).forEach(e => {
+    const bad = !e.ev || !e.ev.length || e.ev.some(id => !evById[id]) || !byId[e.from] || !byId[e.to];
+    if (bad){ rejected.push({ edge:e, reason:'ingest: unevidenced or unresolved endpoint' }); r.rejected++; return; }
+    const edge = Object.assign({ id:'RE-L' + String(LOADED_EDGES.length + 1).padStart(4,'0') }, e);
+    LOADED_EDGES.push(edge);
+    adj[e.from].push({ edge, other:e.to, out:true });
+    adj[e.to].push({ edge, other:e.from, out:false });
+    r.relationships++;
+  });
+
+  return r;
+}
+
+function stats(){
+  const prov = { LIVE:0, SOURCE_FIXTURE:0, SYNTHETIC:0 };
+  ENTITIES.forEach(e => { prov[e.provenance] = (prov[e.provenance] || 0) + 1; });
+  return {
+    id: prov.LIVE ? 'orvyra-mixed' : 'orvyra-fixture-2026-08',
+    entities: ENTITIES.length,
+    relationships: LOADED_EDGES.length,
+    evidence: EVIDENCE.length,
+    signals: SIGNALS.length,
+    rejectedEdges: rejected.length,
+    provenance: prov,
+    dominant: prov.LIVE > 0 ? (prov.SYNTHETIC > 0 ? 'MIXED' : 'LIVE') : 'SYNTHETIC'
+  };
+}
+
 /* ========================== PUBLIC API ================================== */
 
 return {
@@ -1337,7 +1389,7 @@ return {
   rejected,
   entity: id => byId[id],
   ev: id => evById[id],
-  neighbours, resolve, parse, retrieve, query, subgraph, pathTo,
+  neighbours, resolve, parse, retrieve, query, subgraph, pathTo, ingest, stats,
   counts: () => {
     const c = {};
     for (const k of Object.keys(KINDS)) c[k] = ENTITIES.filter(e => e.kind === k).length;
@@ -1356,6 +1408,9 @@ return {
 })();
 
 if (typeof module !== 'undefined' && module.exports) module.exports = ORVYRA;
+/* `const` at script scope does not attach to window — expose it explicitly so
+   the corpus is inspectable from the console and reachable by the live loader. */
+if (typeof window !== 'undefined') window.ORVYRA = ORVYRA;
 </script>
 <script>
 const REDUCED = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
@@ -1691,8 +1746,109 @@ function initStage(){
     color:0x9fb4cc, size:.035, sizeAttenuation:true, transparent:true, opacity:.62, depthWrite:false
   })));
 
+  /* marker interaction */
+  const canvas = renderer.domElement;
+  canvas.style.pointerEvents = 'auto';
+  canvas.addEventListener('pointermove', ev => {
+    const hit = pickMarker(ev.clientX, ev.clientY);
+    markers.forEach(m => m.scale.setScalar(m === hit ? m.userData.base * 1.75 : m.userData.base));
+    canvas.style.cursor = hit ? 'pointer' : 'default';
+    canvas.title = hit ? hit.userData.name : '';
+  });
+  canvas.addEventListener('pointerdown', ev => {
+    const hit = pickMarker(ev.clientX, ev.clientY);
+    if (hit && onMarkerPick) onMarkerPick(hit.userData.id, hit.userData.name);
+  });
+
   layout(); addEventListener('resize', onResize);
   animate(0);
+}
+
+
+/* ============================================================================
+   ORGANIZATION MARKERS
+   ----------------------------------------------------------------------------
+   Real coordinates from resolved ROR records, placed on the sphere so they
+   rotate with the surface and disappear round the limb. The mapping below is
+   tied to the texture projection in buildEarthTextures(): longitude -180..180
+   across u, latitude +90..-90 down v. Change one and you must change both.
+
+   Nothing is drawn until a record with coordinates is ingested. An empty globe
+   is the correct rendering of an empty corpus.
+   ============================================================================ */
+
+let markerGroup = null, markers = [], onMarkerPick = null;
+
+function latLngToVec3(lat, lng, radius){
+  const phi   = (90 - lat) * Math.PI / 180;
+  const theta = (lng + 180) * Math.PI / 180;
+  return new THREE.Vector3(
+    -radius * Math.cos(theta) * Math.sin(phi),
+     radius * Math.cos(phi),
+     radius * Math.sin(theta) * Math.sin(phi)
+  );
+}
+
+const markerSprite = (() => {
+  let tex = null;
+  return () => {
+    if (tex) return tex;
+    const cv = document.createElement('canvas'); cv.width = cv.height = 64;
+    const x = cv.getContext('2d');
+    const g = x.createRadialGradient(32,32,0,32,32,32);
+    g.addColorStop(0,'rgba(255,255,255,1)');
+    g.addColorStop(.18,'rgba(140,238,248,.95)');
+    g.addColorStop(.42,'rgba(79,214,224,.35)');
+    g.addColorStop(1,'rgba(79,214,224,0)');
+    x.fillStyle = g; x.fillRect(0,0,64,64);
+    tex = new THREE.CanvasTexture(cv); return tex;
+  };
+})();
+
+function setEarthMarkers(list, pick){
+  if (!earthMesh) return;
+  onMarkerPick = pick || null;
+  if (markerGroup){ earthMesh.remove(markerGroup); }
+  markerGroup = new THREE.Group();
+  markers = [];
+  (list || []).forEach(m => {
+    if (typeof m.lat !== 'number' || typeof m.lng !== 'number') return;
+    const pos = latLngToVec3(m.lat, m.lng, 1.012);
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({
+      map: markerSprite(), transparent:true, blending:THREE.AdditiveBlending,
+      depthTest:true, depthWrite:false, opacity:.92
+    }));
+    sp.position.copy(pos);
+    sp.scale.setScalar(.055);
+    sp.userData = { id:m.id, name:m.name, base:.055 };
+    markerGroup.add(sp);
+    markers.push(sp);
+  });
+  earthMesh.add(markerGroup);
+}
+
+/* A sprite on the far side still passes a raycast, so accept a hit only when
+   the marker's outward normal faces the camera. */
+function markerFacingCamera(sprite){
+  const world = sprite.getWorldPosition(new THREE.Vector3());
+  const centre = earthGroup.getWorldPosition(new THREE.Vector3());
+  const outward = world.clone().sub(centre).normalize();
+  const toCam = camera.position.clone().sub(world).normalize();
+  return outward.dot(toCam) > 0.12;
+}
+
+function pickMarker(clientX, clientY){
+  if (!markers.length) return null;
+  const rect = renderer.domElement.getBoundingClientRect();
+  const ndc = new THREE.Vector2(
+    ((clientX - rect.left) / rect.width) * 2 - 1,
+    -((clientY - rect.top) / rect.height) * 2 + 1
+  );
+  const ray = new THREE.Raycaster();
+  ray.params.Sprite = { threshold: 0.02 };
+  ray.setFromCamera(ndc, camera);
+  const hits = ray.intersectObjects(markers, false).filter(h => markerFacingCamera(h.object));
+  return hits.length ? hits[0].object : null;
 }
 
 function layout(){
@@ -1732,6 +1888,10 @@ function animate(ms){
     cloudMesh.rotation.y = t * 0.0163;            // clouds drift independently
     cloudMesh.rotation.x = Math.sin(t*0.04)*0.006;
     orbitGroups.forEach((g,i)=>{ g.rotation.y += 0.00012 * (i%2?1:-1); });
+    if (markers.length){
+      const pulse = 1 + Math.sin(t * 1.4) * 0.10;
+      markers.forEach(m => { if (m.scale.x < m.userData.base * 1.4) m.scale.setScalar(m.userData.base * pulse); });
+    }
     particleSets.forEach(set=>{
       set.meshes.forEach(m=>{
         const a = m.userData.phase + t*m.userData.rate;
@@ -1766,53 +1926,15 @@ const bind = t => String(t).replace(/\{\{(\w+)\}\}/g, (m, id) => {
 });
 
 /* ------------------------------ landing ---------------------------------- */
-const C = ORVYRA.corpus;
-$('#corpusStatus').textContent = 'CORPUS ' + C.id.split('-').pop().toUpperCase();
-$('#heroFoot').innerHTML =
-  [['ENTITIES',C.entities],['RELATIONSHIPS',C.relationships],['SOURCES',C.evidence],['SIGNALS',C.signals]]
-  .map(([k,v]) => `<span>${k} ${v.toLocaleString()}</span>`).join('');
-$('#honestyText').textContent =
-  `${C.entities} entities · ${C.relationships} evidenced relationships · no live sources connected`;
-
-const counts = ORVYRA.counts();
-$('#taxonomy').innerHTML = Object.entries(K).map(([k,v],i) => `
-  <div class="tax">
-    <div class="n">${String(i+1).padStart(2,'0')}</div>
-    <div class="l">${esc(v.label)}</div>
-    <div class="c">${counts[k]}</div>
-  </div>`).join('');
-
-$('#triples').innerHTML = ORVYRA.edges
-  .filter(e => ['invested in','contracted','develops','operates','targets','supplies'].includes(e.rel))
-  .slice(0,9).map(e => {
-    const A = ORVYRA.entity(e.from), B = ORVYRA.entity(e.to);
-    return `<div class="triple">
-      <span class="node"><span class="kind">${esc(K[A.kind].label)}</span><span class="name">${esc(A.name)}</span></span>
-      <span class="edge">${esc(e.rel)}</span>
-      <span class="node right"><span class="name">${esc(B.name)}</span><span class="kind">${esc(K[B.kind].label)}</span></span>
-    </div>`;
-  }).join('');
-
-$('#signalList').innerHTML = ORVYRA.signals.map(s => {
-  const e = ORVYRA.entity(s.entity);
-  return `<div class="signal">
-    <span class="t">${esc(s.at)}</span>
-    <span class="type"><i></i>${esc(s.type)}</span>
-    <span class="body"><b><span class="entity-link" data-entity="${s.entity}">${esc(e ? e.name : s.entity)}</span></b> — ${esc(s.text)}</span>
-    <span class="mag">${esc(s.weight)}</span>
-  </div>`;
-}).join('');
-
-$('#chain').innerHTML = [
-  ['Source','Where the observation came from — a document, filing, registry or feed.'],
-  ['Evidence','The extracted passage, with the date it was observed and published.'],
-  ['Claim','A single assertion, stated in one sentence and independently scorable.'],
-  ['Entity','The resolved object the claim is about, deduplicated across sources.'],
-  ['Relationship','The typed edge the claim creates. No evidence, no edge.'],
-  ['Intelligence','The synthesis you read — traceable back through every step above.']
-].map(([l,d],i) => `
-  <div class="link"><div class="n">${String(i+1).padStart(2,'0')}</div>
-  <div class="l">${esc(l)}</div><div class="d">${esc(d)}</div></div>`).join('');
+const PROV = {
+  LIVE:{ cls:'tag-live', label:'Live' },
+  SOURCE_FIXTURE:{ cls:'tag-fixture', label:'Fixture' },
+  SYNTHETIC:{ cls:'tag-synthetic', label:'Synthetic' }
+};
+const provTag = p => {
+  const t = PROV[p] || PROV.SYNTHETIC;
+  return `<span class="tag ${t.cls}">${t.label}</span>`;
+};
 
 const MISSIONS = [
   { n:'Mission 01', name:'Map the European launch ecosystem', seeds:['isar','pld','maia','rfa','orbex','skyrora'] },
@@ -1820,25 +1942,73 @@ const MISSIONS = [
   { n:'Mission 03', name:'Identify emerging Earth observation technologies', seeds:['sar','thermal'] },
   { n:'Mission 04', name:'Follow the in-space manufacturing ecosystem', seeds:['spacefo','dorbit','crystal','otv'] }
 ];
-/* progress is computed from the graph, not asserted */
-MISSIONS.forEach(m => {
-  const reach = new Set();
-  m.seeds.forEach(id => ORVYRA.subgraph(id,1,12).nodes.forEach(n => reach.add(n.id)));
-  m.covered = reach.size;
-  m.pct = Math.min(100, Math.round(reach.size / C.entities * 100));
-  m.d = `${m.seeds.length} seeds · ${reach.size} entities in reach`;
-});
-$('#missionList').innerHTML = MISSIONS.map(m => `
-  <div class="triple" style="grid-template-columns:1fr auto">
-    <span class="node" style="gap:var(--s4)">
-      <span class="kind">${esc(m.n)}</span>
-      <span class="name" style="white-space:normal">${esc(m.name)}</span>
-    </span>
-    <span class="node right" style="gap:var(--s4)">
-      <span class="mono" style="color:var(--text-3)">${esc(m.d)}</span>
-      <span class="mono" style="color:var(--accent);min-width:38px;text-align:right">${m.pct}%</span>
-    </span>
-  </div>`).join('');
+
+function renderLanding(){
+  const C = ORVYRA.stats();
+  $('#corpusStatus').textContent = C.dominant + ' CORPUS';
+  $('#heroFoot').innerHTML =
+    [['ENTITIES',C.entities],['RELATIONSHIPS',C.relationships],['SOURCES',C.evidence],['SIGNALS',C.signals]]
+    .map(function(kv){ return '<span>' + kv[0] + ' ' + kv[1].toLocaleString() + '</span>'; }).join('');
+
+  const p = C.provenance;
+  $('#honesty').innerHTML = p.LIVE
+    ? provTag('LIVE') + '<span>' + p.LIVE + ' organizations live from ROR / OpenAlex · ' + p.SYNTHETIC + ' synthetic · ' + C.relationships + ' evidenced relationships</span>'
+    : provTag('SYNTHETIC') + '<span>' + C.entities + ' entities · ' + C.relationships + ' evidenced relationships · no live sources connected</span>';
+
+  const counts = ORVYRA.counts();
+  $('#taxonomy').innerHTML = Object.entries(K).map(function(kv,i){
+    return '<div class="tax"><div class="n">' + String(i+1).padStart(2,'0') + '</div>' +
+           '<div class="l">' + esc(kv[1].label) + '</div>' +
+           '<div class="c">' + counts[kv[0]] + '</div></div>';
+  }).join('');
+
+  $('#triples').innerHTML = ORVYRA.edges
+    .filter(function(e){ return ['invested in','contracted','develops','operates','targets','supplies','researches','part of'].indexOf(e.rel) > -1; })
+    .slice(0,9).map(function(e){
+      const A = ORVYRA.entity(e.from), B = ORVYRA.entity(e.to);
+      return '<div class="triple">' +
+        '<span class="node"><span class="kind">' + esc(K[A.kind].label) + '</span><span class="name">' + esc(A.name) + '</span></span>' +
+        '<span class="edge">' + esc(e.rel) + '</span>' +
+        '<span class="node right"><span class="name">' + esc(B.name) + '</span><span class="kind">' + esc(K[B.kind].label) + '</span></span></div>';
+    }).join('');
+
+  $('#signalList').innerHTML = ORVYRA.signals.map(function(s){
+    const e = ORVYRA.entity(s.entity);
+    return '<div class="signal"><span class="t">' + esc(s.at) + '</span>' +
+      '<span class="type"><i></i>' + esc(s.type) + '</span>' +
+      '<span class="body"><b><span class="entity-link" data-entity="' + s.entity + '">' + esc(e ? e.name : s.entity) + '</span></b> — ' + esc(s.text) + '</span>' +
+      '<span class="mag">' + esc(s.weight) + '</span></div>';
+  }).join('');
+
+  $('#chain').innerHTML = [
+    ['Source','Where the observation came from — a registry, document, filing or feed.'],
+    ['Evidence','The extracted value, with the date it was observed and published.'],
+    ['Claim','A single assertion, stated in one sentence and independently scorable.'],
+    ['Entity','The resolved object the claim is about, deduplicated across sources.'],
+    ['Relationship','The typed edge the claim creates. No evidence, no edge.'],
+    ['Intelligence','The synthesis you read — traceable back through every step above.']
+  ].map(function(ld,i){
+    return '<div class="link"><div class="n">' + String(i+1).padStart(2,'0') + '</div>' +
+           '<div class="l">' + esc(ld[0]) + '</div><div class="d">' + esc(ld[1]) + '</div></div>';
+  }).join('');
+
+  MISSIONS.forEach(function(m){
+    const reach = new Set();
+    m.seeds.forEach(function(id){
+      if (ORVYRA.entity(id)) ORVYRA.subgraph(id,1,12).nodes.forEach(function(n){ reach.add(n.id); });
+    });
+    m.pct = Math.min(100, Math.round(reach.size / C.entities * 100));
+    m.d = m.seeds.length + ' seeds · ' + reach.size + ' entities in reach';
+  });
+  $('#missionList').innerHTML = MISSIONS.map(function(m){
+    return '<div class="triple" style="grid-template-columns:1fr auto">' +
+      '<span class="node" style="gap:var(--s4)"><span class="kind">' + esc(m.n) + '</span>' +
+      '<span class="name" style="white-space:normal">' + esc(m.name) + '</span></span>' +
+      '<span class="node right" style="gap:var(--s4)"><span class="mono" style="color:var(--text-3)">' + esc(m.d) + '</span>' +
+      '<span class="mono" style="color:var(--accent);min-width:38px;text-align:right">' + m.pct + '%</span></span></div>';
+  }).join('');
+}
+renderLanding();
 
 const SUGGESTIONS = ['European launch market','Space venture funding','Earth observation',
   'In-space manufacturing','Satellite communications','Reusable rockets'];
@@ -1860,6 +2030,11 @@ function runQuery(text){
   lastResult = r;
 
   $('#wsQ').textContent = q;
+  const mix = {};
+  r.entities.forEach(h => { mix[h.entity.provenance] = (mix[h.entity.provenance] || 0) + 1; });
+  $('.ws-meta .tag').outerHTML = Object.keys(mix).length
+    ? Object.entries(mix).map(([p2,n]) => provTag(p2).replace('</span>', ' ' + n + '</span>')).join(' ')
+    : provTag('SYNTHETIC');
   $('#wsTiming').textContent =
     `${r.stats.scanned} SCANNED · ${r.stats.matched} MATCHED · ${r.stats.edges} EDGES · ${r.stats.ms}MS`;
   $('#wsConf').textContent = r.confidence !== null ? `CORPUS CONFIDENCE ${r.confidence}` : 'NO EVIDENCE';
@@ -1886,13 +2061,13 @@ function runQuery(text){
   /* entities */
   $('#wsEntCount').textContent = `${r.entities.length} RESOLVED`;
   $('#wsEntities').innerHTML = r.entities.length ? `
-    <thead><tr><th>Entity</th><th>Kind</th><th>Region</th><th>Matched on</th><th>Score</th></tr></thead>
+    <thead><tr><th>Entity</th><th>Kind</th><th>Region</th><th>Source</th><th>Matched on</th></tr></thead>
     <tbody>${r.entities.map(h => `<tr>
       <td><span class="entity-link" data-entity="${h.id}">${esc(h.entity.name)}</span></td>
       <td class="dim">${esc(K[h.entity.kind].label)}</td>
       <td class="dim">${esc(h.entity.region || '—')}</td>
+      <td>${provTag(h.entity.provenance)}</td>
       <td class="dim">${esc(h.why.join(', '))}</td>
-      <td class="num">${h.score}</td>
     </tr>`).join('')}</tbody>` : '';
 
   /* traversal */
@@ -1917,11 +2092,11 @@ function runQuery(text){
         <span class="ev-chev">›</span>
       </div>
       <div class="ev-body"><dl class="kv">
-        <dt>Provenance</dt><dd><span class="tag tag-synthetic">${esc(ev.provenance)}</span></dd>
+        <dt>Provenance</dt><dd>${provTag(ev.provenance)}</dd>
         <dt>Source</dt><dd>${esc(ev.sourceUri)}</dd>
         <dt>Published</dt><dd>${esc(ev.publishedAt)}</dd>
         <dt>Observed</dt><dd>${esc(ev.observedAt)}</dd>
-        <dt>Confidence</dt><dd>${ev.confidence.toFixed(2)} — model-assigned, not editorial</dd>
+        <dt>Confidence</dt><dd>${ev.confidence.toFixed(2)} — ${ev.provenance === 'LIVE' ? 'extraction fidelity, not truth of the claim' : 'model-assigned, not editorial'}</dd>
         <dt>Method</dt><dd>${esc(ev.method)}</dd>
       </dl></div>
     </div>`).join('')
@@ -1977,7 +2152,10 @@ function focusEntity(id){
   $('#dossier').innerHTML = `
     <span class="eyebrow">Orvyra / Entity · ${esc(K[e.kind].label)}</span>
     <h3>${esc(e.name)}</h3>
-    <div class="sub">${esc(e.meta || '—')}</div>
+    <div class="sub" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      ${provTag(e.provenance)}<span>${esc(e.meta || '—')}</span>
+      ${e.geo ? `<span title="coordinates from ${esc(e.geo.source)}">${e.geo.lat.toFixed(2)}, ${e.geo.lng.toFixed(2)}</span>` : ''}
+    </div>
     <p style="font-size:13px;color:var(--text-2);margin-bottom:var(--s5);font-weight:300">${esc(e.tagline)}</p>
 
     <div class="stats">${attrs.slice(0,4).map(([k,v]) => `
@@ -2157,7 +2335,50 @@ addEventListener('resize', () => {
   if (document.body.classList.contains('mode-work')){ sizeGraph(); drawGraph(); }
 });
 
-try { initStage(); } catch(err){
+/* ------------------------------ live corpus ------------------------------- */
+
+/* ------------------------------ globe markers ----------------------------- */
+/* Only entities carrying real coordinates get a pin. Synthetic records have
+   none, so the globe stays empty until a harvested corpus is ingested. */
+function syncEarthMarkers(){
+  if (typeof setEarthMarkers !== 'function') return;
+  const pins = ORVYRA.entities
+    .filter(e => e.geo && typeof e.geo.lat === 'number' && typeof e.geo.lng === 'number')
+    .map(e => ({ id:e.id, name:e.name, lat:e.geo.lat, lng:e.geo.lng }));
+  setEarthMarkers(pins, id => {
+    const e = ORVYRA.entity(id);
+    if (!e) return;
+    runQuery(e.name);
+    focusEntity(id);
+  });
+  const el = $('#globeHint');
+  if (el){
+    el.textContent = pins.length
+      ? pins.length + ' organizations located · click a marker'
+      : 'No located organizations — run orvyra-harvest.js to populate the globe';
+    el.style.color = pins.length ? 'var(--accent)' : 'var(--text-4)';
+  }
+}
+
+/* Produced by orvyra-harvest.js. Absent by design until someone runs it —
+   the page never fabricates live records to fill the gap. Served over http(s);
+   opening this file from disk will skip it (fetch cannot read file://). */
+(function loadLive(){
+  if (location.protocol === 'file:' || typeof fetch === 'undefined') return;
+  fetch('orvyra-live-corpus.json', { cache:'no-store' })
+    .then(res => res.ok ? res.json() : null)
+    .then(corpus => {
+      if (!corpus) return;
+      const r = ORVYRA.ingest(corpus);
+      if (r.error || !r.entities) return;
+      renderLanding();
+      syncEarthMarkers();
+      console.info('ORVYRA live corpus ingested:', r);
+    })
+    .catch(() => {});
+})();
+
+try { initStage(); syncEarthMarkers(); } catch(err){
   console.warn('WebGL unavailable — static field fallback.', err);
   $('#stage').style.background = 'radial-gradient(60% 60% at 78% 46%, rgba(20,32,48,.9), rgba(5,7,11,1) 70%)';
 }
