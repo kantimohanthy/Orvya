@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>ORVYRA — Intelligence for the space economy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ORVYRA — DESIGN SYSTEM
+   Tokens are the single source of truth. No literal colours below.
+   ============================================================ */
+:root{
+  /* surface */
+  --bg:            #05070b;
+  --bg-deep:       #030508;
+  --bg-elev:       #090c12;
+  --bg-elev-2:     #0d1119;
+
+  /* line */
+  --line:          rgba(255,255,255,.065);
+  --line-mid:      rgba(255,255,255,.11);
+  --line-strong:   rgba(255,255,255,.18);
+
+  /* text */
+  --text:          #f1f4f8;
+  --text-2:        #99a3b2;
+  --text-3:        #5b6472;
+  --text-4:        #2f3742;
+
+  /* accent — used sparingly */
+  --accent:        #4fd6e0;
+  --accent-2:      #7ae3ea;
+  --accent-soft:   rgba(79,214,224,.30);
+  --accent-faint:  rgba(79,214,224,.09);
+
+  /* provenance semantics */
+  --live:          #5ddc9a;
+  --fixture:       #4fd6e0;
+  --synthetic:     #c9903f;
+
+  /* type */
+  --display: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body:    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* scale */
+  --t-eyebrow: 10.5px;
+  --t-micro:   11px;
+  --t-small:   13px;
+  --t-body:    15px;
+  --t-lead:    17px;
+  --t-h3:      21px;
+  --t-h2:      clamp(28px, 3.4vw, 46px);
+  --t-h1:      clamp(34px, 4.15vw, 61px);
+
+  /* space */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px;
+  --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px; --s10: 144px;
+
+  --r-sm: 2px; --r-md: 4px; --r-lg: 6px;
+
+  /* motion */
+  --fast: 120ms cubic-bezier(.2,0,.2,1);
+  --med:  340ms cubic-bezier(.16,.7,.2,1);
+  --slow: 900ms cubic-bezier(.16,.75,.15,1);
+
+  --nav-h: 56px;
+  --gutter: clamp(20px, 4.5vw, 68px);
+}
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:var(--body); font-size:var(--t-body); line-height:1.55;
+  font-weight:350; letter-spacing:.004em;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+h1,h2,h3{ font-family:var(--display); font-weight:500; letter-spacing:-.028em; margin:0; line-height:1.04; }
+p{ margin:0; }
+a{ color:inherit; text-decoration:none; }
+button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; }
+:focus-visible{ outline:1px solid var(--accent); outline-offset:3px; }
+::selection{ background:var(--accent-soft); color:#fff; }
+
+.mono{ font-family:var(--mono); font-size:var(--t-micro); letter-spacing:.07em; }
+.eyebrow{
+  font-family:var(--mono); font-size:var(--t-eyebrow); letter-spacing:.20em;
+  text-transform:uppercase; color:var(--text-3);
+}
+.rule{ height:1px; background:var(--line); border:0; margin:0; }
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.nav{
+  position:fixed; inset:0 0 auto 0; height:var(--nav-h); z-index:60;
+  display:flex; align-items:center; gap:var(--s6);
+  padding:0 var(--gutter);
+  border-bottom:1px solid transparent;
+  background:linear-gradient(180deg, rgba(5,7,11,.82), rgba(5,7,11,0));
+  backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px);
+  transition:border-color var(--med), background var(--med);
+}
+.nav.solid{ background:rgba(5,7,11,.93); border-bottom-color:var(--line); }
+.brand{
+  font-family:var(--display); font-weight:600; font-size:15px;
+  letter-spacing:.30em; text-transform:uppercase; padding-right:var(--s2);
+}
+.nav-links{ display:flex; gap:var(--s5); align-items:center; }
+.nav-link{
+  font-size:var(--t-small); color:var(--text-2); position:relative;
+  padding:2px 0; transition:color var(--fast);
+}
+.nav-link:hover{ color:var(--text); }
+.nav-link[aria-current="page"]{ color:var(--text); }
+.nav-link[aria-current="page"]::after{
+  content:""; position:absolute; left:0; right:0; bottom:-6px; height:1px; background:var(--accent);
+}
+.nav-sep{ width:1px; height:16px; background:var(--line-mid); }
+.nav-right{ margin-left:auto; display:flex; align-items:center; gap:var(--s4); }
+.kbd{
+  font-family:var(--mono); font-size:var(--t-micro); color:var(--text-2);
+  border:1px solid var(--line-mid); border-radius:var(--r-sm);
+  padding:3px 7px; transition:border-color var(--fast), color var(--fast);
+}
+.kbd:hover{ border-color:var(--line-strong); color:var(--text); }
+.status{ display:flex; align-items:center; gap:7px; color:var(--text-3); }
+.status .dot{
+  width:5px; height:5px; border-radius:50%; background:var(--live);
+  box-shadow:0 0 0 3px rgba(93,220,154,.10);
+}
+.avatar{
+  width:26px; height:26px; border-radius:50%; border:1px solid var(--line-mid);
+  display:grid; place-items:center; font-family:var(--mono); font-size:10px; color:var(--text-2);
+}
+
+/* ============================================================
+   STAGE — WebGL canvas lives behind everything
+   ============================================================ */
+#stage{
+  position:fixed; inset:0; z-index:0;
+  transition:opacity var(--slow);
+}
+#stage canvas{ display:block; width:100%; height:100%; }
+.vignette{
+  position:fixed; inset:0; z-index:1; pointer-events:none;
+  background:
+    radial-gradient(120% 90% at 12% 40%, rgba(5,7,11,.90) 0%, rgba(5,7,11,.45) 42%, rgba(5,7,11,0) 72%),
+    linear-gradient(180deg, rgba(5,7,11,.55) 0%, rgba(5,7,11,0) 22%, rgba(5,7,11,0) 68%, rgba(5,7,11,.92) 100%);
+}
+main{ position:relative; z-index:2; }
+
+/* ============================================================
+   SECTION 01 — THE PLANET
+   ============================================================ */
+.hero{
+  min-height:100svh; display:grid; align-items:center;
+  padding:calc(var(--nav-h) + var(--s7)) var(--gutter) var(--s8);
+}
+.hero-inner{ max-width:600px; }
+.hero-eyebrow{ display:flex; align-items:center; gap:var(--s3); margin-bottom:var(--s5); }
+.hero-eyebrow .tick{ width:22px; height:1px; background:var(--accent); opacity:.7; }
+.hero h1{
+  font-size:var(--t-h1); font-weight:500; margin-bottom:var(--s5);
+  text-wrap:balance;
+}
+.hero h1 em{ font-style:normal; color:var(--text-2); }
+.hero-sub{
+  color:var(--text-2); font-size:var(--t-lead); line-height:1.62;
+  max-width:47ch; margin-bottom:var(--s6); font-weight:300;
+}
+
+/* query */
+.query{ position:relative; max-width:560px; }
+.query-shell{
+  display:flex; align-items:center; gap:var(--s3);
+  border:1px solid var(--line-mid); border-radius:var(--r-md);
+  background:rgba(9,12,18,.72);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  padding:0 var(--s3) 0 var(--s4); height:52px;
+  transition:border-color var(--med), box-shadow var(--med), background var(--med);
+}
+.query-shell:focus-within{
+  border-color:var(--accent-soft); background:rgba(9,12,18,.92);
+  box-shadow:0 0 0 1px var(--accent-faint), 0 18px 50px -28px rgba(79,214,224,.5);
+}
+.query-shell .caret{ color:var(--accent); font-family:var(--mono); font-size:13px; opacity:.85; }
+.query input{
+  flex:1; background:none; border:0; outline:0; color:var(--text);
+  font-family:var(--body); font-size:var(--t-body); font-weight:350;
+  min-width:0;
+}
+.query input::placeholder{ color:var(--text-3); }
+.query-send{
+  display:grid; place-items:center; width:32px; height:32px;
+  border:1px solid var(--line-mid); border-radius:var(--r-sm);
+  color:var(--text-2); transition:all var(--fast); flex:none;
+}
+.query-send:hover{ border-color:var(--accent-soft); color:var(--accent); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:var(--s2); margin-top:var(--s4); }
+.chip{
+  font-family:var(--mono); font-size:var(--t-micro); letter-spacing:.05em;
+  color:var(--text-2); border:1px solid var(--line);
+  border-radius:100px; padding:5px 11px; transition:all var(--fast);
+}
+.chip:hover{ border-color:var(--accent-soft); color:var(--accent); }
+
+.hero-actions{ display:flex; gap:var(--s4); align-items:center; margin-top:var(--s7); }
+.btn{
+  display:inline-flex; align-items:center; gap:var(--s2);
+  font-size:var(--t-small); letter-spacing:.01em;
+  padding:11px 20px; border-radius:var(--r-sm);
+  transition:all var(--fast);
+}
+.btn-primary{ background:var(--text); color:var(--bg-deep); font-weight:500; }
+.btn-primary:hover{ background:#fff; transform:translateY(-1px); }
+.btn-ghost{ border:1px solid var(--line-mid); color:var(--text-2); }
+.btn-ghost:hover{ border-color:var(--line-strong); color:var(--text); }
+
+.hero-foot{
+  position:absolute; left:var(--gutter); bottom:var(--s6);
+  display:flex; gap:var(--s5); align-items:center; color:var(--text-4);
+}
+
+/* ============================================================
+   NARRATIVE SECTIONS
+   ============================================================ */
+.section{ padding:var(--s10) var(--gutter); position:relative; }
+.section-dark{ background:linear-gradient(180deg, rgba(3,5,8,0), var(--bg-deep) 18%, var(--bg-deep) 82%, rgba(3,5,8,0)); }
+.section-head{ max-width:760px; margin-bottom:var(--s8); }
+.section-head .eyebrow{ display:block; margin-bottom:var(--s4); }
+.section-head h2{ font-size:var(--t-h2); margin-bottom:var(--s4); }
+.section-head p{ color:var(--text-2); max-width:58ch; font-weight:300; line-height:1.65; }
+
+.reveal{ opacity:0; transform:translateY(14px); transition:opacity var(--slow), transform var(--slow); }
+.reveal.in{ opacity:1; transform:none; }
+
+/* 02 — the system: entity taxonomy rail */
+.taxonomy{ display:grid; grid-template-columns:repeat(auto-fit,minmax(148px,1fr)); border-top:1px solid var(--line); }
+.tax{
+  padding:var(--s5) var(--s4) var(--s6); border-bottom:1px solid var(--line);
+  border-right:1px solid var(--line); position:relative; transition:background var(--med);
+}
+.tax:hover{ background:rgba(255,255,255,.015); }
+.tax .n{ font-family:var(--mono); font-size:var(--t-eyebrow); color:var(--text-4); letter-spacing:.16em; }
+.tax .l{ font-family:var(--display); font-size:var(--t-small); letter-spacing:.14em; text-transform:uppercase; margin-top:var(--s4); }
+.tax .c{ font-family:var(--mono); font-size:var(--t-micro); color:var(--accent); margin-top:var(--s2); opacity:.75; }
+
+/* 03 — ecosystem: relationship triples */
+.triples{ display:grid; gap:1px; background:var(--line); border:1px solid var(--line); }
+.triple{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:var(--s4);
+  background:var(--bg); padding:var(--s4) var(--s5); transition:background var(--med);
+}
+.triple:hover{ background:var(--bg-elev); }
+.triple .node{ display:flex; align-items:center; gap:var(--s3); min-width:0; }
+.triple .node.right{ justify-content:flex-end; text-align:right; }
+.triple .kind{
+  font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--text-3); border:1px solid var(--line-mid); border-radius:var(--r-sm);
+  padding:2px 6px; flex:none;
+}
+.triple .name{ font-size:var(--t-small); color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.triple .edge{
+  font-family:var(--mono); font-size:var(--t-micro); color:var(--accent);
+  letter-spacing:.08em; white-space:nowrap; position:relative; padding:0 var(--s5); opacity:.85;
+}
+.triple .edge::before,.triple .edge::after{
+  content:""; position:absolute; top:50%; width:var(--s4); height:1px; background:var(--line-strong);
+}
+.triple .edge::before{ left:0; } .triple .edge::after{ right:0; }
+
+/* 04 — signals */
+.signals{ border-top:1px solid var(--line); }
+.signal{
+  display:grid; grid-template-columns:112px 116px 1fr auto;
+  gap:var(--s5); align-items:baseline;
+  padding:var(--s4) 0; border-bottom:1px solid var(--line);
+  transition:background var(--med), padding-left var(--med);
+}
+.signal:hover{ background:rgba(255,255,255,.016); padding-left:var(--s3); }
+.signal .t{ font-family:var(--mono); font-size:var(--t-micro); color:var(--text-3); }
+.signal .type{
+  font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-2);
+  display:flex; align-items:center; gap:7px;
+}
+.signal .type i{ width:4px; height:4px; border-radius:50%; background:var(--accent); flex:none; }
+.signal .body{ font-size:var(--t-small); color:var(--text); font-weight:350; }
+.signal .body b{ font-weight:500; }
+.signal .mag{ font-family:var(--mono); font-size:var(--t-micro); color:var(--text-3); }
+
+/* 05 — evidence chain */
+.chain{ display:grid; grid-template-columns:repeat(6,1fr); gap:0; border-top:1px solid var(--line-mid); margin-top:var(--s7); }
+.link{ padding:var(--s5) var(--s4) var(--s6) 0; position:relative; }
+.link::before{
+  content:""; position:absolute; top:-1px; left:0; width:7px; height:7px;
+  background:var(--bg); border:1px solid var(--accent-soft); border-radius:50%;
+  transform:translateY(-50%);
+}
+.link .n{ font-family:var(--mono); font-size:var(--t-eyebrow); letter-spacing:.16em; color:var(--accent); }
+.link .l{ font-family:var(--display); font-size:14px; letter-spacing:.06em; text-transform:uppercase; margin:var(--s3) 0 var(--s2); }
+.link .d{ font-size:12.5px; color:var(--text-3); line-height:1.5; font-weight:300; }
+
+/* ============================================================
+   INTELLIGENCE WORKSPACE
+   ============================================================ */
+.workspace{
+  position:fixed; inset:var(--nav-h) 0 0 0; z-index:40;
+  display:grid; grid-template-columns:minmax(0,1fr) 400px;
+  opacity:0; pointer-events:none; transform:translateY(10px);
+  transition:opacity var(--med), transform var(--med);
+}
+body.mode-work .workspace{ opacity:1; pointer-events:auto; transform:none; }
+body.mode-work{ overflow:hidden; }
+body.mode-work main{ opacity:0; pointer-events:none; transition:opacity var(--med); }
+
+.ws-main{
+  overflow-y:auto; padding:var(--s6) var(--s7) var(--s9);
+  background:linear-gradient(90deg, rgba(3,5,8,.97) 0%, rgba(3,5,8,.94) 62%, rgba(3,5,8,.72) 100%);
+  border-right:1px solid var(--line);
+}
+.ws-side{
+  overflow-y:auto; background:rgba(3,5,8,.90);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+}
+.ws-bar{ display:flex; align-items:center; gap:var(--s4); margin-bottom:var(--s6); }
+.ws-back{ font-family:var(--mono); font-size:var(--t-micro); color:var(--text-3); letter-spacing:.08em; }
+.ws-back:hover{ color:var(--text); }
+.ws-q{
+  font-family:var(--display); font-size:var(--t-h3); letter-spacing:-.02em;
+  margin:var(--s2) 0 var(--s3); max-width:60ch;
+}
+.ws-meta{ display:flex; gap:var(--s5); align-items:center; flex-wrap:wrap; margin-bottom:var(--s7); }
+
+.tag{
+  font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase;
+  padding:3px 7px; border-radius:var(--r-sm); border:1px solid; display:inline-flex; gap:6px; align-items:center;
+}
+.tag-synthetic{ color:var(--synthetic); border-color:rgba(201,144,63,.34); background:rgba(201,144,63,.06); }
+.tag-fixture{ color:var(--fixture); border-color:var(--accent-soft); background:var(--accent-faint); }
+.tag-live{ color:var(--live); border-color:rgba(93,220,154,.32); background:rgba(93,220,154,.06); }
+
+.block{ margin-bottom:var(--s8); }
+.block-head{
+  display:flex; align-items:center; justify-content:space-between; gap:var(--s4);
+  padding-bottom:var(--s3); border-bottom:1px solid var(--line); margin-bottom:var(--s5);
+}
+.block-head .eyebrow{ color:var(--text-2); }
+.answer{ font-size:var(--t-lead); line-height:1.7; color:var(--text); font-weight:300; max-width:70ch; }
+.answer .ref{
+  font-family:var(--mono); font-size:9.5px; color:var(--accent); vertical-align:super;
+  border-bottom:1px dotted var(--accent-soft); cursor:pointer; margin-left:1px; padding:0 1px;
+}
+.answer .ref:hover{ background:var(--accent-faint); }
+
+table.grid{ width:100%; border-collapse:collapse; }
+table.grid th{
+  font-family:var(--mono); font-size:var(--t-eyebrow); letter-spacing:.16em; text-transform:uppercase;
+  color:var(--text-3); text-align:left; font-weight:400; padding:0 var(--s4) var(--s3) 0;
+  border-bottom:1px solid var(--line);
+}
+table.grid td{ padding:var(--s4) var(--s4) var(--s4) 0; border-bottom:1px solid var(--line); font-size:var(--t-small); vertical-align:top; }
+table.grid tr{ transition:background var(--fast); }
+table.grid tbody tr:hover{ background:rgba(255,255,255,.016); }
+table.grid .num{ font-family:var(--mono); color:var(--text); }
+table.grid .dim{ color:var(--text-3); font-family:var(--mono); font-size:var(--t-micro); }
+.entity-link{ color:var(--text); border-bottom:1px solid var(--line-strong); padding-bottom:1px; }
+.entity-link:hover{ color:var(--accent); border-color:var(--accent-soft); }
+
+.evidence{ display:grid; gap:1px; background:var(--line); border:1px solid var(--line); }
+.ev{ background:var(--bg-deep); }
+.ev-top{
+  display:grid; grid-template-columns:auto 1fr auto auto; gap:var(--s4); align-items:center;
+  padding:var(--s4) var(--s5); cursor:pointer;
+}
+.ev-top:hover{ background:rgba(255,255,255,.02); }
+.ev-id{ font-family:var(--mono); font-size:var(--t-micro); color:var(--text-3); }
+.ev-claim{ font-size:var(--t-small); color:var(--text-2); }
+.ev-conf{ font-family:var(--mono); font-size:var(--t-micro); color:var(--text-2); display:flex; align-items:center; gap:var(--s2); }
+.conf-bar{ width:44px; height:2px; background:var(--line-mid); position:relative; }
+.conf-bar i{ position:absolute; inset:0 auto 0 0; background:var(--accent); }
+.ev-chev{ color:var(--text-3); transition:transform var(--fast); font-size:11px; }
+.ev.open .ev-chev{ transform:rotate(90deg); }
+.ev-body{ display:none; padding:0 var(--s5) var(--s5) var(--s5); }
+.ev.open .ev-body{ display:block; }
+.kv{ display:grid; grid-template-columns:132px 1fr; gap:var(--s3) var(--s4); font-size:12.5px; }
+.kv dt{ font-family:var(--mono); font-size:var(--t-micro); letter-spacing:.1em; text-transform:uppercase; color:var(--text-4); }
+.kv dd{ margin:0; color:var(--text-2); font-family:var(--mono); font-size:var(--t-micro); word-break:break-all; }
+
+/* relationship path */
+.path{ display:flex; flex-direction:column; gap:0; }
+.path-row{ display:flex; align-items:center; gap:var(--s4); padding:var(--s3) 0; }
+.path-node{
+  display:inline-flex; align-items:center; gap:var(--s3);
+  border:1px solid var(--line-mid); border-radius:var(--r-sm);
+  padding:7px 12px; background:var(--bg-elev); transition:all var(--fast);
+}
+.path-node:hover{ border-color:var(--accent-soft); }
+.path-node .kind{ font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); }
+.path-node .name{ font-size:var(--t-small); }
+.path-edge{
+  margin-left:18px; padding:var(--s2) 0 var(--s2) var(--s5);
+  border-left:1px solid var(--line-mid);
+  font-family:var(--mono); font-size:var(--t-micro); color:var(--accent); letter-spacing:.08em; opacity:.8;
+}
+
+/* side panel: graph */
+.side-head{
+  position:sticky; top:0; z-index:2; background:rgba(3,5,8,.96);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:var(--s4) var(--s5); border-bottom:1px solid var(--line);
+}
+.graph-wrap{ padding:0; }
+#graph{ display:block; width:100%; height:420px; touch-action:none; cursor:grab; }
+#graph:active{ cursor:grabbing; }
+.graph-legend{ padding:var(--s4) var(--s5); border-top:1px solid var(--line); border-bottom:1px solid var(--line); display:flex; flex-wrap:wrap; gap:var(--s3) var(--s5); }
+.leg{ display:flex; align-items:center; gap:7px; font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--text-3); }
+.leg i{ width:6px; height:6px; border-radius:50%; }
+
+/* dossier */
+.dossier{ padding:var(--s5); }
+.dossier .eyebrow{ display:block; margin-bottom:var(--s3); }
+.dossier h3{ font-size:var(--t-h3); margin-bottom:var(--s2); }
+.dossier .sub{ font-size:12.5px; color:var(--text-3); font-family:var(--mono); margin-bottom:var(--s5); }
+.stats{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); margin-bottom:var(--s5); }
+.stat{ background:var(--bg-deep); padding:var(--s4); }
+.stat .k{ font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-4); }
+.stat .v{ font-family:var(--mono); font-size:16px; color:var(--text); margin-top:6px; }
+.mini-head{ font-family:var(--mono); font-size:var(--t-eyebrow); letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); margin:var(--s5) 0 var(--s3); }
+.feed{ display:grid; gap:var(--s3); }
+.feed-item{ display:grid; grid-template-columns:auto 1fr; gap:var(--s3); font-size:12.5px; color:var(--text-2); }
+.feed-item .d{ font-family:var(--mono); font-size:var(--t-micro); color:var(--text-4); }
+
+/* mission */
+.mission{ border:1px solid var(--line); padding:var(--s5); margin:var(--s5); }
+.mission h4{ font-family:var(--display); font-size:14px; font-weight:500; letter-spacing:.02em; margin:var(--s2) 0 var(--s4); }
+.bar{ height:2px; background:var(--line-mid); position:relative; margin-bottom:var(--s3); }
+.bar i{ position:absolute; inset:0 auto 0 0; background:var(--accent); transition:width var(--slow); }
+.mission-meta{ display:flex; justify-content:space-between; font-family:var(--mono); font-size:var(--t-micro); color:var(--text-3); }
+
+/* command palette */
+.palette{
+  position:fixed; inset:0; z-index:90; display:none; place-items:start center;
+  padding-top:14vh; background:rgba(3,5,8,.72); backdrop-filter:blur(4px);
+}
+.palette.open{ display:grid; }
+.palette-box{
+  width:min(620px,92vw); background:var(--bg-elev); border:1px solid var(--line-mid);
+  border-radius:var(--r-lg); overflow:hidden; box-shadow:0 40px 120px -40px #000;
+}
+.palette-input{
+  width:100%; height:54px; background:none; border:0; outline:0; color:var(--text);
+  padding:0 var(--s5); font-size:var(--t-body); border-bottom:1px solid var(--line);
+}
+.palette-list{ max-height:46vh; overflow:auto; padding:var(--s2) 0; }
+.palette-item{
+  display:flex; align-items:center; gap:var(--s4); width:100%; text-align:left;
+  padding:10px var(--s5); font-size:var(--t-small); color:var(--text-2);
+}
+.palette-item:hover,.palette-item[aria-selected="true"]{ background:rgba(255,255,255,.045); color:var(--text); }
+.palette-item .kind{ font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-4); margin-left:auto; }
+
+/* honesty banner */
+.honesty{
+  position:fixed; left:var(--gutter); bottom:var(--s4); z-index:70;
+  display:flex; align-items:center; gap:var(--s3);
+  font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--text-4);
+}
+
+/* ============================================================
+   RESPONSIVE — mobile is redesigned, not shrunk
+   ============================================================ */
+@media (max-width:1080px){
+  .workspace{ grid-template-columns:1fr; }
+  .ws-side{ border-top:1px solid var(--line); }
+  .chain{ grid-template-columns:repeat(3,1fr); }
+}
+@media (max-width:860px){
+  .nav-links,.nav-sep{ display:none; }
+  .hero{ align-items:end; min-height:100svh; padding-bottom:var(--s9); }
+  .hero-inner{ max-width:none; }
+  .vignette{
+    background:
+      radial-gradient(90% 55% at 50% 22%, rgba(5,7,11,0) 0%, rgba(5,7,11,.35) 60%, rgba(5,7,11,.92) 100%),
+      linear-gradient(180deg, rgba(5,7,11,.55) 0%, rgba(5,7,11,0) 18%, rgba(5,7,11,.55) 52%, var(--bg) 88%);
+  }
+  .hero-foot{ display:none; }
+  .signal{ grid-template-columns:1fr; gap:var(--s2); }
+  .signal .mag{ display:none; }
+  .triple{ grid-template-columns:1fr; gap:var(--s2); }
+  .triple .node.right{ justify-content:flex-start; text-align:left; }
+  .triple .edge{ padding:0 0 0 var(--s5); }
+  .triple .edge::after{ display:none; }
+  .chain{ grid-template-columns:1fr; }
+  .link{ padding-left:var(--s5); border-left:1px solid var(--line-mid); }
+  .link::before{ left:0; top:var(--s5); }
+  .chain{ border-top:0; }
+  .ws-main{ padding:var(--s5) var(--s5) var(--s8); }
+  .ev-top{ grid-template-columns:1fr auto; }
+  .ev-claim{ grid-column:1/-1; }
+  .kv{ grid-template-columns:1fr; gap:var(--s1); }
+  .kv dt{ margin-top:var(--s3); }
+  .honesty{ left:var(--s4); font-size:8.5px; }
+  .hero-actions{ flex-wrap:wrap; }
+}
+@media (prefers-reduced-motion:reduce){
+  *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+  .reveal{ opacity:1; transform:none; }
+}
+</style>
+</head>
+<header class="nav" id="nav">
+  <a class="brand" href="#top">Orvyra</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a class="nav-link" href="#system">Explore</a>
+    <a class="nav-link" href="#ask" data-open-work>Intelligence</a>
+    <a class="nav-link" href="#ask" data-open-work>Graph</a>
+    <a class="nav-link" href="#signals">Signals</a>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <a class="nav-link" href="#missions">Watchlist</a>
+  </nav>
+  <div class="nav-right">
+    <button class="kbd" id="paletteBtn" aria-label="Open command palette">⌘ K</button>
+    <span class="status mono" title="Corpus status"><span class="dot"></span><span id="corpusStatus">LOADING</span></span>
+    <span class="avatar" aria-hidden="true">UK</span>
+  </div>
+</header>
+
+<div id="stage" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">
+        <span class="tick" aria-hidden="true"></span>
+        <span class="eyebrow">Orvyra / Space economy intelligence</span>
+      </div>
+      <h1>Intelligence for<br>the space economy.</h1>
+      <p class="hero-sub">
+        Discover the companies, technologies, missions, capital and people shaping
+        the space economy through one evidence-backed intelligence layer.
+      </p>
+
+      <form class="query" id="heroQuery" role="search">
+        <div class="query-shell">
+          <span class="caret" aria-hidden="true">&gt;</span>
+          <input id="q" type="search" autocomplete="off" spellcheck="false"
+                 placeholder="Ask ORVYRA anything…" aria-label="Ask ORVYRA anything" />
+          <button class="query-send" type="submit" aria-label="Run query">↵</button>
+        </div>
+        <div class="chips" id="chips"></div>
+      </form>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#ask" data-open-work>Explore the intelligence</a>
+        <a class="btn btn-ghost" href="#ask" data-open-work>View the graph</a>
+      </div>
+    </div>
+    <div class="hero-foot mono" id="heroFoot"></div>
+  </section>
+
+  <section class="section section-dark" id="system">
+    <div class="section-head reveal">
+      <span class="eyebrow">02 — The system</span>
+      <h2>See the system.</h2>
+      <p>The space economy is not a list of companies. It is a set of typed objects and
+         the relationships between them. ORVYRA resolves fragmented sources into one ontology.</p>
+    </div>
+    <div class="taxonomy reveal" id="taxonomy"></div>
+  </section>
+
+  <section class="section" id="ecosystem">
+    <div class="section-head reveal">
+      <span class="eyebrow">03 — The ecosystem</span>
+      <h2>Everything is connected.</h2>
+      <p>Capital moves into companies. Companies develop technologies. Technologies fly missions.
+         Missions change markets. The value is in the edges.</p>
+    </div>
+    <div class="triples reveal" id="triples"></div>
+  </section>
+
+  <section class="section section-dark" id="signals">
+    <div class="section-head reveal">
+      <span class="eyebrow">04 — The signal</span>
+      <h2>Space is changing.</h2>
+      <p>Every funding round, launch, partnership and regulatory decision propagates through
+         the graph. ORVYRA watches the change, not just the state.</p>
+    </div>
+    <div class="signals reveal" id="signalList"></div>
+  </section>
+
+  <section class="section" id="evidence">
+    <div class="section-head reveal">
+      <span class="eyebrow">05 — The evidence</span>
+      <h2>Information is not enough.</h2>
+      <p>Every claim in ORVYRA carries its provenance. You can always walk back from an
+         answer to the observation it rests on — and see how much to trust it.</p>
+    </div>
+    <div class="chain reveal" id="chain"></div>
+  </section>
+
+  <section class="section section-dark" id="ask">
+    <div class="section-head reveal">
+      <span class="eyebrow">06 — Ask Orvyra</span>
+      <h2>What do you want to understand?</h2>
+      <p>Ask a question. ORVYRA answers, then shows you the entities, the relationships
+         and the evidence behind the answer — including what it declined to say.</p>
+    </div>
+    <form class="query reveal" id="askQuery" role="search" style="max-width:620px">
+      <div class="query-shell">
+        <span class="caret" aria-hidden="true">&gt;</span>
+        <input id="q2" type="search" autocomplete="off" spellcheck="false"
+               placeholder="Which European launch companies raised funding recently?"
+               aria-label="Ask ORVYRA anything" />
+        <button class="query-send" type="submit" aria-label="Run query">↵</button>
+      </div>
+      <div class="chips" id="chips2"></div>
+    </form>
+  </section>
+
+  <section class="section" id="missions" style="padding-top:0">
+    <div class="section-head reveal">
+      <span class="eyebrow">07 — Investigations</span>
+      <h2>Understanding, tracked.</h2>
+      <p>Progression is measured in ground covered: entities connected, relationships
+         traced, sectors mapped.</p>
+    </div>
+    <div class="triples reveal" id="missionList"></div>
+  </section>
+</main>
+
+<section class="workspace" id="workspace" aria-hidden="true">
+  <div class="ws-main" id="wsMain">
+    <div class="ws-bar"><button class="ws-back" id="wsBack">← BACK TO ORVYRA</button></div>
+    <h2 class="ws-q" id="wsQ">—</h2>
+    <div class="ws-meta">
+      <span class="tag tag-synthetic">Synthetic corpus</span>
+      <span class="mono" style="color:var(--text-3)" id="wsTiming">—</span>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><span class="eyebrow">Answer</span><span class="mono" style="color:var(--text-4)" id="wsConf"></span></div>
+      <p class="answer" id="wsAnswer"></p>
+    </div>
+
+    <div class="block" id="blockWithheld">
+      <div class="block-head"><span class="eyebrow">Withheld</span><span class="mono" style="color:var(--text-4)">NOT STATED</span></div>
+      <div class="evidence" id="wsWithheld"></div>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><span class="eyebrow">Entities</span><span class="mono" style="color:var(--text-4)" id="wsEntCount"></span></div>
+      <table class="grid" id="wsEntities"></table>
+    </div>
+
+    <div class="block" id="blockPath">
+      <div class="block-head"><span class="eyebrow">Relationships</span><span class="mono" style="color:var(--text-4)">TRAVERSAL</span></div>
+      <div class="path" id="wsPath"></div>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><span class="eyebrow">Evidence</span><span class="mono" style="color:var(--text-4)">EXPANDABLE</span></div>
+      <div class="evidence" id="wsEvidence"></div>
+    </div>
+  </div>
+
+  <aside class="ws-side">
+    <div class="side-head">
+      <span class="eyebrow">Knowledge graph</span>
+      <button class="mono" id="graphReset" style="color:var(--text-3)">RESET</button>
+    </div>
+    <div class="graph-wrap"><canvas id="graph"></canvas></div>
+    <div class="graph-legend" id="graphLegend"></div>
+    <div class="dossier" id="dossier"></div>
+    <div class="mission" id="missionCard"></div>
+  </aside>
+</section>
+
+<div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Command palette">
+  <div class="palette-box">
+    <input class="palette-input" id="paletteInput" placeholder="Ask anything about the space economy…" autocomplete="off">
+    <div class="palette-list" id="paletteList"></div>
+  </div>
+</div>
+
+<div class="honesty" id="honesty">
+  <span class="tag tag-synthetic">Synthetic</span>
+  <span id="honestyText">Demonstration corpus — no live sources connected</span>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ============================================================================
+   ORVYRA — INTELLIGENCE CORE
+   ----------------------------------------------------------------------------
+   No UI in this file. It is the layer the product experience binds to:
+
+       corpus → resolver → retrieval → traversal → evidence → synthesis
+
+   DATA HONESTY (§33). Three provenance states, never blended:
+     LIVE            fetched from a connected source at request time
+     SOURCE_FIXTURE  a captured, replayable copy of a real source
+     SYNTHETIC       invented for interface development
+
+   Every record here is SYNTHETIC. Two rules make that structurally safe:
+     1. Source identifiers are fixture URIs, never fabricated publications.
+     2. An attribute with no supporting evidence is stored as `withheld`,
+        not as a plausible number. The engine surfaces what it refused to say.
+
+   An edge with an empty `ev` array is rejected at load. A relationship the
+   system cannot evidence is not a relationship.
+   ============================================================================ */
+
+const ORVYRA = (() => {
+'use strict';
+
+/* ========================== ONTOLOGY ==================================== */
+
+const KINDS = {
+  company:      { label:'Company',      color:'#4fd6e0' },
+  investor:     { label:'Investor',     color:'#c9903f' },
+  technology:   { label:'Technology',   color:'#8f9fb5' },
+  mission:      { label:'Mission',      color:'#5ddc9a' },
+  organization: { label:'Organization', color:'#b57ad6' },
+  market:       { label:'Market',       color:'#6f7b8d' },
+  site:         { label:'Site',         color:'#7f8fa3' }
+};
+
+const RELATIONS = [
+  'invested in','contracted','develops','operates','partners with',
+  'launches from','competes in','targets','supplies','regulates','researches'
+];
+
+/* ========================== CORPUS ====================================== */
+
+const E = (id,kind,name,o={}) => Object.assign({
+  id, kind, name, aliases:[], region:null, sectors:[], tagline:'', meta:'',
+  attrs:{}, provenance:'SYNTHETIC'
+}, o);
+
+const ENTITIES = [
+  /* --- launch ------------------------------------------------------- */
+  E('isar','company','Isar Aerospace',{ aliases:['isar'], region:'Germany', sectors:['launch'],
+    tagline:'European launch vehicle developer', meta:'Germany · Aerospace · Launch',
+    attrs:{ founded:{v:'2018',ev:['EV-1001']}, headcount:{withheld:'no traceable source'},
+            lastRound:{v:'Growth round, 2026-04',ev:['EV-1002']}, roundSize:{withheld:'no traceable source'} } }),
+  E('rfa','company','Rocket Factory Augsburg',{ aliases:['rfa','rocket factory'], region:'Germany', sectors:['launch'],
+    tagline:'Small launch vehicle developer', meta:'Germany · Aerospace · Launch',
+    attrs:{ founded:{v:'2018',ev:['EV-1003']}, roundSize:{withheld:'no traceable source'} } }),
+  E('pld','company','PLD Space',{ aliases:['pld'], region:'Spain', sectors:['launch'],
+    tagline:'Reusable small launcher developer', meta:'Spain · Aerospace · Launch',
+    attrs:{ founded:{v:'2011',ev:['EV-1004']}, lastRound:{v:'Series C, 2026-03',ev:['EV-1005']},
+            roundSize:{withheld:'no traceable source'} } }),
+  E('orbex','company','Orbex',{ region:'United Kingdom', sectors:['launch'],
+    tagline:'Micro-launcher developer', meta:'United Kingdom · Aerospace · Launch',
+    attrs:{ founded:{v:'2015',ev:['EV-1006']}, roundSize:{withheld:'no traceable source'} } }),
+  E('maia','company','MaiaSpace',{ aliases:['maia'], region:'France', sectors:['launch'],
+    tagline:'Reusable mini-launcher developer', meta:'France · Aerospace · Launch',
+    attrs:{ founded:{v:'2022',ev:['EV-1007']}, funding:{v:'Programme-backed',ev:['EV-1008']} } }),
+  E('skyrora','company','Skyrora',{ region:'United Kingdom', sectors:['launch'],
+    tagline:'Suborbital and orbital launch developer', meta:'United Kingdom · Aerospace · Launch',
+    attrs:{ founded:{v:'2017',ev:['EV-1009']} } }),
+
+  /* --- earth observation -------------------------------------------- */
+  E('iceye','company','ICEYE',{ region:'Finland', sectors:['eo'],
+    tagline:'SAR smallsat constellation operator', meta:'Finland · Earth observation · SAR',
+    attrs:{ founded:{v:'2014',ev:['EV-1010']}, constellation:{v:'SAR smallsats',ev:['EV-1011']} } }),
+  E('satvu','company','SatVu',{ region:'United Kingdom', sectors:['eo'],
+    tagline:'Thermal imaging smallsat operator', meta:'United Kingdom · Earth observation · Thermal',
+    attrs:{ founded:{v:'2016',ev:['EV-1012']} } }),
+  E('planet_eu','company','Constellation operator (unresolved)',{ region:'Europe', sectors:['eo'],
+    tagline:'Entity partially resolved — insufficient evidence to merge', meta:'Europe · Earth observation',
+    attrs:{ note:{withheld:'entity resolution below threshold'} } }),
+
+  /* --- satcom / infrastructure -------------------------------------- */
+  E('ses','company','SES',{ region:'Luxembourg', sectors:['satcom'],
+    tagline:'Geostationary and MEO satellite operator', meta:'Luxembourg · Satellite communications',
+    attrs:{ founded:{v:'1985',ev:['EV-1013']} } }),
+  E('eutelsat','company','Eutelsat',{ region:'France', sectors:['satcom'],
+    tagline:'Satellite communications operator', meta:'France · Satellite communications',
+    attrs:{ founded:{v:'1977',ev:['EV-1014']} } }),
+  E('dorbit','company','D-Orbit',{ aliases:['d orbit'], region:'Italy', sectors:['infra','ism'],
+    tagline:'In-space logistics and orbital transfer', meta:'Italy · In-space logistics',
+    attrs:{ founded:{v:'2011',ev:['EV-1015']} } }),
+  E('spacefo','company','Space Forge',{ region:'United Kingdom', sectors:['ism'],
+    tagline:'In-space manufacturing of semiconductor materials', meta:'United Kingdom · In-space manufacturing',
+    attrs:{ founded:{v:'2018',ev:['EV-1016']} } }),
+
+  /* --- organizations ------------------------------------------------ */
+  E('esa','organization','ESA',{ aliases:['european space agency'], region:'Europe', sectors:['launch','eo','satcom','ism'],
+    tagline:'Intergovernmental space agency', meta:'Europe · Agency · Programmes',
+    attrs:{ members:{v:'23',ev:['EV-1017']} } }),
+  E('ec','organization','European Commission',{ aliases:['ec','commission'], region:'Europe', sectors:['launch','satcom'],
+    tagline:'Regulatory and procurement authority', meta:'Europe · Policy · Procurement',
+    attrs:{ role:{v:'Programme and procurement authority',ev:['EV-1018']} } }),
+  E('dlr','organization','DLR',{ region:'Germany', sectors:['launch','eo'],
+    tagline:'German aerospace research centre', meta:'Germany · Research · Aerospace',
+    attrs:{ role:{v:'National research agency',ev:['EV-1019']} } }),
+
+  /* --- technologies ------------------------------------------------- */
+  E('reusable','technology','Reusable first stage',{ aliases:['reusability','reuse'], sectors:['launch'],
+    tagline:'Propulsive recovery of the booster stage', meta:'Technology · Propulsion · Recovery',
+    attrs:{ maturity:{v:'TRL 5–7',ev:['EV-1020']} } }),
+  E('methalox','technology','LOX / methane propulsion',{ aliases:['methalox','methane'], sectors:['launch'],
+    tagline:'Methalox engine cycle', meta:'Technology · Propulsion',
+    attrs:{ maturity:{v:'TRL 6–8',ev:['EV-1021']} } }),
+  E('sar','technology','Synthetic aperture radar',{ aliases:['sar'], sectors:['eo'],
+    tagline:'All-weather radar imaging from orbit', meta:'Technology · Sensing · Radar',
+    attrs:{ maturity:{v:'TRL 9',ev:['EV-1022']} } }),
+  E('thermal','technology','Thermal infrared imaging',{ sectors:['eo'],
+    tagline:'Mid-wave infrared imaging payloads', meta:'Technology · Sensing · Infrared',
+    attrs:{ maturity:{v:'TRL 7–8',ev:['EV-1023']} } }),
+  E('otv','technology','Orbital transfer vehicle',{ aliases:['otv','space tug'], sectors:['infra','ism'],
+    tagline:'Last-mile orbital delivery', meta:'Technology · Logistics',
+    attrs:{ maturity:{v:'TRL 8',ev:['EV-1024']} } }),
+  E('crystal','technology','Microgravity crystal growth',{ sectors:['ism'],
+    tagline:'Semiconductor growth in microgravity', meta:'Technology · Materials',
+    attrs:{ maturity:{v:'TRL 4–5',ev:['EV-1025']} } }),
+
+  /* --- missions & sites --------------------------------------------- */
+  E('spectrum','mission','Spectrum flight campaign',{ region:'Norway', sectors:['launch'],
+    tagline:'Orbital flight campaign', meta:'Mission · Orbital',
+    attrs:{ status:{v:'Campaign',ev:['EV-1026']} } }),
+  E('miura','mission','Miura flight campaign',{ region:'Spain', sectors:['launch'],
+    tagline:'Suborbital to orbital progression', meta:'Mission · Orbital',
+    attrs:{ status:{v:'Campaign',ev:['EV-1027']} } }),
+  E('andoya','site','Andøya Spaceport',{ region:'Norway', sectors:['launch'],
+    tagline:'High-latitude orbital launch site', meta:'Norway · Launch site',
+    attrs:{ inclinations:{v:'Polar / SSO',ev:['EV-1028']} } }),
+  E('kourou','site','Guiana Space Centre',{ aliases:['kourou'], region:'France', sectors:['launch'],
+    tagline:'Equatorial launch range', meta:'France · Launch site',
+    attrs:{ inclinations:{v:'Equatorial / GTO',ev:['EV-1029']} } }),
+
+  /* --- investors ---------------------------------------------------- */
+  E('vc_growth','investor','Growth fund (undisclosed)',{ region:'Europe', sectors:['launch','eo'],
+    tagline:'Late-stage venture investor', meta:'Investor · Venture',
+    attrs:{ identity:{withheld:'investor not disclosed in source'} } }),
+  E('vc_sov','investor','Sovereign co-investor',{ region:'Europe', sectors:['launch','ism'],
+    tagline:'State-backed strategic investor', meta:'Investor · Sovereign',
+    attrs:{ identity:{withheld:'investor not disclosed in source'} } }),
+  E('vc_deep','investor','Deep-tech seed fund',{ region:'Europe', sectors:['eo','ism'],
+    tagline:'Early-stage deep technology investor', meta:'Investor · Venture · Seed',
+    attrs:{ identity:{withheld:'investor not disclosed in source'} } }),
+
+  /* --- markets ------------------------------------------------------ */
+  E('m_launch','market','European commercial launch',{ region:'Europe', sectors:['launch'],
+    tagline:'Addressable market segment', meta:'Market · Launch services',
+    attrs:{ operators:{v:'6 resolved in corpus',ev:['EV-1030']}, size:{withheld:'no traceable source'} } }),
+  E('m_eo','market','Earth observation data',{ region:'Europe', sectors:['eo'],
+    tagline:'Imagery and analytics segment', meta:'Market · Data services',
+    attrs:{ size:{withheld:'no traceable source'} } }),
+  E('m_satcom','market','Satellite connectivity',{ region:'Europe', sectors:['satcom'],
+    tagline:'Fixed and mobile connectivity segment', meta:'Market · Connectivity',
+    attrs:{ size:{withheld:'no traceable source'} } }),
+  E('m_ism','market','In-space manufacturing',{ region:'Europe', sectors:['ism'],
+    tagline:'Emerging orbital production segment', meta:'Market · Manufacturing',
+    attrs:{ size:{withheld:'no traceable source'} } })
+];
+
+/* Evidence. `confidence` is model-assigned, never editorial, never rounded up. */
+const EV = (id,claim,conf,slug,pub,obs,method) => ({
+  id, claim, confidence:conf, sourceUri:`fixture://orvyra/synthetic/${slug}`,
+  publishedAt:pub, observedAt:obs, method, provenance:'SYNTHETIC'
+});
+
+const EVIDENCE = [
+  EV('EV-1001','Isar Aerospace was founded in 2018',.93,'registry/de/0181','2024-01-10','2026-01-04','registry parse → entity resolution'),
+  EV('EV-1002','Isar Aerospace closed a growth round in April 2026',.71,'capital/eu/0441','2026-04-16','2026-04-18','pattern extraction → claim assembly'),
+  EV('EV-1003','Rocket Factory Augsburg was founded in 2018',.91,'registry/de/0182','2024-01-10','2026-01-04','registry parse → entity resolution'),
+  EV('EV-1004','PLD Space was founded in 2011',.94,'registry/es/0044','2023-11-02','2026-01-04','registry parse → entity resolution'),
+  EV('EV-1005','PLD Space closed a Series C in March 2026',.68,'capital/eu/0447','2026-03-05','2026-03-07','pattern extraction → claim assembly'),
+  EV('EV-1006','Orbex was founded in 2015',.90,'registry/uk/0771','2023-08-19','2026-01-04','registry parse → entity resolution'),
+  EV('EV-1007','MaiaSpace was founded in 2022',.88,'registry/fr/0210','2024-05-01','2026-01-04','registry parse → entity resolution'),
+  EV('EV-1008','MaiaSpace is funded through programme contracts',.66,'procurement/esa/0092','2026-02-09','2026-02-11','procurement record parse → organization resolution'),
+  EV('EV-1009','Skyrora was founded in 2017',.87,'registry/uk/0774','2023-08-19','2026-01-04','registry parse → entity resolution'),
+  EV('EV-1010','ICEYE was founded in 2014',.92,'registry/fi/0031','2023-06-12','2026-01-04','registry parse → entity resolution'),
+  EV('EV-1011','ICEYE operates a SAR smallsat constellation',.89,'tech/eo/0114','2026-01-22','2026-01-24','document classification → technology linkage'),
+  EV('EV-1012','SatVu was founded in 2016',.86,'registry/uk/0779','2023-08-19','2026-01-04','registry parse → entity resolution'),
+  EV('EV-1013','SES was founded in 1985',.95,'registry/lu/0002','2022-03-01','2026-01-04','registry parse → entity resolution'),
+  EV('EV-1014','Eutelsat was founded in 1977',.95,'registry/fr/0001','2022-03-01','2026-01-04','registry parse → entity resolution'),
+  EV('EV-1015','D-Orbit was founded in 2011',.90,'registry/it/0019','2023-09-14','2026-01-04','registry parse → entity resolution'),
+  EV('EV-1016','Space Forge was founded in 2018',.88,'registry/uk/0782','2023-08-19','2026-01-04','registry parse → entity resolution'),
+  EV('EV-1017','ESA has 23 member states',.94,'org/esa/0001','2025-12-01','2026-01-04','organization record parse'),
+  EV('EV-1018','The European Commission acts as a programme and procurement authority',.90,'policy/eu/0007','2025-10-14','2026-01-04','policy document parse'),
+  EV('EV-1019','DLR operates as the German national aerospace research centre',.92,'org/dlr/0001','2025-09-02','2026-01-04','organization record parse'),
+  EV('EV-1020','Reusable first-stage recovery sits at TRL 5–7 in Europe',.74,'tech/launch/0118','2026-02-27','2026-03-02','document classification → maturity assessment'),
+  EV('EV-1021','LOX/methane propulsion sits at TRL 6–8',.79,'tech/launch/0121','2026-02-27','2026-03-02','document classification → maturity assessment'),
+  EV('EV-1022','Synthetic aperture radar is an operational orbital sensing technology',.93,'tech/eo/0101','2025-11-11','2026-01-04','document classification'),
+  EV('EV-1023','Thermal infrared imaging payloads are in operational demonstration',.81,'tech/eo/0108','2026-01-15','2026-01-18','document classification'),
+  EV('EV-1024','Orbital transfer vehicles are operational for last-mile delivery',.85,'tech/infra/0055','2025-12-20','2026-01-04','document classification'),
+  EV('EV-1025','Microgravity crystal growth remains at low technology readiness',.63,'tech/ism/0012','2026-01-30','2026-02-02','document classification → maturity assessment'),
+  EV('EV-1026','A Spectrum orbital flight campaign is in progress',.77,'mission/eu/0031','2026-04-01','2026-04-02','mission record parse'),
+  EV('EV-1027','A Miura flight campaign is in progress',.75,'mission/eu/0033','2026-03-18','2026-03-20','mission record parse'),
+  EV('EV-1028','Andøya Spaceport supports polar and sun-synchronous inclinations',.88,'site/no/0004','2025-07-08','2026-01-04','site record parse'),
+  EV('EV-1029','The Guiana Space Centre supports equatorial and GTO trajectories',.94,'site/fr/0001','2025-07-08','2026-01-04','site record parse'),
+  EV('EV-1030','At least six launch vehicle operators are active in Europe',.86,'market/eu/0007','2026-04-30','2026-05-01','aggregation across resolved company entities'),
+  EV('EV-1031','An undisclosed growth fund participated in a European launch round',.61,'capital/eu/0442','2026-04-16','2026-04-18','pattern extraction → investor resolution'),
+  EV('EV-1032','A sovereign co-investor participated in a European launch round',.59,'capital/eu/0443','2026-04-16','2026-04-18','pattern extraction → investor resolution'),
+  EV('EV-1033','A deep-tech seed fund holds positions in European EO and ISM companies',.57,'capital/eu/0455','2026-02-20','2026-02-22','pattern extraction → investor resolution'),
+  EV('EV-1034','ESA has contracted European launch developers under programme awards',.72,'procurement/esa/0090','2026-02-09','2026-02-11','procurement record parse'),
+  EV('EV-1035','Isar Aerospace is developing reusable first-stage recovery',.69,'tech/launch/0130','2026-03-11','2026-03-13','document classification → technology linkage'),
+  EV('EV-1036','PLD Space is developing propulsive first-stage recovery',.84,'tech/launch/0118','2026-02-27','2026-03-02','document classification → technology linkage'),
+  EV('EV-1037','MaiaSpace is developing a reusable mini-launcher',.76,'tech/launch/0133','2026-03-11','2026-03-13','document classification → technology linkage'),
+  EV('EV-1038','D-Orbit operates orbital transfer vehicles',.87,'tech/infra/0058','2026-01-08','2026-01-10','document classification → technology linkage'),
+  EV('EV-1039','Space Forge is developing microgravity materials production',.70,'tech/ism/0015','2026-01-30','2026-02-02','document classification → technology linkage'),
+  EV('EV-1040','European launch operators compete in the commercial launch segment',.80,'market/eu/0009','2026-04-30','2026-05-01','market segmentation → entity linkage')
+];
+
+/* Edges. `ev` may not be empty — enforced at load. */
+const R = (from,rel,to,ev,since) => ({ from, rel, to, ev, since:since||null });
+
+const EDGES = [
+  R('vc_growth','invested in','isar',['EV-1002','EV-1031'],'2026-04'),
+  R('vc_sov','invested in','isar',['EV-1002','EV-1032'],'2026-04'),
+  R('vc_growth','invested in','pld',['EV-1005'],'2026-03'),
+  R('vc_deep','invested in','iceye',['EV-1033']),
+  R('vc_deep','invested in','spacefo',['EV-1033']),
+  R('esa','contracted','maia',['EV-1008','EV-1034'],'2026-02'),
+  R('esa','contracted','pld',['EV-1034']),
+  R('esa','contracted','isar',['EV-1034']),
+  R('ec','regulates','m_launch',['EV-1018']),
+  R('ec','regulates','m_satcom',['EV-1018']),
+  R('dlr','researches','reusable',['EV-1019','EV-1020']),
+  R('isar','develops','reusable',['EV-1035']),
+  R('isar','develops','methalox',['EV-1021']),
+  R('pld','develops','reusable',['EV-1036']),
+  R('maia','develops','reusable',['EV-1037']),
+  R('rfa','develops','methalox',['EV-1021']),
+  R('orbex','develops','methalox',['EV-1021']),
+  R('skyrora','develops','methalox',['EV-1021']),
+  R('isar','operates','spectrum',['EV-1026']),
+  R('pld','operates','miura',['EV-1027']),
+  R('spectrum','launches from','andoya',['EV-1026','EV-1028']),
+  R('maia','launches from','kourou',['EV-1029']),
+  R('reusable','targets','m_launch',['EV-1020','EV-1040']),
+  R('methalox','targets','m_launch',['EV-1021','EV-1040']),
+  R('isar','competes in','m_launch',['EV-1030','EV-1040']),
+  R('pld','competes in','m_launch',['EV-1030','EV-1040']),
+  R('rfa','competes in','m_launch',['EV-1030','EV-1040']),
+  R('orbex','competes in','m_launch',['EV-1030','EV-1040']),
+  R('maia','competes in','m_launch',['EV-1030','EV-1040']),
+  R('skyrora','competes in','m_launch',['EV-1030','EV-1040']),
+  R('iceye','develops','sar',['EV-1011']),
+  R('satvu','develops','thermal',['EV-1023']),
+  R('iceye','competes in','m_eo',['EV-1011']),
+  R('satvu','competes in','m_eo',['EV-1023']),
+  R('sar','targets','m_eo',['EV-1022']),
+  R('thermal','targets','m_eo',['EV-1023']),
+  R('ses','competes in','m_satcom',['EV-1013']),
+  R('eutelsat','competes in','m_satcom',['EV-1014']),
+  R('dorbit','develops','otv',['EV-1038']),
+  R('dorbit','competes in','m_ism',['EV-1038']),
+  R('spacefo','develops','crystal',['EV-1039']),
+  R('spacefo','competes in','m_ism',['EV-1039']),
+  R('otv','targets','m_ism',['EV-1024']),
+  R('crystal','targets','m_ism',['EV-1025']),
+  R('dorbit','supplies','iceye',['EV-1038']),
+  R('esa','contracted','dorbit',['EV-1034'])
+];
+
+const SIGNALS = [
+  { at:'2026-04-18', type:'Funding',    entity:'isar',    text:'Growth round closes — two investors resolved, neither disclosed', ev:['EV-1002','EV-1031'], weight:'HIGH' },
+  { at:'2026-04-02', type:'Launch',     entity:'spectrum',text:'Orbital flight campaign in progress at Andøya Spaceport',        ev:['EV-1026'], weight:'HIGH' },
+  { at:'2026-03-20', type:'Launch',     entity:'miura',   text:'Flight campaign progresses toward orbital attempt',              ev:['EV-1027'], weight:'MED'  },
+  { at:'2026-03-13', type:'Technology', entity:'reusable',text:'Two more European operators linked to first-stage recovery',     ev:['EV-1035','EV-1037'], weight:'MED' },
+  { at:'2026-03-07', type:'Funding',    entity:'pld',     text:'Series C recorded — round size not traceable to a source',       ev:['EV-1005'], weight:'MED' },
+  { at:'2026-02-22', type:'Funding',    entity:'vc_deep', text:'Seed fund positions resolved across EO and in-space manufacturing', ev:['EV-1033'], weight:'LOW' },
+  { at:'2026-02-11', type:'Partnership',entity:'maia',    text:'Programme contract resolved against agency procurement record',  ev:['EV-1008','EV-1034'], weight:'MED' },
+  { at:'2026-02-02', type:'Technology', entity:'crystal', text:'Microgravity materials production assessed at low readiness',    ev:['EV-1025'], weight:'LOW' }
+];
+
+/* ========================== INDEX / LOAD ================================ */
+
+const byId = {}, evById = {}, adj = {}, rejected = [];
+ENTITIES.forEach(e => { byId[e.id] = e; adj[e.id] = []; });
+EVIDENCE.forEach(v => { evById[v.id] = v; });
+
+const LOADED_EDGES = [];
+EDGES.forEach((e, i) => {
+  if (!e.ev || !e.ev.length) { rejected.push({ edge:e, reason:'no supporting evidence' }); return; }
+  const missing = e.ev.filter(id => !evById[id]);
+  if (missing.length) { rejected.push({ edge:e, reason:'evidence not in corpus: ' + missing.join(', ') }); return; }
+  if (!byId[e.from] || !byId[e.to]) { rejected.push({ edge:e, reason:'unresolved endpoint' }); return; }
+  const edge = Object.assign({ id:'RE-' + String(i+1).padStart(4,'0') }, e);
+  LOADED_EDGES.push(edge);
+  adj[e.from].push({ edge, other:e.to, out:true });
+  adj[e.to].push({ edge, other:e.from, out:false });
+});
+
+/* ========================== RESOLVER ==================================== */
+
+const norm = s => String(s).toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
+const tokens = s => norm(s).split(' ').filter(t => t.length > 2);
+
+function resolve(text){
+  const n = norm(text);
+  let best = null, bestScore = 0;
+  for (const e of ENTITIES){
+    const names = [e.name, ...e.aliases].map(norm);
+    let s = 0;
+    for (const nm of names){
+      if (nm === n) s = Math.max(s, 1);
+      else if (n.includes(nm) || nm.includes(n)) s = Math.max(s, .8);
+      else {
+        const a = new Set(tokens(nm)), b = tokens(n).filter(t => a.has(t));
+        if (a.size) s = Math.max(s, .6 * b.length / a.size);
+      }
+    }
+    if (s > bestScore){ bestScore = s; best = e; }
+  }
+  return bestScore >= .55 ? { entity:best, score:+bestScore.toFixed(2) } : null;
+}
+
+/* ========================== INTENT PARSING ============================== */
+
+const LEX = {
+  kind: {
+    company:['company','companies','startup','startups','firm','firms','operator','operators','developer','developers'],
+    investor:['investor','investors','vc','vcs','fund','funds','capital','backer','backers'],
+    technology:['technology','technologies','tech'],
+    mission:['mission','missions','campaign','flight'],
+    organization:['agency','agencies','organisation','organization','organizations','institution'],
+    market:['market','markets','segment','segments','sector'],
+    site:['spaceport','spaceports','launch site','range']
+  },
+  sector: {
+    launch:['launch','launcher','launchers','rocket','rockets','vehicle'],
+    eo:['earth observation','eo','imaging','imagery','remote sensing','sar','radar','thermal'],
+    satcom:['satellite communications','satcom','connectivity','communications','broadband'],
+    ism:['in space manufacturing','in-space manufacturing','ism','manufacturing','materials'],
+    infra:['infrastructure','logistics','servicing','transfer','tug']
+  },
+  region: {
+    Europe:['europe','european','eu'], Germany:['german','germany'], Spain:['spain','spanish'],
+    France:['france','french'], 'United Kingdom':['uk','britain','british','united kingdom'],
+    Italy:['italy','italian'], Finland:['finland','finnish'], Norway:['norway','norwegian'],
+    Luxembourg:['luxembourg']
+  },
+  relation: {
+    'invested in':['funding','funded','raised','raise','invest','invested','investment','capital','round','backed'],
+    develops:['develop','developing','develops','building','builds','technology'],
+    operates:['operate','operates','operating','flies','flying'],
+    contracted:['contract','contracted','award','awarded','procurement'],
+    'competes in':['compete','competes','competitor','competitors','players'],
+    regulates:['regulate','regulates','regulation','policy'],
+    supplies:['supply','supplies','supplier','supplies to']
+  }
+};
+
+const IN_EUROPE = new Set(['Europe','Germany','Spain','France','United Kingdom','Italy','Finland','Norway','Luxembourg']);
+
+/* Third-person plural for synthesis. A relation is stored in one canonical
+   form; the surface form is derived, never stored twice. */
+const PLURAL = {
+  'competes in':'compete in', develops:'develop', operates:'operate',
+  targets:'target', supplies:'supply', regulates:'regulate',
+  researches:'research', 'launches from':'launch from',
+  'partners with':'partner with', 'invested in':'invested in', contracted:'were contracted by'
+};
+
+function parse(q){
+  const n = ' ' + norm(q) + ' ';
+  const pick = group => Object.entries(LEX[group])
+    .filter(([,words]) => words.some(w => n.includes(' ' + w + ' ') || n.includes(' ' + w)))
+    .map(([k]) => k);
+
+  const named = [];
+  for (const e of ENTITIES){
+    for (const nm of [e.name, ...e.aliases]){
+      if (nm.length > 3 && n.includes(' ' + norm(nm))) { named.push(e.id); break; }
+    }
+  }
+  return {
+    kinds: pick('kind'),
+    sectors: pick('sector'),
+    regions: pick('region'),
+    relations: pick('relation'),
+    named: [...new Set(named)],
+    recent: /\b(recent|recently|latest|new|now|2026)\b/.test(n),
+    terms: tokens(q)
+  };
+}
+
+/* ========================== RETRIEVAL =================================== */
+
+function retrieve(intent, limit){
+  const scored = ENTITIES.map(e => {
+    let s = 0; const why = [];
+    if (intent.named.includes(e.id)) { s += 6; why.push('named in query'); }
+    if (intent.kinds.length && intent.kinds.includes(e.kind)) { s += 3; why.push('kind match'); }
+    if (intent.sectors.length && e.sectors.some(x => intent.sectors.includes(x))) { s += 3; why.push('sector match'); }
+    if (intent.regions.length){
+      const hit = intent.regions.includes(e.region) ||
+                  (intent.regions.includes('Europe') && IN_EUROPE.has(e.region));
+      if (hit) { s += 2; why.push('region match'); }
+    }
+    if (intent.relations.length){
+      const rel = adj[e.id].some(a => intent.relations.includes(a.edge.rel));
+      if (rel) { s += 2.5; why.push('relationship match'); }
+    }
+    const hay = norm([e.name, e.tagline, e.meta, ...e.aliases].join(' '));
+    const overlap = intent.terms.filter(t => hay.includes(t)).length;
+    if (overlap) { s += overlap * 1.2; why.push('term match'); }
+    if (intent.kinds.length === 0 && intent.named.length === 0 && e.kind === 'company') s += .8;
+    return { e, s, why };
+  }).filter(r => r.s > 1.5).sort((a,b) => b.s - a.s);
+
+  return scored.slice(0, limit || 6);
+}
+
+/* ========================== TRAVERSAL =================================== */
+
+function neighbours(id){ return adj[id] || []; }
+
+function pathTo(startId, predicate, maxDepth){
+  const seen = new Set([startId]);
+  let frontier = [[{ id:startId, rel:null }]];
+  for (let d = 0; d < (maxDepth || 4); d++){
+    const next = [];
+    for (const path of frontier){
+      const tip = path[path.length - 1].id;
+      for (const a of neighbours(tip)){
+        if (seen.has(a.other)) continue;
+        const extended = path.concat([{ id:a.other, rel:a.edge.rel, edge:a.edge, out:a.out }]);
+        if (predicate(byId[a.other])) return extended;
+        seen.add(a.other); next.push(extended);
+      }
+    }
+    frontier = next;
+    if (!frontier.length) break;
+  }
+  return null;
+}
+
+function subgraph(focusId, depth, cap){
+  depth = depth || 2; cap = cap || 16;
+  const nodes = new Map([[focusId, 0]]);
+  let ring = [focusId];
+  for (let d = 1; d <= depth; d++){
+    const next = [];
+    for (const id of ring){
+      for (const a of neighbours(id)){
+        if (nodes.has(a.other) || nodes.size >= cap) continue;
+        nodes.set(a.other, d); next.push(a.other);
+      }
+    }
+    ring = next;
+  }
+  const ids = new Set(nodes.keys());
+  return {
+    nodes: [...nodes].map(([id, d]) => ({ id, depth:d, entity:byId[id] })),
+    edges: LOADED_EDGES.filter(e => ids.has(e.from) && ids.has(e.to))
+  };
+}
+
+/* ========================== EVIDENCE ==================================== */
+
+function gatherEvidence(ids){
+  const out = [];
+  const seen = new Set();
+  for (const id of ids){
+    if (seen.has(id) || !evById[id]) continue;
+    seen.add(id); out.push(evById[id]);
+  }
+  return out.sort((a,b) => b.confidence - a.confidence);
+}
+
+/* Corpus confidence: mean of contributing evidence, floored by the weakest
+   link in any path actually used. Never rounded up, never asserted. */
+function aggregateConfidence(evidence){
+  if (!evidence.length) return null;
+  const mean = evidence.reduce((s,e) => s + e.confidence, 0) / evidence.length;
+  const min = Math.min(...evidence.map(e => e.confidence));
+  return +(mean * .6 + min * .4).toFixed(2);
+}
+
+/* ========================== SYNTHESIS =================================== */
+/* Every sentence is assembled from facts already in the store and carries the
+   evidence ids it was built from. Nothing here writes prose about the world. */
+
+function synthesise(intent, hits, question){
+  const out = [];
+  if (!hits.length){
+    return [{ text:'No entity in this corpus matches that query. The corpus covers European launch, Earth observation, satellite communications and in-space manufacturing.', refs:[] }];
+  }
+
+  const kindLabel = k => (KINDS[k] ? KINDS[k].label.toLowerCase() : k);
+  const list = hits.map(h => h.e);
+  const kindsUsed = [...new Set(list.map(e => e.kind))];
+  const SECTOR_LABEL = { launch:'launch', eo:'Earth observation', satcom:'satellite communications',
+                         ism:'in-space manufacturing', infra:'space infrastructure' };
+  const regionWord = intent.regions.includes('Europe') ? 'European'
+                   : intent.regions.length ? intent.regions.join(' / ') : '';
+  const sectorWord = intent.sectors.map(s => SECTOR_LABEL[s]).join(' and ');
+  const scope = [regionWord, sectorWord].filter(Boolean).join(' ');
+
+  const one = list.length === 1;
+  const noun = kindsUsed.length === 1
+    ? kindLabel(kindsUsed[0]) + (one ? '' : kindLabel(kindsUsed[0]).endsWith('y') ? 'ies' : 's')
+    : (one ? 'entity record' : 'entity records');
+  out.push({
+    text: `${list.length} ${noun.replace('companys','companies')}` +
+          `${scope ? ' in ' + scope : ''} ${one ? 'matches' : 'match'} this query: ` +
+          list.map(e => `{{${e.id}}}`).join(', ') + '.',
+    refs: []
+  });
+
+  /* shared structure: the most common target the hits point at */
+  const targets = {};
+  for (const e of list){
+    for (const a of neighbours(e.id)){
+      if (!a.out) continue;
+      const key = a.edge.rel + '|' + a.other;
+      (targets[key] = targets[key] || { rel:a.edge.rel, to:a.other, from:[], ev:[] });
+      targets[key].from.push(e.id);
+      targets[key].ev.push(...a.edge.ev);
+    }
+  }
+  const shared = Object.values(targets)
+    .filter(t => t.from.length > 1)
+    .sort((a,b) => b.from.length - a.from.length)[0];
+  if (shared){
+    out.push({
+      text: `${shared.from.length} of them ${PLURAL[shared.rel] || shared.rel} {{${shared.to}}}.`,
+      refs: [...new Set(shared.ev)].slice(0,3)
+    });
+  }
+
+  /* incoming capital or contracts, if the query is about funding */
+  if (intent.relations.includes('invested in') || /fund|capital|rais/.test(norm(question))){
+    const funded = list.filter(e => neighbours(e.id).some(a => !a.out && a.edge.rel === 'invested in'));
+    const contracted = list.filter(e => neighbours(e.id).some(a => !a.out && a.edge.rel === 'contracted'));
+    if (funded.length || contracted.length){
+      const evs = [];
+      funded.concat(contracted).forEach(e => neighbours(e.id).forEach(a => {
+        if (!a.out && (a.edge.rel === 'invested in' || a.edge.rel === 'contracted')) evs.push(...a.edge.ev);
+      }));
+      out.push({
+        text: `${funded.length} carry resolved investor relationships and ${contracted.length} carry programme contracts, which are funding of a different kind.`,
+        refs: [...new Set(evs)].slice(0,3)
+      });
+    }
+  }
+
+  return out;
+}
+
+function withheldFor(list){
+  const out = [];
+  for (const e of list){
+    for (const [k,v] of Object.entries(e.attrs || {})){
+      if (v && v.withheld) out.push({ entity:e.id, field:k, reason:v.withheld });
+    }
+  }
+  return out;
+}
+
+/* ========================== QUERY ======================================= */
+
+function query(question){
+  const t0 = (typeof performance !== 'undefined' ? performance.now() : Date.now());
+  const intent = parse(question || '');
+  const hits = retrieve(intent, 6);
+  const list = hits.map(h => h.e);
+
+  const usedEdges = [];
+  for (const e of list){
+    for (const a of neighbours(e.id)){
+      if (list.some(x => x.id === a.other) || a.edge.rel === 'invested in' ||
+          a.edge.rel === 'contracted' || a.edge.rel === 'develops' || a.edge.rel === 'competes in'){
+        usedEdges.push(a.edge);
+      }
+    }
+  }
+  const uniqueEdges = [...new Map(usedEdges.map(e => [e.id, e])).values()];
+
+  let path = null;
+  if (list.length){
+    const anchor = list.find(e => e.kind === 'company' &&
+                    neighbours(e.id).some(a => !a.out && (a.edge.rel === 'invested in' || a.edge.rel === 'contracted')))
+                || list.find(e => e.kind === 'company')
+                || list[0];
+    const forward = pathTo(anchor.id, e => e.kind === 'market', 3);
+    if (forward){
+      const src = neighbours(anchor.id).find(a => !a.out && (a.edge.rel === 'invested in' || a.edge.rel === 'contracted'));
+      path = src
+        ? [{ id:src.other, rel:null }, Object.assign({}, forward[0], { rel:src.edge.rel, edge:src.edge })]
+            .concat(forward.slice(1))
+        : forward;
+    }
+  }
+
+  const evIds = [];
+  uniqueEdges.forEach(e => evIds.push(...e.ev));
+  if (path) path.forEach(step => step.edge && evIds.push(...step.edge.ev));
+  list.forEach(e => Object.values(e.attrs || {}).forEach(a => a && a.ev && evIds.push(...a.ev)));
+
+  const evidence = gatherEvidence(evIds).slice(0, 8);
+  const synthesis = synthesise(intent, hits, question);
+
+  return {
+    question: question,
+    intent,
+    synthesis,
+    entities: hits.map(h => ({ id:h.e.id, entity:h.e, score:+h.s.toFixed(1), why:[...new Set(h.why)] })),
+    path,
+    edges: uniqueEdges,
+    evidence,
+    withheld: withheldFor(list),
+    confidence: aggregateConfidence(evidence),
+    provenance: 'SYNTHETIC',
+    stats: {
+      scanned: ENTITIES.length,
+      matched: list.length,
+      edges: uniqueEdges.length,
+      evidence: evidence.length,
+      ms: +((typeof performance !== 'undefined' ? performance.now() : Date.now()) - t0).toFixed(1)
+    }
+  };
+}
+
+/* ========================== PUBLIC API ================================== */
+
+return {
+  KINDS, RELATIONS,
+  entities: ENTITIES,
+  edges: LOADED_EDGES,
+  evidence: EVIDENCE,
+  signals: SIGNALS,
+  rejected,
+  entity: id => byId[id],
+  ev: id => evById[id],
+  neighbours, resolve, parse, retrieve, query, subgraph, pathTo,
+  counts: () => {
+    const c = {};
+    for (const k of Object.keys(KINDS)) c[k] = ENTITIES.filter(e => e.kind === k).length;
+    return c;
+  },
+  corpus: {
+    id: 'orvyra-fixture-2026-08',
+    provenance: 'SYNTHETIC',
+    entities: ENTITIES.length,
+    relationships: LOADED_EDGES.length,
+    evidence: EVIDENCE.length,
+    signals: SIGNALS.length,
+    rejectedEdges: rejected.length
+  }
+};
+})();
+
+if (typeof module !== 'undefined' && module.exports) module.exports = ORVYRA;
+</script>
+<script>
+const REDUCED = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+let scrollT = 0;
+/* ============================================================================
+   CINEMATIC NIGHT EARTH
+   Textures are generated at runtime from coarse coastline geometry and real
+   city coordinates, so the file has no external asset dependency. In the
+   repository, swap `buildEarthTextures()` for NASA Black Marble (night),
+   Blue Marble (albedo) and a cloud composite, KTX2-compressed.
+   ============================================================================ */
+
+/* Simplified coastlines: [lon, lat] rings. Deliberately coarse — enough to read
+   as Earth at orbital distance, cheap enough to rasterise in one frame. */
+const COASTS = [
+ [[-168,65],[-158,71],[-140,70],[-125,70],[-110,69],[-100,69],[-95,73],[-85,73],[-78,70],[-72,63],[-64,60],[-56,53],[-60,47],[-66,45],[-70,42],[-74,39],[-76,35],[-81,31],[-80,25],[-84,30],[-89,29],[-95,29],[-97,22],[-95,17],[-92,15],[-88,16],[-84,10],[-78,8],[-82,8],[-88,13],[-95,16],[-105,20],[-110,24],[-114,30],[-121,35],[-124,42],[-125,49],[-133,55],[-145,60],[-152,58],[-163,55],[-166,60]],
+ [[-45,60],[-30,68],[-22,70],[-20,76],[-30,83],[-45,83],[-58,82],[-70,78],[-60,70],[-52,64]],
+ [[-81,-4],[-79,1],[-77,8],[-72,12],[-62,10],[-52,5],[-50,0],[-44,-2],[-35,-5],[-38,-13],[-39,-18],[-48,-25],[-53,-34],[-57,-38],[-62,-40],[-65,-45],[-68,-52],[-75,-53],[-73,-45],[-72,-38],[-71,-30],[-70,-20],[-70,-18],[-76,-14],[-81,-6]],
+ [[-17,15],[-16,21],[-10,27],[-6,35],[10,37],[20,32],[32,31],[35,24],[43,12],[51,12],[42,-2],[40,-10],[35,-20],[32,-26],[26,-34],[18,-34],[12,-17],[9,-1],[3,6],[-8,5],[-13,9]],
+ [[-10,36],[-9,43],[-2,44],[0,49],[-5,50],[2,51],[8,54],[10,58],[5,59],[8,63],[15,69],[25,71],[35,70],[50,70],[60,72],[75,74],[90,76],[105,77],[130,73],[142,72],[160,70],[170,68],[178,65],[170,60],[162,58],[155,57],[150,59],[142,54],[135,45],[130,42],[128,35],[122,31],[120,25],[110,21],[105,10],[100,13],[98,8],[95,16],[90,22],[80,15],[77,8],[72,20],[68,24],[62,25],[57,22],[50,28],[43,40],[35,36],[28,40],[24,35],[15,40],[18,40],[12,45],[8,44],[3,42],[-3,36]],
+ [[113,-22],[114,-30],[118,-35],[130,-32],[137,-35],[141,-38],[147,-38],[150,-37],[153,-28],[146,-19],[142,-11],[136,-12],[130,-12],[125,-14],[121,-19]],
+ [[-8,51],[-5,54],[-6,58],[-2,58],[0,54],[1,51],[-5,50]],
+ [[130,31],[135,34],[140,36],[142,40],[145,44],[141,45],[139,38],[134,33]],
+ [[43,-12],[49,-13],[50,-19],[47,-25],[44,-22],[43,-16]],
+ [[166,-46],[173,-41],[178,-38],[175,-36],[172,-34],[170,-43]],
+ [[-180,-72],[-120,-74],[-60,-70],[0,-70],[60,-67],[120,-66],[180,-72],[180,-90],[-180,-90]]
+];
+
+/* Real coordinates, weighted by relative night-light intensity. */
+const CITIES = [
+ [-74.0,40.7,1.0],[-118.2,34.0,.95],[-87.6,41.9,.8],[-95.4,29.8,.75],[-80.2,25.8,.7],
+ [-79.4,43.7,.7],[-122.4,37.8,.7],[-77.0,38.9,.7],[-84.4,33.7,.65],[-96.8,32.8,.7],
+ [-99.1,19.4,.9],[-58.4,-34.6,.8],[-46.6,-23.5,.9],[-43.2,-22.9,.75],[-70.6,-33.4,.65],
+ [-74.1,4.7,.65],[-77.0,-12.0,.6],[-66.9,10.5,.55],
+ [-0.13,51.5,1.0],[2.35,48.85,.95],[4.9,52.4,.7],[4.35,50.85,.65],[13.4,52.5,.8],
+ [8.68,50.1,.7],[11.58,48.14,.65],[9.99,53.55,.6],[6.96,50.94,.6],[12.5,41.9,.75],
+ [9.19,45.46,.7],[-3.7,40.4,.8],[2.17,41.39,.7],[-9.14,38.7,.6],[12.57,55.68,.6],
+ [18.07,59.33,.6],[10.75,59.91,.55],[24.94,60.17,.5],[21.0,52.23,.6],[14.42,50.09,.6],
+ [16.37,48.21,.6],[19.04,47.5,.55],[26.1,44.43,.55],[23.73,37.98,.55],[28.98,41.01,.85],
+ [30.52,50.45,.6],[37.62,55.75,.9],[30.31,59.94,.7],
+ [31.24,30.05,.85],[35.21,31.77,.6],[46.72,24.71,.7],[55.27,25.2,.8],[51.42,35.7,.75],
+ [3.4,6.5,.7],[7.5,9.06,.5],[36.82,-1.29,.5],[28.05,-26.2,.65],[18.42,-33.93,.55],
+ [39.27,-6.8,.45],[32.58,0.32,.4],
+ [72.88,19.08,.9],[77.21,28.61,.95],[88.36,22.57,.8],[80.27,13.08,.75],[78.47,17.4,.7],
+ [77.59,12.97,.7],[72.58,23.03,.6],[73.86,18.52,.6],[74.34,31.55,.65],[67.0,24.86,.7],
+ [90.4,23.81,.7],[85.32,27.7,.45],[79.86,6.93,.45],
+ [116.4,39.9,.95],[121.47,31.23,1.0],[113.26,23.13,.9],[114.06,22.54,.85],[120.15,30.28,.75],
+ [118.78,32.06,.7],[108.94,34.34,.65],[104.07,30.57,.7],[106.55,29.56,.7],[123.43,41.8,.6],
+ [125.32,43.88,.55],[126.63,45.75,.55],[117.2,39.13,.7],[114.3,30.59,.7],
+ [126.98,37.57,.95],[129.08,35.18,.7],[121.56,25.03,.85],[114.17,22.32,.9],
+ [139.69,35.69,1.0],[135.5,34.69,.85],[136.9,35.18,.7],[130.4,33.59,.6],[141.35,43.06,.55],
+ [100.5,13.75,.8],[106.7,10.78,.7],[105.85,21.03,.65],[101.69,3.14,.7],[103.82,1.35,.8],
+ [106.85,-6.21,.85],[112.75,-7.25,.6],[120.98,14.6,.75],
+ [151.2,-33.87,.7],[144.96,-37.81,.7],[153.02,-27.47,.6],[115.86,-31.95,.5],
+ [174.76,-36.85,.5],[-123.1,49.28,.6],[-113.5,53.5,.5],[-73.57,45.5,.65],[-3.2,55.95,.5],
+ [-1.9,52.48,.55],[-2.24,53.48,.55],[5.12,52.09,.55],[7.63,51.96,.5],[-8.62,41.15,.5]
+];
+
+function buildEarthTextures(){
+  const W = 2048, H = 1024;
+
+  /* --- surface (albedo, very dark: this planet is mostly unlit) --- */
+  const s = document.createElement('canvas'); s.width=W; s.height=H;
+  const c = s.getContext('2d');
+  c.fillStyle = '#040910'; c.fillRect(0,0,W,H);                    // ocean
+  const proj = (lon,lat)=>[ (lon+180)/360*W, (90-lat)/180*H ];
+  c.beginPath();
+  for(const ring of COASTS){
+    ring.forEach((p,i)=>{ const [x,y]=proj(p[0],p[1]); i?c.lineTo(x,y):c.moveTo(x,y); });
+    c.closePath();
+  }
+  c.fillStyle = '#0d1119'; c.fill();                               // land
+  /* faint terrain variance so continents aren't flat fills */
+  for(let i=0;i<26000;i++){
+    const x=Math.random()*W, y=Math.random()*H;
+    c.fillStyle = `rgba(255,255,255,${Math.random()*0.012})`;
+    c.fillRect(x,y,1+Math.random()*2,1+Math.random()*2);
+  }
+  /* polar brightening */
+  const pg = c.createLinearGradient(0,0,0,H);
+  pg.addColorStop(0,'rgba(200,225,255,.30)'); pg.addColorStop(.13,'rgba(200,225,255,0)');
+  pg.addColorStop(.87,'rgba(200,225,255,0)'); pg.addColorStop(1,'rgba(210,232,255,.34)');
+  c.fillStyle=pg; c.fillRect(0,0,W,H);
+
+  /* land mask for constraining city dust */
+  const mask = c.getImageData(0,0,W,H).data;
+  const isLand = (x,y)=> mask[((y|0)*W+(x|0))*4] > 8;
+
+  /* --- night lights --- */
+  const n = document.createElement('canvas'); n.width=W; n.height=H;
+  const g = n.getContext('2d');
+  g.fillStyle='#000'; g.fillRect(0,0,W,H);
+  g.globalCompositeOperation='lighter';
+
+  const glow=(x,y,r,a,warm)=>{
+    const grd=g.createRadialGradient(x,y,0,x,y,r);
+    grd.addColorStop(0,`rgba(255,${226-warm*22},${180-warm*44},${a})`);
+    grd.addColorStop(.35,`rgba(255,${196-warm*20},${132-warm*36},${a*.36})`);
+    grd.addColorStop(1,'rgba(255,170,90,0)');
+    g.fillStyle=grd; g.beginPath(); g.arc(x,y,r,0,6.2832); g.fill();
+  };
+
+  for(const [lon,lat,w] of CITIES){
+    const [x,y]=proj(lon,lat);
+    glow(x,y,4+w*7,.10+w*.34,w);
+    glow(x,y,1.1+w*1.9,.55+w*.42,w*.4);
+    /* satellite conurbation scatter */
+    const sats = Math.round(w*11);
+    for(let i=0;i<sats;i++){
+      const a=Math.random()*6.2832, d=Math.pow(Math.random(),.55)*(9+w*26);
+      const sx=x+Math.cos(a)*d, sy=y+Math.sin(a)*d*.75;
+      if(sx<0||sy<0||sx>=W||sy>=H||!isLand(sx,sy)) continue;
+      glow(sx,sy,.7+Math.random()*1.6,.18+Math.random()*.34,w*.5);
+    }
+  }
+  /* sparse inhabited-land dusting so continents aren't pure black */
+  for(let i=0;i<9000;i++){
+    const x=Math.random()*W, y=H*0.10 + Math.random()*H*0.72;
+    if(!isLand(x,y)) continue;
+    if(Math.random()>0.30) continue;
+    glow(x,y,.5+Math.random(),.05+Math.random()*.14,.3);
+  }
+  g.globalCompositeOperation='source-over';
+
+  /* --- clouds (fbm value noise) --- */
+  const CW=1024, CH=512;
+  const cl=document.createElement('canvas'); cl.width=CW; cl.height=CH;
+  const cc=cl.getContext('2d');
+  const img=cc.createImageData(CW,CH);
+  const perm=new Uint8Array(512); for(let i=0;i<256;i++) perm[i]=perm[i+256]=(Math.random()*256)|0;
+  const fade=t=>t*t*(3-2*t);
+  function vnoise(x,y){
+    const xi=Math.floor(x)&255, yi=Math.floor(y)&255;
+    const xf=x-Math.floor(x), yf=y-Math.floor(y);
+    const a=perm[(perm[xi]+yi)&255]/255, b=perm[(perm[(xi+1)&255]+yi)&255]/255;
+    const cx=perm[(perm[xi]+yi+1)&255]/255, d=perm[(perm[(xi+1)&255]+yi+1)&255]/255;
+    const u=fade(xf), v=fade(yf);
+    return (a*(1-u)+b*u)*(1-v) + (cx*(1-u)+d*u)*v;
+  }
+  for(let y=0;y<CH;y++){
+    const lat=(y/CH)*Math.PI;
+    /* banded circulation: ITCZ + mid-latitude storm tracks */
+    const band = .46 + .38*Math.abs(Math.sin(lat*3.1)) - .30*Math.abs(Math.cos(lat));
+    for(let x=0;x<CW;x++){
+      let v=0, amp=.55, f=3.1;
+      for(let o=0;o<5;o++){ v += vnoise(x/CW*f*4, y/CH*f*2)*amp; amp*=.5; f*=2.05; }
+      let a=(v-0.42)*2.4*band;
+      a=Math.max(0,Math.min(1,a));
+      const i=(y*CW+x)*4;
+      img.data[i]=img.data[i+1]=img.data[i+2]=255;
+      img.data[i+3]=a*230;
+    }
+  }
+  cc.putImageData(img,0,0);
+
+  const mk = cv => { const t=new THREE.CanvasTexture(cv); t.anisotropy=4; t.wrapS=THREE.RepeatWrapping; return t; };
+  return { surface:mk(s), night:mk(n), clouds:mk(cl) };
+}
+
+/* ------------------------------ scene ------------------------------------ */
+let renderer, scene, camera, earthGroup, earthMesh, cloudMesh, orbitGroups=[], particleSets=[];
+let target = { scale:1, x:0, z:0, dim:0 }, current = { scale:1, x:0, z:0, dim:0 };
+
+function initStage(){
+  const host = document.getElementById('stage');
+  if(!window.THREE){ host.style.display='none'; return; }
+
+  renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true, powerPreference:'high-performance' });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.85));
+  renderer.setSize(innerWidth, innerHeight);
+  host.appendChild(renderer.domElement);
+
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(30, innerWidth/innerHeight, .1, 100);
+  camera.position.set(0,0,5.2);
+
+  const tex = buildEarthTextures();
+  earthGroup = new THREE.Group();
+  scene.add(earthGroup);
+
+  const SUN = new THREE.Vector3(-0.72, 0.30, 0.62).normalize();
+
+  /* --- Earth: custom shader, night-side dominant ---------------------- */
+  const earthMat = new THREE.ShaderMaterial({
+    uniforms:{
+      uSurface:{value:tex.surface}, uNight:{value:tex.night},
+      uSun:{value:SUN}, uTime:{value:0}
+    },
+    vertexShader:`
+      varying vec2 vUv; varying vec3 vN; varying vec3 vView;
+      void main(){
+        vUv = uv;
+        vN = normalize(mat3(modelMatrix) * normal);
+        vec4 wp = modelMatrix * vec4(position,1.0);
+        vView = normalize(cameraPosition - wp.xyz);
+        gl_Position = projectionMatrix * viewMatrix * wp;
+      }`,
+    fragmentShader:`
+      uniform sampler2D uSurface; uniform sampler2D uNight;
+      uniform vec3 uSun;
+      varying vec2 vUv; varying vec3 vN; varying vec3 vView;
+      void main(){
+        vec3 N = normalize(vN);
+        float d = dot(N, normalize(uSun));
+
+        vec3 surf = texture2D(uSurface, vUv).rgb;
+        vec3 lights = texture2D(uNight, vUv).rgb;
+
+        // daylight: present only as a narrow, grazing sliver on the limb
+        float day = smoothstep(-0.02, 0.34, d);
+        vec3 lit = surf * day * 1.55;
+
+        // night side: city lights, faded through the terminator
+        float night = smoothstep(0.10, -0.16, d);
+        vec3 glow = lights * night * 1.35;
+
+        // ambient earthshine so the dark limb is not pure void
+        vec3 amb = surf * 0.13 + vec3(0.004,0.010,0.020);
+
+        // atmospheric rim on the sunlit edge only
+        float fres = pow(1.0 - max(dot(N, normalize(vView)), 0.0), 3.1);
+        vec3 rim = vec3(0.20,0.48,0.78) * fres * smoothstep(-0.30, 0.55, d) * 0.85;
+
+        gl_FragColor = vec4(lit + glow + amb + rim, 1.0);
+      }`
+  });
+  earthMesh = new THREE.Mesh(new THREE.SphereGeometry(1, 96, 96), earthMat);
+  earthGroup.add(earthMesh);
+
+  /* --- clouds ---------------------------------------------------------- */
+  cloudMesh = new THREE.Mesh(
+    new THREE.SphereGeometry(1.008, 72, 72),
+    new THREE.ShaderMaterial({
+      transparent:true, depthWrite:false,
+      uniforms:{ uMap:{value:tex.clouds}, uSun:{value:SUN} },
+      vertexShader:`varying vec2 vUv; varying vec3 vN;
+        void main(){ vUv=uv; vN=normalize(mat3(modelMatrix)*normal);
+        gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
+      fragmentShader:`
+        uniform sampler2D uMap; uniform vec3 uSun; varying vec2 vUv; varying vec3 vN;
+        void main(){
+          float a = texture2D(uMap, vUv).a;
+          float d = dot(normalize(vN), normalize(uSun));
+          float lit = smoothstep(-0.12, 0.45, d);
+          // sunlit clouds read white; night clouds only diffuse city light faintly
+          vec3 col = mix(vec3(0.055,0.075,0.10), vec3(0.80,0.86,0.95), lit);
+          float alpha = a * (0.10 + lit*0.62);
+          gl_FragColor = vec4(col, alpha);
+        }`
+    })
+  );
+  earthGroup.add(cloudMesh);
+
+  /* --- atmosphere ------------------------------------------------------ */
+  earthGroup.add(new THREE.Mesh(
+    new THREE.SphereGeometry(1.115, 64, 64),
+    new THREE.ShaderMaterial({
+      transparent:true, side:THREE.BackSide, depthWrite:false, blending:THREE.AdditiveBlending,
+      uniforms:{ uSun:{value:SUN} },
+      vertexShader:`varying vec3 vN; varying vec3 vP;
+        void main(){ vN=normalize(mat3(modelMatrix)*normal);
+        vP=(modelMatrix*vec4(position,1.0)).xyz;
+        gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
+      fragmentShader:`
+        uniform vec3 uSun; varying vec3 vN; varying vec3 vP;
+        void main(){
+          vec3 V = normalize(cameraPosition - vP);
+          float f = pow(1.0 - abs(dot(normalize(vN), V)), 3.4);
+          float d = dot(normalize(-vN), normalize(uSun));
+          float sunside = smoothstep(-0.55, 0.65, d);
+          vec3 col = mix(vec3(0.06,0.16,0.30), vec3(0.35,0.62,0.92), sunside);
+          gl_FragColor = vec4(col, f * (0.10 + sunside*0.52));
+        }`
+    })
+  ));
+
+  /* --- orbital planes + particles -------------------------------------- */
+  const ORBITS = [
+    { r:1.34, inc: 0.30, node: 0.4,  spd: 0.028, n:4 },
+    { r:1.52, inc: 1.10, node: 1.9,  spd: 0.021, n:3 },
+    { r:1.71, inc:-0.62, node:-0.7,  spd: 0.017, n:4 },
+    { r:1.93, inc: 1.42, node: 2.6,  spd: 0.013, n:3 },
+    { r:2.18, inc:-1.15, node: 0.95, spd: 0.010, n:2 }
+  ];
+
+  const sprite = (()=>{ // soft round glow for particles
+    const cv=document.createElement('canvas'); cv.width=cv.height=64;
+    const x=cv.getContext('2d'); const gr=x.createRadialGradient(32,32,0,32,32,32);
+    gr.addColorStop(0,'rgba(255,255,255,1)'); gr.addColorStop(.22,'rgba(150,240,250,.85)');
+    gr.addColorStop(.55,'rgba(79,214,224,.20)'); gr.addColorStop(1,'rgba(79,214,224,0)');
+    x.fillStyle=gr; x.fillRect(0,0,64,64);
+    return new THREE.CanvasTexture(cv);
+  })();
+
+  ORBITS.forEach((o,idx)=>{
+    const g = new THREE.Group();
+    g.rotation.set(o.inc, o.node, idx*0.31);
+    earthGroup.add(g);
+
+    const pts=[]; const SEG=256;
+    for(let i=0;i<=SEG;i++){ const a=i/SEG*Math.PI*2; pts.push(new THREE.Vector3(Math.cos(a)*o.r,0,Math.sin(a)*o.r)); }
+    const line = new THREE.Line(
+      new THREE.BufferGeometry().setFromPoints(pts),
+      new THREE.LineBasicMaterial({ color:0x4fd6e0, transparent:true, opacity:.055 + idx*0.006, depthWrite:false })
+    );
+    g.add(line);
+
+    const set = { group:g, r:o.r, spd:o.spd, meshes:[] };
+    for(let i=0;i<o.n;i++){
+      const m = new THREE.Sprite(new THREE.SpriteMaterial({
+        map:sprite, color:0xffffff, transparent:true, blending:THREE.AdditiveBlending,
+        depthTest:true, depthWrite:false, opacity:.5+Math.random()*.35
+      }));
+      const sc = 0.048 + Math.random()*0.036;
+      m.scale.set(sc,sc,sc);
+      m.userData.phase = Math.random()*Math.PI*2;
+      m.userData.rate  = o.spd * (0.72 + Math.random()*0.66);
+      g.add(m); set.meshes.push(m);
+    }
+    orbitGroups.push(g); particleSets.push(set);
+  });
+
+  /* --- starfield ------------------------------------------------------- */
+  const sg = new THREE.BufferGeometry();
+  const N=1400, pos=new Float32Array(N*3), sz=new Float32Array(N);
+  for(let i=0;i<N;i++){
+    const v = new THREE.Vector3().setFromSphericalCoords(
+      22+Math.random()*10, Math.acos(2*Math.random()-1), Math.random()*Math.PI*2);
+    pos.set([v.x,v.y,v.z], i*3); sz[i]=Math.random();
+  }
+  sg.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  scene.add(new THREE.Points(sg, new THREE.PointsMaterial({
+    color:0x9fb4cc, size:.035, sizeAttenuation:true, transparent:true, opacity:.62, depthWrite:false
+  })));
+
+  layout(); addEventListener('resize', onResize);
+  animate(0);
+}
+
+function layout(){
+  const mobile = innerWidth < 860;
+  target.x = mobile ? 0 : Math.min(1.30, innerWidth/1600 * 1.30);
+  target.scale = mobile ? 0.94 : 1;
+  target.z = 0;
+  if(mobile){ camera.position.set(0,0,5.9); earthGroup.position.y = 1.05; }
+  else { camera.position.set(0,0,5.2); earthGroup.position.y = 0; }
+  camera.fov = mobile ? 34 : 30;
+  camera.updateProjectionMatrix();
+}
+function onResize(){
+  if(!renderer) return;
+  renderer.setSize(innerWidth, innerHeight);
+  camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix();
+  layout();
+}
+
+function animate(ms){
+  requestAnimationFrame(animate);
+  const t = ms*0.001;
+
+  /* eased transitions — nothing snaps */
+  const k = REDUCED ? 1 : 0.045;
+  current.x     += (target.x - current.x) * k;
+  current.z     += (target.z - current.z) * k;
+  current.scale += (target.scale - current.scale) * k;
+  current.dim   += (target.dim - current.dim) * k;
+
+  earthGroup.position.x = current.x;
+  earthGroup.position.z = current.z;
+  earthGroup.scale.setScalar(current.scale);
+
+  if(!REDUCED){
+    earthMesh.rotation.y = t * 0.0126;            // ~8 min per revolution
+    cloudMesh.rotation.y = t * 0.0163;            // clouds drift independently
+    cloudMesh.rotation.x = Math.sin(t*0.04)*0.006;
+    orbitGroups.forEach((g,i)=>{ g.rotation.y += 0.00012 * (i%2?1:-1); });
+    particleSets.forEach(set=>{
+      set.meshes.forEach(m=>{
+        const a = m.userData.phase + t*m.userData.rate;
+        m.position.set(Math.cos(a)*set.r, 0, Math.sin(a)*set.r);
+      });
+    });
+  }
+
+  /* parallax on scroll: the planet recedes as the narrative advances */
+  const p = Math.min(1, scrollT / (innerHeight*1.4));
+  earthGroup.position.y += ((innerWidth<860 ? 1.05 : 0) + p*0.55 - earthGroup.position.y)*0.06;
+
+  renderer.render(scene, camera);
+}
+
+/* ============================================================================
+   ORVYRA — PRODUCT EXPERIENCE
+   Binds the interface to the intelligence core. This file renders; it does not
+   know any facts about the space economy. Every string about the world comes
+   from ORVYRA.query() or the corpus.
+   ============================================================================ */
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+const K = ORVYRA.KINDS;
+
+/* entity reference token {{id}} → clickable link */
+const bind = t => String(t).replace(/\{\{(\w+)\}\}/g, (m, id) => {
+  const e = ORVYRA.entity(id);
+  return e ? `<span class="entity-link" data-entity="${id}">${esc(e.name)}</span>` : id;
+});
+
+/* ------------------------------ landing ---------------------------------- */
+const C = ORVYRA.corpus;
+$('#corpusStatus').textContent = 'CORPUS ' + C.id.split('-').pop().toUpperCase();
+$('#heroFoot').innerHTML =
+  [['ENTITIES',C.entities],['RELATIONSHIPS',C.relationships],['SOURCES',C.evidence],['SIGNALS',C.signals]]
+  .map(([k,v]) => `<span>${k} ${v.toLocaleString()}</span>`).join('');
+$('#honestyText').textContent =
+  `${C.entities} entities · ${C.relationships} evidenced relationships · no live sources connected`;
+
+const counts = ORVYRA.counts();
+$('#taxonomy').innerHTML = Object.entries(K).map(([k,v],i) => `
+  <div class="tax">
+    <div class="n">${String(i+1).padStart(2,'0')}</div>
+    <div class="l">${esc(v.label)}</div>
+    <div class="c">${counts[k]}</div>
+  </div>`).join('');
+
+$('#triples').innerHTML = ORVYRA.edges
+  .filter(e => ['invested in','contracted','develops','operates','targets','supplies'].includes(e.rel))
+  .slice(0,9).map(e => {
+    const A = ORVYRA.entity(e.from), B = ORVYRA.entity(e.to);
+    return `<div class="triple">
+      <span class="node"><span class="kind">${esc(K[A.kind].label)}</span><span class="name">${esc(A.name)}</span></span>
+      <span class="edge">${esc(e.rel)}</span>
+      <span class="node right"><span class="name">${esc(B.name)}</span><span class="kind">${esc(K[B.kind].label)}</span></span>
+    </div>`;
+  }).join('');
+
+$('#signalList').innerHTML = ORVYRA.signals.map(s => {
+  const e = ORVYRA.entity(s.entity);
+  return `<div class="signal">
+    <span class="t">${esc(s.at)}</span>
+    <span class="type"><i></i>${esc(s.type)}</span>
+    <span class="body"><b><span class="entity-link" data-entity="${s.entity}">${esc(e ? e.name : s.entity)}</span></b> — ${esc(s.text)}</span>
+    <span class="mag">${esc(s.weight)}</span>
+  </div>`;
+}).join('');
+
+$('#chain').innerHTML = [
+  ['Source','Where the observation came from — a document, filing, registry or feed.'],
+  ['Evidence','The extracted passage, with the date it was observed and published.'],
+  ['Claim','A single assertion, stated in one sentence and independently scorable.'],
+  ['Entity','The resolved object the claim is about, deduplicated across sources.'],
+  ['Relationship','The typed edge the claim creates. No evidence, no edge.'],
+  ['Intelligence','The synthesis you read — traceable back through every step above.']
+].map(([l,d],i) => `
+  <div class="link"><div class="n">${String(i+1).padStart(2,'0')}</div>
+  <div class="l">${esc(l)}</div><div class="d">${esc(d)}</div></div>`).join('');
+
+const MISSIONS = [
+  { n:'Mission 01', name:'Map the European launch ecosystem', seeds:['isar','pld','maia','rfa','orbex','skyrora'] },
+  { n:'Mission 02', name:'Trace satellite communications capital', seeds:['ses','eutelsat'] },
+  { n:'Mission 03', name:'Identify emerging Earth observation technologies', seeds:['sar','thermal'] },
+  { n:'Mission 04', name:'Follow the in-space manufacturing ecosystem', seeds:['spacefo','dorbit','crystal','otv'] }
+];
+/* progress is computed from the graph, not asserted */
+MISSIONS.forEach(m => {
+  const reach = new Set();
+  m.seeds.forEach(id => ORVYRA.subgraph(id,1,12).nodes.forEach(n => reach.add(n.id)));
+  m.covered = reach.size;
+  m.pct = Math.min(100, Math.round(reach.size / C.entities * 100));
+  m.d = `${m.seeds.length} seeds · ${reach.size} entities in reach`;
+});
+$('#missionList').innerHTML = MISSIONS.map(m => `
+  <div class="triple" style="grid-template-columns:1fr auto">
+    <span class="node" style="gap:var(--s4)">
+      <span class="kind">${esc(m.n)}</span>
+      <span class="name" style="white-space:normal">${esc(m.name)}</span>
+    </span>
+    <span class="node right" style="gap:var(--s4)">
+      <span class="mono" style="color:var(--text-3)">${esc(m.d)}</span>
+      <span class="mono" style="color:var(--accent);min-width:38px;text-align:right">${m.pct}%</span>
+    </span>
+  </div>`).join('');
+
+const SUGGESTIONS = ['European launch market','Space venture funding','Earth observation',
+  'In-space manufacturing','Satellite communications','Reusable rockets'];
+function renderChips(id, input){
+  $(id).innerHTML = SUGGESTIONS.map(s => `<button class="chip" type="button">${esc(s)}</button>`).join('');
+  $(id).addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if(!b) return;
+    $(input).value = b.textContent; runQuery(b.textContent);
+  });
+}
+renderChips('#chips','#q'); renderChips('#chips2','#q2');
+
+/* ------------------------------ workspace -------------------------------- */
+let lastResult = null;
+
+function runQuery(text){
+  const q = (text || '').trim() || 'Which European launch companies raised funding recently?';
+  const r = ORVYRA.query(q);
+  lastResult = r;
+
+  $('#wsQ').textContent = q;
+  $('#wsTiming').textContent =
+    `${r.stats.scanned} SCANNED · ${r.stats.matched} MATCHED · ${r.stats.edges} EDGES · ${r.stats.ms}MS`;
+  $('#wsConf').textContent = r.confidence !== null ? `CORPUS CONFIDENCE ${r.confidence}` : 'NO EVIDENCE';
+
+  $('#wsAnswer').innerHTML = r.synthesis.map(s =>
+    bind(esc(s.text).replace(/\{\{(\w+)\}\}/g,'{{$1}}')) +
+    s.refs.map(id => `<span class="ref" data-ev="${id}">${id.replace('EV-','')}</span>`).join('')
+  ).join(' ');
+
+  /* withheld — what the system refused to state */
+  const wb = $('#blockWithheld');
+  if (r.withheld.length){
+    wb.style.display = '';
+    $('#wsWithheld').innerHTML = r.withheld.slice(0,6).map(w => {
+      const e = ORVYRA.entity(w.entity);
+      return `<div class="ev"><div class="ev-top" style="cursor:default;grid-template-columns:auto 1fr auto">
+        <span class="ev-id">${esc(w.field)}</span>
+        <span class="ev-claim"><span class="entity-link" data-entity="${w.entity}">${esc(e.name)}</span></span>
+        <span class="ev-conf" style="color:var(--synthetic)">${esc(w.reason)}</span>
+      </div></div>`;
+    }).join('');
+  } else wb.style.display = 'none';
+
+  /* entities */
+  $('#wsEntCount').textContent = `${r.entities.length} RESOLVED`;
+  $('#wsEntities').innerHTML = r.entities.length ? `
+    <thead><tr><th>Entity</th><th>Kind</th><th>Region</th><th>Matched on</th><th>Score</th></tr></thead>
+    <tbody>${r.entities.map(h => `<tr>
+      <td><span class="entity-link" data-entity="${h.id}">${esc(h.entity.name)}</span></td>
+      <td class="dim">${esc(K[h.entity.kind].label)}</td>
+      <td class="dim">${esc(h.entity.region || '—')}</td>
+      <td class="dim">${esc(h.why.join(', '))}</td>
+      <td class="num">${h.score}</td>
+    </tr>`).join('')}</tbody>` : '';
+
+  /* traversal */
+  const pb = $('#blockPath');
+  if (r.path && r.path.length > 1){
+    pb.style.display = '';
+    $('#wsPath').innerHTML = r.path.map((step,i) => {
+      const e = ORVYRA.entity(step.id);
+      const edge = i ? `<div class="path-edge">${esc(step.rel)} ↓</div>` : '';
+      return edge + `<div class="path-row"><button class="path-node" data-entity="${step.id}">
+        <span class="kind">${esc(K[e.kind].label)}</span><span class="name">${esc(e.name)}</span></button></div>`;
+    }).join('');
+  } else pb.style.display = 'none';
+
+  /* evidence */
+  $('#wsEvidence').innerHTML = r.evidence.length ? r.evidence.map(ev => `
+    <div class="ev" data-ev="${ev.id}">
+      <div class="ev-top" role="button" tabindex="0">
+        <span class="ev-id">${esc(ev.id)}</span>
+        <span class="ev-claim">${esc(ev.claim)}</span>
+        <span class="ev-conf"><span class="conf-bar"><i style="width:${ev.confidence*100}%"></i></span>${ev.confidence.toFixed(2)}</span>
+        <span class="ev-chev">›</span>
+      </div>
+      <div class="ev-body"><dl class="kv">
+        <dt>Provenance</dt><dd><span class="tag tag-synthetic">${esc(ev.provenance)}</span></dd>
+        <dt>Source</dt><dd>${esc(ev.sourceUri)}</dd>
+        <dt>Published</dt><dd>${esc(ev.publishedAt)}</dd>
+        <dt>Observed</dt><dd>${esc(ev.observedAt)}</dd>
+        <dt>Confidence</dt><dd>${ev.confidence.toFixed(2)} — model-assigned, not editorial</dd>
+        <dt>Method</dt><dd>${esc(ev.method)}</dd>
+      </dl></div>
+    </div>`).join('')
+    : `<div class="ev"><div class="ev-top" style="cursor:default"><span class="ev-claim" style="color:var(--text-3)">No evidence supports a claim here. Try a sector: launch, Earth observation, satellite communications, in-space manufacturing.</span></div></div>`;
+
+  openWorkspace();
+  if (r.entities.length) focusEntity(r.entities[0].id);
+  renderMission(MISSIONS[0]);
+}
+
+function openWorkspace(){
+  document.body.classList.add('mode-work');
+  $('#workspace').setAttribute('aria-hidden','false');
+  target.x = innerWidth < 1080 ? 0 : 2.15; target.z = -1.5; target.scale = .82;
+  $('#stage').style.opacity = '.55'; $('#honesty').style.opacity = '0';
+  sizeGraph(); drawGraph(); $('#wsMain').scrollTop = 0;
+}
+function closeWorkspace(){
+  document.body.classList.remove('mode-work');
+  $('#workspace').setAttribute('aria-hidden','true');
+  layout(); target.z = 0;
+  $('#stage').style.opacity = '1'; $('#honesty').style.opacity = '1';
+}
+
+$('#heroQuery').addEventListener('submit', e => { e.preventDefault(); runQuery($('#q').value); });
+$('#askQuery').addEventListener('submit', e => { e.preventDefault(); runQuery($('#q2').value); });
+$('#wsBack').addEventListener('click', closeWorkspace);
+$$('[data-open-work]').forEach(el => el.addEventListener('click', e => { e.preventDefault(); runQuery($('#q').value); }));
+
+document.addEventListener('click', e => {
+  const ent = e.target.closest('[data-entity]');
+  if (ent){ if(!document.body.classList.contains('mode-work')) runQuery(ORVYRA.entity(ent.dataset.entity).name);
+            else focusEntity(ent.dataset.entity); return; }
+  const ref = e.target.closest('.ref');
+  if (ref){
+    const card = $(`.ev[data-ev="${ref.dataset.ev}"]`);
+    if (card){ card.classList.add('open'); card.scrollIntoView({ behavior:REDUCED?'auto':'smooth', block:'center' }); }
+    return;
+  }
+  const top = e.target.closest('.ev-top[role="button"]');
+  if (top) top.parentElement.classList.toggle('open');
+});
+
+/* ------------------------------ dossier ---------------------------------- */
+function focusEntity(id){
+  const e = ORVYRA.entity(id); if(!e) return;
+  graphFocus = id; drawGraph();
+
+  const nb = ORVYRA.neighbours(id);
+  const attrs = Object.entries(e.attrs || {});
+  const evIds = [...new Set([].concat(...nb.map(a => a.edge.ev)))].slice(0,4);
+
+  $('#dossier').innerHTML = `
+    <span class="eyebrow">Orvyra / Entity · ${esc(K[e.kind].label)}</span>
+    <h3>${esc(e.name)}</h3>
+    <div class="sub">${esc(e.meta || '—')}</div>
+    <p style="font-size:13px;color:var(--text-2);margin-bottom:var(--s5);font-weight:300">${esc(e.tagline)}</p>
+
+    <div class="stats">${attrs.slice(0,4).map(([k,v]) => `
+      <div class="stat"><div class="k">${esc(k)}</div>
+      <div class="v" style="${v.withheld?'color:var(--synthetic);font-size:11px;line-height:1.4':''}">${esc(v.withheld ? 'withheld' : v.v)}</div></div>`).join('')
+      || '<div class="stat"><div class="k">attributes</div><div class="v">—</div></div>'}</div>
+
+    <div class="mini-head">Relationships · ${nb.length}</div>
+    <div class="feed">${nb.slice(0,8).map(a => `
+      <div class="feed-item">
+        <span class="d">${a.out ? '→' : '←'} ${esc(a.edge.rel)}</span>
+        <span class="entity-link" data-entity="${a.other}">${esc(ORVYRA.entity(a.other).name)}</span>
+      </div>`).join('') || '<div class="feed-item"><span class="d">—</span><span>No evidenced relationships.</span></div>'}</div>
+
+    <div class="mini-head">Recent intelligence</div>
+    <div class="feed">${ORVYRA.signals.filter(s => s.entity === id || nb.some(a => a.other === s.entity))
+      .slice(0,3).map(s => `<div class="feed-item"><span class="d">${esc(s.at)}</span><span>${esc(s.text)}</span></div>`).join('')
+      || '<div class="feed-item"><span class="d">—</span><span>No signals reference this entity.</span></div>'}</div>
+
+    <div class="mini-head">Sources · ${evIds.length}</div>
+    <div class="feed">${evIds.map(i => {
+      const v = ORVYRA.ev(i);
+      return `<div class="feed-item"><span class="d">${esc(v.id)}</span><span style="color:var(--text-3)">${esc(v.sourceUri)}</span></div>`;
+    }).join('') || '<div class="feed-item"><span class="d">—</span><span style="color:var(--text-3)">No sources.</span></div>'}</div>`;
+}
+
+function renderMission(m){
+  $('#missionCard').innerHTML = `
+    <span class="eyebrow">${esc(m.n)} · Investigation</span>
+    <h4>${esc(m.name)}</h4>
+    <div class="bar"><i style="width:${m.pct}%"></i></div>
+    <div class="mission-meta"><span>${esc(m.d)}</span><span style="color:var(--accent)">${m.pct}%</span></div>`;
+}
+
+/* ------------------------------ graph ------------------------------------ */
+let graphFocus = 'isar', gctx, gW = 0, gH = 0, gHover = null, gNodes = [], gPan = {x:0,y:0}, dragging = null;
+const gcv = $('#graph');
+
+function sizeGraph(){
+  const r = gcv.getBoundingClientRect(); if(!r.width) return;
+  const dpr = Math.min(devicePixelRatio, 2);
+  gW = r.width; gH = r.height;
+  gcv.width = gW*dpr; gcv.height = gH*dpr;
+  gctx = gcv.getContext('2d'); gctx.setTransform(dpr,0,0,dpr,0,0);
+}
+
+function computeGraph(){
+  const sg = ORVYRA.subgraph(graphFocus, 2, 15);
+  const cx = gW/2 + gPan.x, cy = gH/2 + gPan.y;
+  const r1 = sg.nodes.filter(n => n.depth === 1), r2 = sg.nodes.filter(n => n.depth === 2);
+  gNodes = [{ id:graphFocus, x:cx, y:cy, r:9, depth:0 }];
+  const R1 = Math.min(gW,gH)*.30, R2 = Math.min(gW,gH)*.455;
+  r1.forEach((n,i) => {
+    const a = -Math.PI/2 + i/Math.max(1,r1.length)*Math.PI*2;
+    gNodes.push({ id:n.id, x:cx+Math.cos(a)*R1, y:cy+Math.sin(a)*R1, r:6, depth:1 });
+  });
+  r2.forEach((n,i) => {
+    const a = -Math.PI/2 + (i+.5)/Math.max(1,r2.length)*Math.PI*2;
+    gNodes.push({ id:n.id, x:cx+Math.cos(a)*R2, y:cy+Math.sin(a)*R2, r:3.6, depth:2 });
+  });
+  return sg;
+}
+
+function drawGraph(){
+  if(!gctx) sizeGraph(); if(!gctx) return;
+  const sg = computeGraph();
+  const byId = Object.fromEntries(gNodes.map(n => [n.id,n]));
+  gctx.clearRect(0,0,gW,gH);
+
+  sg.edges.forEach(e => {
+    const A = byId[e.from], B = byId[e.to]; if(!A||!B) return;
+    const hot = gHover && (e.from === gHover || e.to === gHover);
+    gctx.strokeStyle = hot ? 'rgba(79,214,224,.55)' : 'rgba(255,255,255,.075)';
+    gctx.lineWidth = hot ? 1.1 : .7;
+    const mx = (A.x+B.x)/2, my = (A.y+B.y)/2, dx = B.x-A.x, dy = B.y-A.y;
+    gctx.beginPath(); gctx.moveTo(A.x,A.y);
+    gctx.quadraticCurveTo(mx - dy*.10, my + dx*.10, B.x, B.y); gctx.stroke();
+    if (hot){
+      gctx.fillStyle = 'rgba(79,214,224,.85)';
+      gctx.font = '9px "IBM Plex Mono", monospace';
+      gctx.fillText(e.rel, mx - dy*.05 + 4, my + dx*.05 - 3);
+    }
+  });
+
+  gNodes.forEach(n => {
+    const e = ORVYRA.entity(n.id); if(!e) return;
+    const col = K[e.kind].color, hot = gHover === n.id || n.depth === 0;
+    if (hot){ gctx.fillStyle = col+'22'; gctx.beginPath(); gctx.arc(n.x,n.y,n.r+7,0,6.2832); gctx.fill(); }
+    gctx.fillStyle = n.depth === 0 ? col : '#05070b';
+    gctx.strokeStyle = col; gctx.lineWidth = n.depth === 2 ? .9 : 1.3;
+    gctx.globalAlpha = n.depth === 2 ? .55 : 1;
+    gctx.beginPath(); gctx.arc(n.x,n.y,n.r,0,6.2832); gctx.fill(); gctx.stroke();
+    gctx.globalAlpha = 1;
+    if (n.depth < 2 || gHover === n.id){
+      gctx.fillStyle = hot ? '#f1f4f8' : 'rgba(153,163,178,.85)';
+      gctx.font = `${n.depth === 0 ? '11' : '10'}px "IBM Plex Mono", monospace`;
+      gctx.textAlign = n.x > gW/2 ? 'right' : 'left';
+      gctx.fillText(e.name, n.x + (n.x > gW/2 ? -(n.r+7) : n.r+7), n.y+3.5);
+    }
+  });
+}
+
+gcv.addEventListener('pointermove', ev => {
+  const r = gcv.getBoundingClientRect(), x = ev.clientX-r.left, y = ev.clientY-r.top;
+  if (dragging){ gPan.x = dragging.px+(x-dragging.x); gPan.y = dragging.py+(y-dragging.y); drawGraph(); return; }
+  const hit = gNodes.find(n => Math.hypot(n.x-x,n.y-y) < n.r+9);
+  const id = hit ? hit.id : null;
+  if (id !== gHover){ gHover = id; gcv.style.cursor = id ? 'pointer' : 'grab'; drawGraph(); }
+});
+gcv.addEventListener('pointerdown', ev => {
+  const r = gcv.getBoundingClientRect(), x = ev.clientX-r.left, y = ev.clientY-r.top;
+  const hit = gNodes.find(n => Math.hypot(n.x-x,n.y-y) < n.r+9);
+  if (hit){ gPan = {x:0,y:0}; focusEntity(hit.id); }
+  else { dragging = {x,y,px:gPan.x,py:gPan.y}; gcv.setPointerCapture(ev.pointerId); }
+});
+addEventListener('pointerup', () => { dragging = null; });
+$('#graphReset').addEventListener('click', () => {
+  gPan = {x:0,y:0};
+  focusEntity(lastResult && lastResult.entities.length ? lastResult.entities[0].id : 'isar');
+});
+$('#graphLegend').innerHTML = Object.values(K)
+  .map(k => `<span class="leg"><i style="background:${k.color}"></i>${k.label}</span>`).join('');
+
+/* ------------------------------ palette ----------------------------------- */
+const palette = $('#palette'), pIn = $('#paletteInput'), pList = $('#paletteList');
+const P_ITEMS = [
+  ...SUGGESTIONS.map(s => ({ label:s, kind:'Query', run:() => runQuery(s) })),
+  ...ORVYRA.entities.map(e => ({ label:e.name, kind:K[e.kind].label, run:() => { runQuery(e.name); focusEntity(e.id); } })),
+  { label:'Return to ORVYRA', kind:'View', run:closeWorkspace }
+];
+function paintPalette(){
+  const q = pIn.value.toLowerCase();
+  const items = P_ITEMS.filter(i => i.label.toLowerCase().includes(q)).slice(0,9);
+  pList.innerHTML = items.length
+    ? items.map((i,ix) => `<button class="palette-item" data-i="${P_ITEMS.indexOf(i)}" ${ix?'':'aria-selected="true"'}>${esc(i.label)}<span class="kind">${esc(i.kind)}</span></button>`).join('')
+    : `<div class="palette-item" style="color:var(--text-3)">No match. Press ↵ to ask ORVYRA this question.</div>`;
+}
+const openPalette = () => { palette.classList.add('open'); pIn.value=''; paintPalette(); pIn.focus(); };
+const closePalette = () => palette.classList.remove('open');
+$('#paletteBtn').addEventListener('click', openPalette);
+pIn.addEventListener('input', paintPalette);
+pList.addEventListener('click', e => {
+  const b = e.target.closest('.palette-item[data-i]'); if(!b) return;
+  closePalette(); P_ITEMS[+b.dataset.i].run();
+});
+palette.addEventListener('click', e => { if(e.target === palette) closePalette(); });
+addEventListener('keydown', e => {
+  if ((e.metaKey||e.ctrlKey) && e.key.toLowerCase() === 'k'){
+    e.preventDefault(); palette.classList.contains('open') ? closePalette() : openPalette();
+  } else if (e.key === 'Escape'){
+    if (palette.classList.contains('open')) closePalette();
+    else if (document.body.classList.contains('mode-work')) closeWorkspace();
+  } else if (e.key === 'Enter' && palette.classList.contains('open')){
+    const first = pList.querySelector('.palette-item[data-i]');
+    const typed = pIn.value; closePalette();
+    if (first) P_ITEMS[+first.dataset.i].run(); else runQuery(typed);
+  } else if (e.key === '/' && document.activeElement === document.body){
+    e.preventDefault(); $('#q').focus();
+  }
+});
+
+/* ------------------------------ scroll ------------------------------------ */
+if ('IntersectionObserver' in window){
+  const io = new IntersectionObserver(
+    es => es.forEach(en => { if (en.isIntersecting) en.target.classList.add('in'); }),
+    { threshold:.14 });
+  $$('.reveal').forEach(el => io.observe(el));
+} else {
+  $$('.reveal').forEach(el => el.classList.add('in'));
+}
+
+addEventListener('scroll', () => {
+  scrollT = scrollY;
+  $('#nav').classList.toggle('solid', scrollY > 40);
+}, { passive:true });
+addEventListener('resize', () => {
+  if (document.body.classList.contains('mode-work')){ sizeGraph(); drawGraph(); }
+});
+
+try { initStage(); } catch(err){
+  console.warn('WebGL unavailable — static field fallback.', err);
+  $('#stage').style.background = 'radial-gradient(60% 60% at 78% 46%, rgba(20,32,48,.9), rgba(5,7,11,1) 70%)';
+}
+</script>
+</body>
+</html>
